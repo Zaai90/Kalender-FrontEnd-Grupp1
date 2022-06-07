@@ -1,15 +1,18 @@
+
+
 # Kalender-FrontEnd-Grupp1
 Grupparbete i Webbutveckling
 
-Miniprojekt
+## Miniprojekt
 Schemalagda todos
 I den här uppgiften skall ni bygga ett verktyg där användaren kan skapa och schemalägga
 todos. Verktyget skall visa en lista med todos och en kalender för översikt. Utöver det
 tekniska som skall skapas så ämnar den här uppgiften att ni ska träna på att arbeta med
-git och GitHub i ett HTML CSSS & Javascript projekt.
+**git** och **GitHub** i ett **HTML**, **CSS** & **Javascript** projekt.
 Para ihop er i grupp om 3 till 4 - ni väljer själva vem ni jobbar med. Läs noga igenom hela
 uppgiftsbeskrivningen tillsammans och börja sedan med att planera och dela upp arbetet.
-Projektet
+
+### Projektet
 När ni har läst hela uppgiftsbeskrivningen är det dags att strukturera ert arbete. Börja
 med att skapa ett repo på någons GitHub och bjud in de andra ifrån gruppen. Lägg även
 upp alla ärenden (se lista nedan) som issues på GitHub och planera tillsammans vem som
@@ -17,7 +20,7 @@ ska göra vad. För att få en bra och gemensam struktur kan det vara bra att g�
 och/eller flödesdiagram över systemet så ni får en gemensam bild över vad som skall
 skapas. Allt förarbete ni gör med skisser eller annan diskussion bör läggas till i berörande
 ärende på GitHub. När det är dags att för er att börja bygga verktyget skall ni använda
-GitHub flow principen: 1 issue - 1 branch - 1 pull request.
+GitHub flow principen: **1 issue - 1 branch - 1 pull request.**
 Det är rekommenderat att ni gör det första ärendet - att sätta upp den övergripande
 layouten av sidan (html & css) - tillsammans för att undvika merge konflikter. Innan ni
 påbörjar arbetet och tar egna ärende bör ni fundera på hur ni ska strukturera ert projekt
@@ -25,7 +28,7 @@ och vilka filer som skall finnas. Exempelvis kan det vara bra att skapa en javas
 varje del i verktyget, todos.js, calendar.js och today.js, det hjälper er också att undvika merge
 konflikter.
 
-Muntlig Presentation
+### Muntlig Presentation
 Inlämningen skall presenteras muntligt där ni visar upp verktyget. Ni skall presentera
 verktygets design och funktionalitet. Presentationen skall även innehålla minst två saker
 ni tyckte fungerade bra och två saker ni tyckte fungerade mindre bra gällande projektet
@@ -37,7 +40,7 @@ till 10-15 minuter.
 Presentation kommer att genomföras i mindre grupper vid presentationsdagen.
 
 
-Verktyget
+### Verktyget
 Det ni skall skapa är ett verktyg för att lägga till och ta bort todos. Dessa todos skall visas i
 en lista till vänster i det grafiska gränssnittet. Till höger skall det finnas en kalender som är
 länkad till de todos som har skapats. Men andra ord ska todos kunna vara kopplade till en
@@ -48,32 +51,32 @@ där vi motiverar varför ni har gjort ändringar.
 Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder behöver ni inte göra)
 
 
-Ärendelista
-[] Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
-[] Skapa och designa titeln för verktyget - (G)
-[] Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
+#### Ärendelista
+- [ ] Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
+- [ ] Skapa och designa titeln för verktyget - (G)
+- [ ] Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
 minst innehålla tid, veckodag och datum. - (G)
-[] Användaren skall kunna lägga till en todo - (G)
-[] Användaren skall kunna ta bort en todo - (G)
-[] Skapa och designa kalendervyn med en månadsvy över aktuell månad - (G)
-[] Skapade todos skall kopplas till kalender och visas med en siffra som representeras
+- [ ] Användaren skall kunna lägga till en todo - (G)
+- [ ] Användaren skall kunna ta bort en todo - (G)
+- [ ] Skapa och designa kalendervyn med en månadsvy över aktuell månad - (G)
+- [ ] Skapade todos skall kopplas till kalender och visas med en siffra som representeras
 antal todos på en viss dag. - (G)
 
-[] Spara todos i local storage och visa dessa vid omladdning av sidan - (VG)
-[] Användaren skall kunna ändra en todo - (VG)
-[] Användaren skall kunna växa till andra månader i kalendervyn - (VG)
-[] Svenska helgdagar visas i kalendern - (VG)
-[] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
+- [ ] Spara todos i local storage och visa dessa vid omladdning av sidan - (VG)
+- [ ] Användaren skall kunna ändra en todo - (VG)
+- [ ] Användaren skall kunna växa till andra månader i kalendervyn - (VG)
+- [ ] Svenska helgdagar visas i kalendern - (VG)
+- [ ] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
 
-Krav för godkänt
-[] Uppgiften lämnas in i tid!
-[] Verktyget fungerar enligt beskrivning
-[] Ärenden för godkänt är gjorda
-[] Sidan är responsiv
-[] Git och GitHub har används enligt beskrivning
+#### Krav för godkänt
+- [ ] Uppgiften lämnas in i tid!
+- [ ] Verktyget fungerar enligt beskrivning
+- [ ] Ärenden för godkänt är gjorda
+- [ ] Sidan är responsiv
+- [ ] Git och GitHub har används enligt beskrivning
 
-Krav för väl godkänt:
-[] Alla punkter för godkänt är uppfyllda
-[] Ärenden för väl godkänt är gjorda
+#### Krav för väl godkänt:
+- [ ] Alla punkter för godkänt är uppfyllda
+- [ ]  Ärenden för väl godkänt är gjorda
 
-LYCKA TILL
+**LYCKA TILL!**
