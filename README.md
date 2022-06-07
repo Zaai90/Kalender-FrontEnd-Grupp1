@@ -24,6 +24,7 @@ påbörjar arbetet och tar egna ärende bör ni fundera på hur ni ska strukture
 och vilka filer som skall finnas. Exempelvis kan det vara bra att skapa en javascript fil för
 varje del i verktyget, todos.js, calendar.js och today.js, det hjälper er också att undvika merge
 konflikter.
+
 Muntlig Presentation
 Inlämningen skall presenteras muntligt där ni visar upp verktyget. Ni skall presentera
 verktygets design och funktionalitet. Presentationen skall även innehålla minst två saker
@@ -48,28 +49,31 @@ Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder beh
 
 
 Ärendelista
-1. Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
-2. Skapa och designa titeln för verktyget - (G)
-3. Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
+[] Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
+[] Skapa och designa titeln för verktyget - (G)
+[] Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
 minst innehålla tid, veckodag och datum. - (G)
-4. Användaren skall kunna lägga till en todo - (G)
-5. Användaren skall kunna ta bort en todo - (G)
-6. Skapa och designa kalendervyn med en månadsvy över aktuell månad - (G)
-7. Skapade todos skall kopplas till kalender och visas med en siffra som representeras
+[] Användaren skall kunna lägga till en todo - (G)
+[] Användaren skall kunna ta bort en todo - (G)
+[] Skapa och designa kalendervyn med en månadsvy över aktuell månad - (G)
+[] Skapade todos skall kopplas till kalender och visas med en siffra som representeras
 antal todos på en viss dag. - (G)
-8. Spara todos i local storage och visa dessa vid omladdning av sidan - (VG)
-9. Användaren skall kunna ändra en todo - (VG)
-10. Användaren skall kunna växa till andra månader i kalendervyn - (VG)
-11. Svenska helgdagar visas i kalendern - (VG)
-12. Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
+
+[] Spara todos i local storage och visa dessa vid omladdning av sidan - (VG)
+[] Användaren skall kunna ändra en todo - (VG)
+[] Användaren skall kunna växa till andra månader i kalendervyn - (VG)
+[] Svenska helgdagar visas i kalendern - (VG)
+[] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
+
 Krav för godkänt
-1. Uppgiften lämnas in i tid!
-2. Verktyget fungerar enligt beskrivning
-3. Ärenden för godkänt är gjorda
-4. Sidan är responsiv
-5. Git och GitHub har används enligt beskrivning
+[] Uppgiften lämnas in i tid!
+[] Verktyget fungerar enligt beskrivning
+[] Ärenden för godkänt är gjorda
+[] Sidan är responsiv
+[] Git och GitHub har används enligt beskrivning
+
 Krav för väl godkänt:
-1. Alla punkter för godkänt är uppfyllda
-2. Ärenden för väl godkänt är gjorda
+[] Alla punkter för godkänt är uppfyllda
+[] Ärenden för väl godkänt är gjorda
 
 LYCKA TILL
