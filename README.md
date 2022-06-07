@@ -35,7 +35,6 @@ annat utöver vad som nämnts ovan få ni gärna göra det så länge ni håller
 till 10-15 minuter.
 Presentation kommer att genomföras i mindre grupper vid presentationsdagen.
 
-1
 
 Verktyget
 Det ni skall skapa är ett verktyg för att lägga till och ta bort todos. Dessa todos skall visas i
@@ -47,7 +46,6 @@ göra ändringar/avgränsningar från kraven så ska dessa dokumenteras i er REA
 där vi motiverar varför ni har gjort ändringar.
 Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder behöver ni inte göra)
 
-2
 
 Ärendelista
 1. Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
