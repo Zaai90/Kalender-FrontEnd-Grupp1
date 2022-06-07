@@ -1,2 +1,2 @@
 # Kalender-FrontEnd-Grupp1
-Grupparbete för i Webbutveckling
+Grupparbete i Webbutveckling
