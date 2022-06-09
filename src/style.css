@@ -4,11 +4,63 @@
     padding: 0;
 }
 
+.layout {
+    height: 923px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr repeat(3, 2fr);
+    grid-template-areas:
+        "head head head head"
+        "aside main main main"
+        "aside main main main"
+        "aside main main main";
+
+}
+
+header {
+    display: flex;
+    grid-area: head;
+    background-color: yellow;
+}
+
+main {
+    display: flex;
+    grid-area: main;
+    background-color: green;
+
+}
+
+aside {
+    display: flex;
+    grid-area: aside;
+    background-color: blue;
+
+}
+
 .container {
     width: 100%;
     height: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.calendarContainer {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+
+}
+
+.calendarDay {
+    display: inline-grid;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
