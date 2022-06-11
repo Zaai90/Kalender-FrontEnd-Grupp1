@@ -1,5 +1,7 @@
+const calendarContainer = document.getElementsByClassName('calendarContainer')[0];
 const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
 const dateNow = new Date();
+let selected;
 
 let currentCalendarDate = {
     day: dateNow.getDate(),
@@ -32,55 +34,46 @@ function renderCalendar(year, month) {
     //Previous month
     for (let i = 0; i < weekday; i++) {
         let date = new Date(year, month, i - weekday + 1);
-        renderCalenderDay(i, date, previous, false)
+        createCalenderDay(i, date, previous, false)
     }
 
     //Current Month
     for (let i = 0; i < lastDayOfMonth; i++) {
         let date = new Date(year, month, firstDay.getDate() + i);
-        renderCalenderDay(i + weekday, date, markCalenderDay, true)
+        createCalenderDay(i + weekday, date, toggleSelected, true)
     }
 
     //Next month
     for (let i = lastDayOfMonth + weekday; i < 42; i++) {
         let date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
-        renderCalenderDay(i, date, next, false)
+        createCalenderDay(i, date, next, false)
     }
 }
 
 
-/**
-* @param {number} index 
-* @param {Date} date 
-* @param {Function} eventFunction 
-* @param {Boolean} isCurrentMonth
-* Function to render a calendar day
-*/
-function renderCalenderDay(index, date, eventFunction, isCurrentMonth) {
-    document.querySelector('.calendarContainer').appendChild(document.createElement('div')).classList.add('calendarDay');
+function createCalenderDay(index, date, eventFunction, isCurrentMonth) {
+    calendarContainer.appendChild(document.createElement('div')).classList.add('calendarDay');
     const calendarDay = document.querySelectorAll('.calendarDay')[index];
 
-    calendarDay.classList.add(date.toDateString() === dateNow.toDateString() && isCurrentMonth ? 'highlighted' : 'i');
+    date.toDateString() === dateNow.toDateString() && isCurrentMonth ? calendarDay.classList.add('highlighted') : null;
     calendarDay.classList.add(isCurrentMonth ? 'current' : 'faded');
-    calendarDay.id = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}${isCurrentMonth ? '-current' : ''}`;
+    calendarDay.id = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}${isCurrentMonth ? '' : ''}`;
 
     calendarDay.appendChild(document.createElement('p')).classList += 'calendarDayNumber';
     calendarDay.getElementsByTagName('p')[0].innerHTML = date.getDate();
     calendarDay.addEventListener('click', eventFunction);
 }
 
-function markCalenderDay(event) {
-    let target = document.getElementById(event.target.id);
-    let markedTargets = document.getElementsByClassName('marked');
-
-    if (target.classList.contains('marked')) {
-        target.classList.remove('marked');
+function toggleSelected() {
+    const target = this;
+    const sameDay = target === selected;
+    if (selected) {
+        selected.classList.remove('selected');
+        selected = undefined;
     }
-    else {
-        for (let i = 0; i < markedTargets.length; i++) {
-            markedTargets[i]?.classList.remove('marked');
-        }
-        target.classList.add('marked');
+    if (!sameDay) {
+        target.classList.add('selected');
+        selected = target;
     }
 }
 
