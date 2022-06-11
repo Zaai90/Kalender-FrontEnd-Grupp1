@@ -62,9 +62,14 @@ aside {
 .calendarDay {
     display: inline-grid;
     box-shadow: 0px 0px 5px rgb(0, 0, 0);
-    background-color: rgba(90, 87, 87, 0.726);
+    background-color: rgb(90, 87, 87);
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+
+.calendarDay:hover {
+    background-color: rgba(90, 87, 87, 0.675);
+    color: rgb(216, 203, 203);
 }
 
 .calendarDay p {
@@ -74,7 +79,7 @@ aside {
 }
 
 .faded {
-    color: #555555;
+    color: #464444;
 }
 
 .current {}
@@ -83,11 +88,15 @@ aside {
     background-color: #00A4EF;
 }
 
-.highlighted.marked {
+.highlighted:hover {
+    background-color: rgba(47, 179, 240, 0.800);
+}
+
+.highlighted.selected {
     border: solid 3px rgb(42, 42, 44);
 }
 
-.marked {
+.selected {
     border: solid 5px #00A4EF;
 }
 
