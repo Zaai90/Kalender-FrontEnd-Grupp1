@@ -1,6 +1,6 @@
 const tasks = [];
 
-function addTaskToList(event){
+function createTask(event){
     const formData = new FormData(event.target);
     const task = Object.fromEntries(formData.entries());   
     task.id = getTaskId();
