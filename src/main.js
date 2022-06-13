@@ -1,7 +1,9 @@
-document.addEventListener('DOMContentLoaded', main);
+document.addEventListener("DOMContentLoaded", main);
 
 function main() {
-    addCalenderHeader()
-    initModeButton()
-    renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
+  addCalenderHeader();
+  renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
+  renderWelcomeSegment();
+  setInterval(() => (dateNow = new Date()), 1000);
+  initModeButton();
 }

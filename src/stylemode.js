@@ -9,11 +9,11 @@ function OnSwitch() {
   const css = document.getElementById("cssSwitcher");
   const darkModeButton = document.getElementById("switchbutton");
 
-  if (darkModeButton.innerHTML == "Dark Mode") {
+  if (darkModeButton.innerHTML == "Light Mode") {
     css.setAttribute("href", "src/lightstyle.css");
-    darkModeButton.innerHTML = "Light Mode";
+    darkModeButton.innerHTML = "Dark Mode";
   } else {
     css.setAttribute("href", "src/style.css");
-    darkModeButton.innerHTML = "Dark Mode";
+    darkModeButton.innerHTML = "Light Mode";
   }
 }
