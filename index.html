@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" id="cssSwitcher" href="src/style.css" />
-    <script defer src="src/main.js"></script>
-    <script defer src="src/calendar.js"></script>
-    <script defer src="src/stylemode.js"></script>
-    <script defer src="src/welcome.js"></script>
-    <title>Kalender</title>
-  </head>
 
-  <body>
-    <section class="layout">
-      <header>
-        <button id="switchbutton"></button>
-        <div class="calendarHeader"></div>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" id="cssSwitcher" href="src/style.css" />
+  <script defer src="src/main.js"></script>
+  <script defer src="src/calendar.js"></script>
+  <script defer src="src/stylemode.js"></script>
+  <script defer src="src/welcome.js"></script>
+  <title>Kalender</title>
+</head>
 
-      <main class="mainContainer">
-        <div class="calendarContainer"></div>
-      </main>
+<body>
+  <section class="layout">
+    
+    <header>
+      <button id="switchbutton"></button>
+      <div class="calendarHeader"></div>
+    </header>
 
-      <aside><div class="welcomeContainer"></div></aside>
-    </section>
-  </body>
+    <main class="mainContainer">
+      <div class="calendarContainer">
+        <div class="weekdays">
+          <div class="weekday">Måndag</div>
+          <div class="weekday">Tisdag</div>
+          <div class="weekday">Onsdag</div>
+          <div class="weekday">Torsdag</div>
+          <div class="weekday">Fredag</div>
+          <div class="weekday">Lördag</div>
+          <div class="weekday">Söndag</div>
+        </div>
+        <div class="calendar"></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="welcomeContainer">
+      </div>
+    </aside>
+
+  </section>
+</body>
+
 </html>
