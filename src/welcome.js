@@ -9,14 +9,6 @@ const weekDays = [
   "Söndag",
 ];
 
-let getWelcomeData = {
-  day: dateNow.getDay(),
-  time: String(
-    dateNow.getHours() + dateNow.getSeconds() + dateNow.getMilliseconds()
-  ),
-  date: dateNow.getDate() + dateNow.getMonth(),
-};
-
 function createRenderDivs() {
   let welcomeDiv = document.querySelector(".welcomeContainer");
   welcomeDiv.appendChild(document.createElement("div")).classList.add("time");
