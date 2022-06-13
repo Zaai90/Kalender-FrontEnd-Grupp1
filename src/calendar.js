@@ -1,19 +1,6 @@
-const calendarContainer =
-  document.getElementsByClassName("calendarContainer")[0];
-const monthNames = [
-  "Januari",
-  "Februari",
-  "Mars",
-  "April",
-  "Maj",
-  "Juni",
-  "Juli",
-  "Augusti",
-  "September",
-  "Oktober",
-  "November",
-  "December",
-];
+const calendarContainer = document.getElementsByClassName("calendar")[0];
+const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
+const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
 let dateNow = new Date();
 let selected;
 
@@ -41,10 +28,11 @@ function renderHeader(year, month) {
 }
 
 function renderCalendar(year, month) {
+  calendarContainer.innerHTML = "";
   renderHeader(year, month);
 
   let firstDay = new Date(year, month);
-  let weekday = firstDay.getDay() === 0 ? 0 : firstDay.getDay() - 1;
+  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
   let lastDay = new Date(year, month + 1, 0);
   let lastDayOfMonth = lastDay.getDate();
 
@@ -77,9 +65,8 @@ function createCalenderDay(index, date, eventFunction, isCurrentMonth) {
     ? calendarDay.classList.add("highlighted")
     : null;
   calendarDay.classList.add(isCurrentMonth ? "current" : "faded");
-  calendarDay.id = `${date.getDate()}-${
-    date.getMonth() + 1
-  }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
+  calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
+    }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
   calendarDay.appendChild(document.createElement("p")).classList +=
     "calendarDayNumber";
@@ -107,7 +94,7 @@ function next() {
       : currentCalendarDate.year;
   currentCalendarDate.month = (currentCalendarDate.month + 1) % 12;
 
-  resetCalendar(currentCalendarDate.year, currentCalendarDate.month);
+  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
 }
 
 function previous() {
@@ -118,13 +105,5 @@ function previous() {
   currentCalendarDate.month =
     currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
-  resetCalendar(currentCalendarDate.year, currentCalendarDate.month);
-}
-
-function resetCalendar(year, month) {
-  let calendarDays = document.getElementsByClassName("calendarDay");
-  while (calendarDays.length > 0) {
-    calendarDays[0].remove();
-  }
-  renderCalendar(year, month);
+  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
 }
