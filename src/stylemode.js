@@ -1,4 +1,9 @@
-document.getElementById("switchbutton").addEventListener("click", OnSwitch);
+let modeButton;
+function initModeButton() {
+  modeButton = document.getElementById("switchbutton");
+  modeButton.addEventListener("click", OnSwitch);
+  modeButton.innerHTML = "Light Mode";
+}
 
 function OnSwitch() {
   const css = document.getElementById("cssSwitcher");
@@ -15,7 +20,6 @@ function OnSwitch() {
     darkModeButton.innerHTML = "Light Mode";
   } else {
     css.setAttribute("href", "src/style.css");
-
     darkModeButton.innerHTML = "Dark Mode";
   }
 }
