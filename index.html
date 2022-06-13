@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="src/style.css" /> -->
+    <link rel="stylesheet" id="cssSwitcher" href="src/style.css" />
     <script defer src="src/main.js"></script>
     <script defer src="src/calendar.js"></script>
+    <script defer src="src/stylemode.js"></script>
     <title>Kalender</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="layout">
-        <header>
-            <div class="calendarHeader"></div>
-        </header>
+      <header>
+        <button id="switchbutton" class="Light Mode" alt="Light Mode">
+          <script>
+            {
+              switchbutton;
+            }
+          </script>
+        </button>
+        <div class="calendarHeader"></div>
+      </header>
 
+      <main class="mainContainer">
+        <div class="calendarContainer"></div>
+      </main>
 
-        <main class="mainContainer">
-            <div class="calendarContainer"></div>
-        </main>
-
-
-        <aside>
-
-        </aside>
+      <aside></aside>
     </section>
-</body>
-
-
+  </body>
 </html>
