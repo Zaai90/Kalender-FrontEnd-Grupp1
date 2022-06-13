@@ -1,13 +1,4 @@
 const welcomeContainer = document.getElementsByClassName("welcomeContainer");
-const weekDays = [
-  "Måndag",
-  "Tisdag",
-  "Onsdag",
-  "Torsdag",
-  "Fredag",
-  "Lördag",
-  "Söndag",
-];
 
 function createRenderDivs() {
   let welcomeDiv = document.querySelector(".welcomeContainer");
