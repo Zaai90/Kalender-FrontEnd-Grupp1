@@ -1,6 +1,6 @@
-function saveTasksToLocalStorage(key, value){
+function saveToLocalStorage(key, value){
     localStorage.setItem(key, JSON.stringify(value));
 }
-function getTasksFromLocalStorage(key){
+function getFromLocalStorage(key){
     return JSON.parse(localStorage.getItem(key));
 }
