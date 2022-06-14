@@ -1,8 +1,8 @@
 addTaskHtml();
-testTaskButton();
 var tasks = getFromLocalStorage("taskArray") || [];
 const taskList = document.querySelector(".taskList");
 const datePattern = /\d{4}-\d\d-\d\d/;
+testTaskButton();
 renderAllTasks();
 
 function createTask(event){
@@ -113,7 +113,7 @@ function addTaskHtml(){
     let taskList = document.createElement("ul");
     taskList.className = "taskList";
     let button = document.createElement("button");
-    button.className = "addTestTask";
+    button.className = "addTestTasks";
     button.style = "width: 2rem; height: 2rem;";
     button.innerHTML = "➕";
     document.querySelector("aside").appendChild(button);
