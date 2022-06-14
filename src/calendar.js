@@ -12,12 +12,15 @@ let currentCalendarDate = {
 
 function addCalenderHeader() {
   let header = document.querySelector(".calendarHeader");
-  header
-    .appendChild(document.createElement("div"))
-    .classList.add("calendarHeaderYear");
-  header
-    .appendChild(document.createElement("div"))
-    .classList.add("calendarHeaderMonth");
+
+  const calendarYear = document.createElement("div");
+  calendarYear.classList.add("calendarHeaderYear");
+
+  const calendarMonth = document.createElement("div");
+  calendarMonth.classList.add("calendarHeaderMonth");
+
+  header.appendChild(calendarYear);
+  header.appendChild(calendarMonth);
 }
 
 function renderHeader(year, month) {
@@ -39,43 +42,42 @@ function renderCalendar(year, month) {
   //Previous month
   for (let i = 0; i < weekday; i++) {
     let date = new Date(year, month, i - weekday + 1);
-    createCalenderDay(i, date, previous, false);
+    createCalenderDay(date, previous, false);
   }
 
   //Current Month
   for (let i = 0; i < lastDayOfMonth; i++) {
     let date = new Date(year, month, firstDay.getDate() + i);
-    createCalenderDay(i + weekday, date, toggleSelected, true);
+    createCalenderDay(date, toggleSelected, true);
   }
 
   //Next month
   for (let i = lastDayOfMonth + weekday; i < 42; i++) {
     let date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
-    createCalenderDay(i, date, next, false);
+    createCalenderDay(date, next, false);
   }
 }
 
-function createCalenderDay(index, date, eventFunction, isCurrentMonth) {
-  calendarContainer
-    .appendChild(document.createElement("div"))
-    .classList.add("calendarDay");
-  const calendarDay = document.querySelectorAll(".calendarDay")[index];
-
+function createCalenderDay(date, eventFunction, isCurrentMonth) {
+  const calendarDay = document.createElement("div");
+  calendarDay.classList.add("calendarDay");
+  
   date.toDateString() === dateNow.toDateString() && isCurrentMonth
-    ? calendarDay.classList.add("highlighted")
+  ? calendarDay.classList.add("highlighted")
     : null;
   calendarDay.classList.add(isCurrentMonth ? "current" : "faded");
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
   calendarDay.appendChild(document.createElement("p")).classList +=
-    "calendarDayNumber";
+  "calendarDayNumber";
   calendarDay.getElementsByTagName("p")[0].innerHTML = date.getDate();
-  calendarDay.addEventListener("click", eventFunction);
+  calendarDay.addEventListener("click", (e) => eventFunction(e, date));
+  calendarContainer.appendChild(calendarDay);
 }
 
-function toggleSelected() {
-  const target = this;
+function toggleSelected(e) {
+  const target = e.currentTarget;
   const sameDay = target === selected;
   if (selected) {
     selected.classList.remove("selected");
