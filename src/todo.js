@@ -41,8 +41,11 @@ function renderAllTasks(dateSearch) {
     let taskArray = getFromLocalStorage("taskArray");
     taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
 
-    if (datePattern.exec(dateSearch))
-        taskArray = taskArray.filter(t => t.taskDate == dateSearch);
+if (datePattern.exec(dateSearch)){
+    taskArray = taskArray.filter(t => t.taskDate == dateSearch);
+    }​ else {
+    taskArray = taskArray.filter(t => t.taskDate >= formatDateToString(dateNow));
+}​
 
     for (const task of taskArray) {
         renderTask(task);
