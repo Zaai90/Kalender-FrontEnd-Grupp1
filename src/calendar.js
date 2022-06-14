@@ -76,7 +76,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarContainer.appendChild(calendarDay);
 }
 
-function toggleSelected(e) {
+function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
   if (selected) {
@@ -88,7 +88,8 @@ function toggleSelected(e) {
   if (!sameDay) {
     target.classList.add("selected");
     selected = target;
-    renderAllTasks(date.toDateString());
+
+    renderAllTasks(formatDateToString(date));
   }
 }
 
@@ -111,4 +112,12 @@ function previous() {
     currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
   renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
+}
+
+function formatDateToString(date) {
+  return `${date.getFullYear()}-${date.getMonth() + 1 < 10
+    ? "0" + (date.getMonth() + 1)
+    : date.getMonth() + 1}-${date.getDate() < 10
+      ? "0" + date.getDate()
+      : date.getDate()}`;
 }
