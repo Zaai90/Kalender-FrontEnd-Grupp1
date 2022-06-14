@@ -9,25 +9,25 @@ function initTasks() {
     renderAllTasks();
 }
 
-function createTask(event){
+function createTask(event) {
     const formData = new FormData(event.target);
-    const task = Object.fromEntries(formData.entries());   
+    const task = Object.fromEntries(formData.entries());
     task.id = getTaskId();
     addTask(task);
     console.log(asddd)
 }
 
-function getTaskId(){
+function getTaskId() {
     return tasks.length == 0 ? 0 : tasks[tasks.length - 1].id + 1;
 }
 
-function addTask(task){
+function addTask(task) {
     tasks.push(task);
     saveToLocalStorage("taskArray", tasks);
     renderAllTasks();
 }
 
-function deleteTask(task){
+function deleteTask(task) {
     tasks = getFromLocalStorage("taskArray");
     const taskIndex = tasks.indexOf(tasks.find(t => t.id == task.id));
     tasks.splice(taskIndex, 1);
@@ -39,21 +39,22 @@ function renderAllTasks(dateSearch) {
     taskList.innerHTML = "";
 
     let taskArray = getFromLocalStorage("taskArray");
-    taskArray.sort((a,b) => new Date(a.taskDate) - new Date(b.taskDate));
+    taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
 
-    if(datePattern.exec(dateSearch))
+    if (datePattern.exec(dateSearch))
         taskArray = taskArray.filter(t => t.taskDate == dateSearch);
 
-    for(const task of taskArray){
+    for (const task of taskArray) {
         renderTask(task);
     }
 }
 
 function renderTask(task) {
     let li = document.createElement("li");
+    li.classList.add("task");
     li.innerHTML = `<p class="taskName">${task.taskName}</p>
                     <p class="taskDescription">${task.taskDescription}</p>
-                    <p class="taskDate">${task.taskDate}</p>`;    
+                    <p class="taskDate">${task.taskDate}</p>`;
     taskList.appendChild(li);
 
     const deleteButton = document.createElement("button");
@@ -69,23 +70,29 @@ function renderTask(task) {
     taskList.appendChild(document.createElement("hr"))
 }
 
-function testTaskButton(){
+function testTaskButton() {
     const testButton = document.querySelector(".addTestTasks");
     testButton.addEventListener("click", addTestTasks);
 }
 
 
-function addTestTasks(){
+function addTestTasks() {
     localStorage.setItem("taskArray", `
 [
     {
-    	"taskDate": "2020-07-12",
+    	"taskDate": "2022-07-12",
+        "taskName": "Mow the lawn",
+        "taskDescription": "Use the riding mower, it's fast and easy",
+        "id": 11
+    },
+    {
+    	"taskDate": "2022-07-12",
         "taskName": "Do the dishes",
         "taskDescription": "important",
         "id": 1
     },
     {
-    	"taskDate": "2020-06-17",
+    	"taskDate": "2022-06-17",
         "taskName": "Add edit button",
         "taskDescription": "would b cool",
         "id": 2
@@ -97,16 +104,46 @@ function addTestTasks(){
         "id": 3
     },
     {
-		"taskDate": "2020-06-03",
-        "taskName": "learn javascript",
+		"taskDate": "2022-06-01",
+        "taskName": "learn javascript 101",
         "taskDescription": "!!!",
         "id": 4
     },
     {
-        "taskDate": "2020-06-12",
-        "taskName": "asd",
-        "taskDescription": "test test",
+		"taskDate": "2022-06-30",
+        "taskName": "Eat an apple",
+        "taskDescription": "An apple a day keeps the doctor away",
         "id": 5
+    },
+    {
+		"taskDate": "2022-06-30",
+        "taskName": "Brush your teeth",
+        "taskDescription": "Teeth are important, but not as important as you think",
+        "id": 6
+    },
+    {
+		"taskDate": "2022-06-14",
+        "taskName": "learn more javascript",
+        "taskDescription": "JavaScript is the best language ever, but very complicated",
+        "id": 7
+    },
+    {
+        "taskDate": "2022-06-12",
+        "taskName": "Walk the dog",
+        "taskDescription": "I love my dog",
+        "id": 8
+    },
+    {
+        "taskDate": "2022-06-12",
+        "taskName": "Date with my dog",
+        "taskDescription": "I love my dog",
+        "id": 9
+    },
+    {
+        "taskDate": "2022-06-24",
+        "taskName": "Midsommer",
+        "taskDescription": "Midsommar is a swedish tradition, rad!",
+        "id": 10
     }
 ]
     `);
@@ -114,13 +151,13 @@ function addTestTasks(){
 }
 
 
-function addTaskHtml(){
+function addTaskHtml() {
     let taskList = document.createElement("ul");
     taskList.className = "taskList";
     let button = document.createElement("button");
     button.className = "addTestTasks";
     button.style = "width: 2rem; height: 2rem;";
     button.innerHTML = "➕";
-    document.querySelector("aside").appendChild(button);
-    document.querySelector("aside").appendChild(taskList);
+    document.querySelector(".taskMenu").appendChild(button);
+    document.querySelector(".taskContainer").appendChild(taskList);
 }
