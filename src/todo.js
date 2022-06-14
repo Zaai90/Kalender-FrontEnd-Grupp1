@@ -1,15 +1,20 @@
-addTaskHtml();
-var tasks = getFromLocalStorage("taskArray") || [];
-const taskList = document.querySelector(".taskList");
+let taskList;
 const datePattern = /\d{4}-\d\d-\d\d/;
-testTaskButton();
-renderAllTasks();
+let tasks = getFromLocalStorage("taskArray") || [];
+
+function initTasks() {
+    addTaskHtml();
+    taskList = document.querySelector(".taskList");
+    testTaskButton();
+    renderAllTasks();
+}
 
 function createTask(event){
     const formData = new FormData(event.target);
     const task = Object.fromEntries(formData.entries());   
     task.id = getTaskId();
     addTask(task);
+    console.log(asddd)
 }
 
 function getTaskId(){
@@ -36,7 +41,7 @@ function renderAllTasks(dateSearch) {
     let taskArray = getFromLocalStorage("taskArray");
     taskArray.sort((a,b) => new Date(a.taskDate) - new Date(b.taskDate));
 
-    if(dateSearch && datePattern.exec(dateSearch))
+    if(datePattern.exec(dateSearch))
         taskArray = taskArray.filter(t => t.taskDate == dateSearch);
 
     for(const task of taskArray){
