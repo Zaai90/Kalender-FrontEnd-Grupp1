@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" id="cssSwitcher" href="src/style.css" />
+    <link rel="stylesheet" href="src/aside.css" />
+    <script defer src="src/main.js"></script>
+    <script defer src="src/calendar.js"></script>
+    <script defer src="src/stylemode.js"></script>
+    <script defer src="src/welcome.js"></script>
+    <script defer src="src/localStorage.js"></script>
+    <script defer src="src/todo.js"></script>
+    <title>Kalender</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" id="cssSwitcher" href="src/style.css" />
-  <script defer src="src/main.js"></script>
-  <script defer src="src/calendar.js"></script>
-  <script defer src="src/stylemode.js"></script>
-  <script defer src="src/welcome.js"></script>
-  <script defer src="src/localStorage.js"></script>
-  <script defer src="src/todo.js"></script>
-  <title>Kalender</title>
-</head>
+  <body>
+    <section class="layout">
+      <header>
+        <button id="switchbutton"></button>
+        <div class="calendarHeader"></div>
+      </header>
 
-<body>
-  <section class="layout">
-
-    <header>
-      <button id="switchbutton"></button>
-      <div class="calendarHeader"></div>
-    </header>
-
-    <main class="mainContainer">
-      <div class="calendarContainer">
-        <div class="weekdays">
-          <div class="weekday">Måndag</div>
-          <div class="weekday">Tisdag</div>
-          <div class="weekday">Onsdag</div>
-          <div class="weekday">Torsdag</div>
-          <div class="weekday">Fredag</div>
-          <div class="weekday">Lördag</div>
-          <div class="weekday">Söndag</div>
+      <main class="mainContainer">
+        <div class="calendarContainer">
+          <div class="weekdays">
+            <div class="weekday">Måndag</div>
+            <div class="weekday">Tisdag</div>
+            <div class="weekday">Onsdag</div>
+            <div class="weekday">Torsdag</div>
+            <div class="weekday">Fredag</div>
+            <div class="weekday">Lördag</div>
+            <div class="weekday">Söndag</div>
+          </div>
+          <div class="calendar"></div>
         </div>
-        <div class="calendar"></div>
-      </div>
-    </main>
+      </main>
 
-    <aside>
-      <div class="welcomeContainer">
-      </div>
-      <div class="taskContainer">
-        <div class="taskMenu">
+      <aside>
+        <div class="welcomeContainer">
+          <img
+            src="./src/images/vecteezy_cute-panda-magician-mascot-logo-concept-isolated-on-white_5911605-removebg-preview.png"
+            class="mascot"
+          />
         </div>
-      </div>
-    </aside>
-
-  </section>
-</body>
-
+        <div class="taskMenu"></div>
+        <div class="taskContainer">
+        </div>
+      </aside>
+    </section>
+  </body>
 </html>

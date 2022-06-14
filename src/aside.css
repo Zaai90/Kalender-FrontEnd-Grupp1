@@ -1,0 +1,13 @@
+.mascot {
+  display: block;
+  height: 200px;
+}
+
+.welcomeContainer {
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
