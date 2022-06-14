@@ -159,20 +159,26 @@ aside {
     color: #000000;
 }
 
-.taskContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
 .taskMenu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    padding-bottom: 10px;
+    box-shadow: 0 8px 6px -6px black;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+}
+
+
+.taskContainer {
+    padding-top: 11rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .task {
@@ -181,4 +187,14 @@ aside {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+}
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
