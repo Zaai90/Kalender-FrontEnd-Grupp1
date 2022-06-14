@@ -90,7 +90,6 @@ function toggleSelected(e, date) {
     selected = target;
 
     renderAllTasks(formatDateToString(date));
-    console.log(formatDateToString(date))
   }
 }
 
