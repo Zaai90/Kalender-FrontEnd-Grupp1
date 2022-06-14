@@ -1,6 +1,9 @@
+addTaskHtml();
+testTaskButton();
 var tasks = getFromLocalStorage("taskArray") || [];
+const taskList = document.querySelector(".taskList");
 const datePattern = /\d{4}-\d\d-\d\d/;
-addTaskHtml()
+renderAllTasks();
 
 function createTask(event){
     const formData = new FormData(event.target);
@@ -16,7 +19,7 @@ function getTaskId(){
 function addTask(task){
     tasks.push(task);
     saveToLocalStorage("taskArray", tasks);
-    renderTasks();
+    renderAllTasks();
 }
 
 function deleteTask(task){
@@ -24,48 +27,48 @@ function deleteTask(task){
     const taskIndex = tasks.indexOf(tasks.find(t => t.id == task.id));
     tasks.splice(taskIndex, 1);
     saveToLocalStorage("taskArray", tasks);
-    renderTasks();
+    renderAllTasks();
 }
 
-function renderTasks(dateSearch){
-    taskList = document.querySelector(".taskList");
+function renderAllTasks(dateSearch) {
     taskList.innerHTML = "";
 
     let taskArray = getFromLocalStorage("taskArray");
-    // taskArray.sort(function(a,b){
-    //     return new Date(a.taskDate) - new Date(b.taskDate);
-    // });
     taskArray.sort((a,b) => new Date(a.taskDate) - new Date(b.taskDate));
 
     if(dateSearch && datePattern.exec(dateSearch))
         taskArray = taskArray.filter(t => t.taskDate == dateSearch);
 
     for(const task of taskArray){
-        let elem = document.createElement("li");
-        elem.innerHTML = `<p class="taskName">${task.taskName}</p>
-                        <p class="taskDescription">${task.taskDescription}</p>
-                        <p class="taskDate">${task.taskDate}</p>`;    
-        taskList.appendChild(elem);
-
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "taskDeleteButton";
-        deleteButton.innerHTML = "➖";
-        deleteButton.addEventListener("click", () => deleteTask(task));
-
-        const buttonContainer = document.createElement("div");
-        buttonContainer.className = "buttonContainer";
-
-        buttonContainer.appendChild(deleteButton);
-        taskList.appendChild(buttonContainer);
-        taskList.appendChild(document.createElement("hr"))
+        renderTask(task);
     }
+}
+
+function renderTask(task) {
+    let li = document.createElement("li");
+    li.innerHTML = `<p class="taskName">${task.taskName}</p>
+                    <p class="taskDescription">${task.taskDescription}</p>
+                    <p class="taskDate">${task.taskDate}</p>`;    
+    taskList.appendChild(li);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "taskDeleteButton";
+    deleteButton.innerHTML = "➖";
+    deleteButton.addEventListener("click", () => deleteTask(task));
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "buttonContainer";
+
+    buttonContainer.appendChild(deleteButton);
+    taskList.appendChild(buttonContainer);
+    taskList.appendChild(document.createElement("hr"))
 }
 
 function testTaskButton(){
     const testButton = document.querySelector(".addTestTasks");
     testButton.addEventListener("click", addTestTasks);
 }
-testTaskButton();
+
 
 function addTestTasks(){
     localStorage.setItem("taskArray", `
@@ -102,12 +105,17 @@ function addTestTasks(){
     }
 ]
     `);
-    renderTasks();
+    renderAllTasks();
 }
 
 
 function addTaskHtml(){
     let taskList = document.createElement("ul");
     taskList.className = "taskList";
+    let button = document.createElement("button");
+    button.className = "addTestTask";
+    button.style = "width: 2rem; height: 2rem;";
+    button.innerHTML = "➕";
+    document.querySelector("aside").appendChild(button);
     document.querySelector("aside").appendChild(taskList);
 }
