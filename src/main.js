@@ -6,4 +6,5 @@ function main() {
   renderWelcomeSegment();
   setInterval(() => (dateNow = new Date()), 1000);
   initModeButton();
+  initTasks();
 }

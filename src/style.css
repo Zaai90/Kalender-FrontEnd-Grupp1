@@ -38,6 +38,7 @@ main {
 
 aside {
     display: flex;
+    flex-direction: column;
     grid-area: aside;
     background-color: rgb(118, 118, 124);
 
@@ -156,4 +157,28 @@ aside {
     font-size: 1.5rem;
     font-weight: bold;
     color: #000000;
+}
+
+.taskContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.taskMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
