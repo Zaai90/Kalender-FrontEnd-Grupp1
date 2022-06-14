@@ -61,16 +61,16 @@ function renderCalendar(year, month) {
 function createCalenderDay(date, eventFunction, isCurrentMonth) {
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
-  
+
   date.toDateString() === dateNow.toDateString() && isCurrentMonth
-  ? calendarDay.classList.add("highlighted")
+    ? calendarDay.classList.add("highlighted")
     : null;
   calendarDay.classList.add(isCurrentMonth ? "current" : "faded");
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
   calendarDay.appendChild(document.createElement("p")).classList +=
-  "calendarDayNumber";
+    "calendarDayNumber";
   calendarDay.getElementsByTagName("p")[0].innerHTML = date.getDate();
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
   calendarContainer.appendChild(calendarDay);
@@ -82,10 +82,13 @@ function toggleSelected(e) {
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
+    renderAllTasks();
+
   }
   if (!sameDay) {
     target.classList.add("selected");
     selected = target;
+    renderAllTasks(date.toDateString());
   }
 }
 
