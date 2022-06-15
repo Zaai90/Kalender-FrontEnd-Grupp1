@@ -222,4 +222,5 @@ function toggleElemVisibility(elem){
     }
     else {
         elem.classList.add("hidden");
+        }
 }
