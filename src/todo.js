@@ -217,13 +217,6 @@ function addTaskHtml() {
     document.querySelector(".taskContainer").appendChild(taskList);
 }
 
-// function toggleForm(elem){
-//     if(elem.style.display == "flex")
-//         elem.style.display = "none";
-//     else
-//         elem.style.display = "flex";
-// }
-
 function toggleElemVisibility(elem){
     if(elem.classList.contains("hidden"))
         elem.classList.remove("hidden");
