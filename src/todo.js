@@ -168,7 +168,9 @@ function addTaskHtml() {
     // TaskForm
     const taskForm = document.createElement("form");
     taskForm.id = "taskForm";
-    taskForm.className = "taskForm";
+    // taskForm.className = " hidden";
+    taskForm.classList.add("taskForm");
+    taskForm.classList.add("hidden");
     taskForm.addEventListener("submit", (e) => createTask(e));
     
     const taskDateInput = document.createElement("input");
@@ -207,7 +209,7 @@ function addTaskHtml() {
     let addTaskButton = document.createElement("button");
     addTaskButton.className = "addTask";
     addTaskButton.innerHTML = "➕";
-    addTaskButton.addEventListener("click", () => toggleForm(taskForm));
+    addTaskButton.addEventListener("click", () => toggleElemVisibility(taskForm));
 
     document.querySelector(".taskMenu").appendChild(button);
     document.querySelector(".taskMenu").appendChild(addTaskButton);
@@ -215,9 +217,16 @@ function addTaskHtml() {
     document.querySelector(".taskContainer").appendChild(taskList);
 }
 
-function toggleForm(elem){
-    if(elem.style.display == "flex")
-        elem.style.display = "none";
+// function toggleForm(elem){
+//     if(elem.style.display == "flex")
+//         elem.style.display = "none";
+//     else
+//         elem.style.display = "flex";
+// }
+
+function toggleElemVisibility(elem){
+    if(elem.classList.contains("hidden"))
+        elem.classList.remove("hidden");
     else
-        elem.style.display = "flex";
+        elem.classList.add("hidden");
 }
