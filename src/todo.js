@@ -168,7 +168,6 @@ function addTaskHtml() {
     // TaskForm
     const taskForm = document.createElement("form");
     taskForm.id = "taskForm";
-    // taskForm.className = " hidden";
     taskForm.classList.add("taskForm");
     taskForm.classList.add("hidden");
     taskForm.addEventListener("submit", (e) => createTask(e));
