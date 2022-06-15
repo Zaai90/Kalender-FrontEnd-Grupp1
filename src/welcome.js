@@ -32,4 +32,16 @@ function populateDivs() {
 function renderWelcomeSegment() {
   createRenderDivs();
   setInterval(populateDivs, 1000);
+  fetchMonthInfo(dateNow).then(printMe);
+}
+
+function printMe(res) {
+  const daysArray = res;
+  console.log(daysArray);
+  let welcomeDiv = document.querySelector(".welcomeContainer");
+  welcomeDiv
+    .appendChild(document.createElement("div"))
+    .classList.add("tempHoliday");
+  const testDiv = document.querySelector(".tempHoliday");
+  testDiv.innerHTML = "Är dagen en helgdag? " + daysArray[0]["röd dag"];
 }
