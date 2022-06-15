@@ -171,6 +171,7 @@ function addTaskHtml() {
     const taskDateInput = document.createElement("input");
     taskDateInput.type = "date";
     taskDateInput.name = "taskDate";
+    taskDateInput.value = formatDateToString(dateNow);
     const taskDateLabel = document.createElement("label");
     taskDateLabel.setAttribute("for", taskDateInput.name);
     taskForm.appendChild(taskDateInput);
