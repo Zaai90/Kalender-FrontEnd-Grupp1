@@ -43,5 +43,5 @@ function printMe(res) {
     .appendChild(document.createElement("div"))
     .classList.add("tempHoliday");
   const testDiv = document.querySelector(".tempHoliday");
-  testDiv.innerHTML = "Är dagen en helgdag? " + daysArray[0]["röd dag"];
+  testDiv.innerHTML = "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
 }
