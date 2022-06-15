@@ -31,5 +31,6 @@ function populateDivs() {
 
 function renderWelcomeSegment() {
   createRenderDivs();
+  populateDivs();
   setInterval(populateDivs, 1000);
 }
