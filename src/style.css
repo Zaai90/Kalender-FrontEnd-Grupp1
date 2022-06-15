@@ -198,3 +198,14 @@ aside {
 ::-webkit-scrollbar {
     display: none;
 }
+
+.taskForm{
+    display: flex;
+    flex-direction: column;    
+}
+
+.addTask{
+    width: 2rem;
+    height: 2rem;   
+    background-color: lightgreen; 
+}

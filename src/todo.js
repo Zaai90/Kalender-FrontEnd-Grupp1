@@ -10,11 +10,13 @@ function initTasks() {
 }
 
 function createTask(event) {
+    event.preventDefault();
+
     const formData = new FormData(event.target);
-    const task = Object.fromEntries(formData.entries());
+    const task = Object.fromEntries(formData.entries());  
     task.id = getTaskId();
     addTask(task);
-    console.log(asddd)
+    event.target.reset(); // Will move this to a better home.
 }
 
 function getTaskId() {
@@ -157,10 +159,65 @@ function addTestTasks() {
 function addTaskHtml() {
     let taskList = document.createElement("ul");
     taskList.className = "taskList";
+
     let button = document.createElement("button");
     button.className = "addTestTasks";
     button.style = "width: 2rem; height: 2rem;";
     button.innerHTML = "➕";
+
+    // TaskForm
+    const taskForm = document.createElement("form");
+    taskForm.id = "taskForm";
+    taskForm.className = "taskForm";
+    taskForm.addEventListener("submit", (e) => createTask(e));
+    
+    const taskDateInput = document.createElement("input");
+    taskDateInput.type = "date";
+    taskDateInput.name = "taskDate";
+    taskDateInput.value = formatDateToString(dateNow);
+    const taskDateLabel = document.createElement("label");
+    taskDateLabel.setAttribute("for", taskDateInput.name);
+    taskForm.appendChild(taskDateInput);
+    taskForm.appendChild(taskDateLabel);
+
+    const taskNameInput = document.createElement("input");
+    taskNameInput.type = "text";
+    taskNameInput.name = "taskName";
+    const taskNameLabel = document.createElement("label");
+    taskNameLabel.setAttribute("for", taskNameInput.name);
+    taskNameLabel.innerHTML = "Name";
+    taskForm.appendChild(taskNameLabel);
+    taskForm.appendChild(taskNameInput);
+
+    const taskDescriptionInput = document.createElement("input");
+    taskDescriptionInput.type = "text";
+    taskDescriptionInput.name = "taskDescription";
+    const taskDescriptionLabel = document.createElement("label");
+    taskDescriptionLabel.setAttribute("for", taskDescriptionInput.name);
+    taskDescriptionLabel.innerHTML = "Description";
+    taskForm.appendChild(taskDescriptionLabel);
+    taskForm.appendChild(taskDescriptionInput);
+
+    const taskFormSubmitButton = document.createElement("button");
+    taskFormSubmitButton.type = "submit";
+    taskFormSubmitButton.innerHTML = "Submit Task";
+    taskForm.appendChild(taskFormSubmitButton);
+    // TaskForm end
+
+    let addTaskButton = document.createElement("button");
+    addTaskButton.className = "addTask";
+    addTaskButton.innerHTML = "➕";
+    addTaskButton.addEventListener("click", () => toggleForm(taskForm));
+
     document.querySelector(".taskMenu").appendChild(button);
+    document.querySelector(".taskMenu").appendChild(addTaskButton);
+    document.querySelector(".taskMenu").appendChild(taskForm);
     document.querySelector(".taskContainer").appendChild(taskList);
+}
+
+function toggleForm(elem){
+    if(elem.style.display == "flex")
+        elem.style.display = "none";
+    else
+        elem.style.display = "flex";
 }
