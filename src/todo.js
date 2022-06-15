@@ -44,7 +44,7 @@ function renderAllTasks(dateSearch) {
 if (datePattern.exec(dateSearch)){
     taskArray = taskArray.filter(t => t.taskDate == dateSearch);
     }​ else {
-    taskArray = taskArray.filter(t => t.taskDate >= formatDateToString(dateNow));
+taskArray = taskArray.filter(t => t.taskDate >= formatDateToString(dateNow));
 }​
 
     for (const task of taskArray) {
