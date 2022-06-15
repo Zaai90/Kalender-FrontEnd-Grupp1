@@ -62,17 +62,57 @@ function renderTask(task) {
                     <p class="taskDate">${task.taskDate}</p>`;
     taskList.appendChild(li);
 
+    let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
+    editTaskForm.id = "taskEditForm" + task.id;
+    editTaskForm.classList.add("taskEditForm");
+    editTaskForm.classList.add("hidden");
+    editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
+    editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
+    editTaskForm.querySelector(`[name="taskDescription"]`).value = task.taskDescription;
+    editTaskForm.addEventListener("submit", (e) => editTask(e));
+
     const deleteButton = document.createElement("button");
     deleteButton.className = "taskDeleteButton";
     deleteButton.innerHTML = "➖";
     deleteButton.addEventListener("click", () => deleteTask(task));
 
+    var editButton = document.createElement("button");
+    editButton.classList.add("editButton");
+    editButton.innerHTML = "➡";
+    editButton.addEventListener("click", () => toggleElemVisibility(editTaskForm));
+
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "buttonContainer";
 
     buttonContainer.appendChild(deleteButton);
+    buttonContainer.appendChild(editButton);
     taskList.appendChild(buttonContainer);
+    taskList.appendChild(editTaskForm);
     taskList.appendChild(document.createElement("hr"))
+}
+
+function editTask(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const task = Object.fromEntries(formData.entries());     
+    const taskId = event.target.id.replace("taskEditForm", "");
+    const taskArray = getFromLocalStorage("taskArray");
+    const taskIndex = taskArray.indexOf(taskArray.find(task => task.id == taskId));
+
+    if(task.taskName){
+        taskArray[taskIndex].taskName = task.taskName;
+    }
+    
+    if(task.taskDescription){
+        taskArray[taskIndex].taskDescription = task.taskDescription;
+    }
+    
+    if(task.taskDate){
+        taskArray[taskIndex].taskDate = task.taskDate;
+    }
+
+    saveToLocalStorage("taskArray", taskArray);
+    renderAllTasks();
 }
 
 function testTaskButton() {
@@ -222,5 +262,5 @@ function toggleElemVisibility(elem){
     }
     else {
         elem.classList.add("hidden");
-        }
+    }
 }
