@@ -217,8 +217,9 @@ function addTaskHtml() {
 }
 
 function toggleElemVisibility(elem){
-    if(elem.classList.contains("hidden"))
+    if (elem.classList.contains("hidden")) {
         elem.classList.remove("hidden");
-    else
+    }
+    else {
         elem.classList.add("hidden");
 }
