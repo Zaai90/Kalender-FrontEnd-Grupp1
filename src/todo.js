@@ -164,6 +164,7 @@ function addTaskHtml() {
 
     // TaskForm
     const taskForm = document.createElement("form");
+    taskForm.id = "taskForm";
     taskForm.className = "taskForm";
     taskForm.addEventListener("submit", (e) => createTask(e));
     
@@ -201,7 +202,6 @@ function addTaskHtml() {
 
     let addTaskButton = document.createElement("button");
     addTaskButton.className = "addTask";
-    addTaskButton.style = "width: 2rem; height: 2rem; background-color: lightgreen;";
     addTaskButton.innerHTML = "➕";
     addTaskButton.addEventListener("click", () => toggleForm(taskForm));
 
