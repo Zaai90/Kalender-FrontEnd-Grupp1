@@ -209,3 +209,7 @@ aside {
     height: 2rem;   
     background-color: lightgreen; 
 }
+
+.hidden {
+    display: none;
+}
