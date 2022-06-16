@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dateHeader-font-size: 3rem;
+    --weekday-font-size: calc(1rem + 1 * ((100vw - 2rem) / 160));
+    --taskAmount-background-color: #6ea076;
+    --taskAmount-text-color: #fff;
+    
+    --text-color-secondary: #000000;
+}
+
+html[data-theme="light"] {
+    --main-background-color: #fcfcfc;
+    --header-background-color: #fcfcfc;
+    --aside-background-color: #fcfcfc;
+    
+    --text-color: rgb(0, 0, 0);
+    
+    --weekdays-background-color: #c9c5c5ea;
+    --calendarDay-background-color: rgb(255, 255, 255);
+    --hovered-calendarDay-color: rgba(221, 218, 218, 0.675);
+    --highlighted-calendarDay-color: #00A4EF;
+    --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
+
+    --aside-right-shadow: -1px 8px 10px 0px black;
+    --header-bottom-shadow: -1px 1px 10px 0px black;
+}
+
+html[data-theme="dark"] {
+    --main-background-color: rgb(71, 71, 68);
+    --header-background-color: rgb(71, 71, 68);
+    --aside-background-color: rgb(71, 71, 68);
+    
+    --text-color: #fff;
+    
+    --weekdays-background-color: #ebe7e7ea;
+    --calendarDay-background-color: rgb(90, 87, 87);
+    --hovered-calendarDay-color: rgba(90, 87, 87, 0.675);
+    --highlighted-calendarDay-color: #00A4EF;
+    --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
+
+    --aside-right-shadow: -1px 8px 10px 0px black;
+    --header-bottom-shadow: -8px 1px -8px 5px black;
+}
+
+body {
+    height: 100vh;
+}
+
+
+.layout {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr repeat(3, 2fr);
+    grid-template-areas:
+        "head head head head"
+        "aside main main main"
+        "aside main main main"
+        "aside main main main";
+}
+
+@media screen and (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr repeat(3, 2fr);
+        grid-template-areas:
+            "head"
+            "aside"
+            "aside"
+            "aside";
+    }
+
+    main {
+        display: none;
+    }
+
+    #switchbutton {
+        display: none;
+    }
+
+    .bottom-border-shadow {
+        height: 3px;
+    }
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

@@ -1,19 +1,33 @@
 let modeButton;
+let css;
+
 function initModeButton() {
+  css = document.getElementsByClassName("css");
   modeButton = document.getElementById("switchbutton");
   modeButton.addEventListener("click", OnSwitch);
   modeButton.innerHTML = "Light Mode";
+  setDataTheme("light");
 }
 
 function OnSwitch() {
-  const css = document.getElementById("cssSwitcher");
   const darkModeButton = document.getElementById("switchbutton");
 
   if (darkModeButton.innerHTML == "Light Mode") {
-    css.setAttribute("href", "src/lightstyle.css");
+    setDataTheme("dark");
     darkModeButton.innerHTML = "Dark Mode";
   } else {
-    css.setAttribute("href", "src/style.css");
+    setDataTheme("light");
     darkModeButton.innerHTML = "Light Mode";
   }
+}
+
+/**
+ * 
+ * @param {*} theme 
+ * @param {HTMLCollection<Element>} css
+ */
+function setDataTheme(theme) {
+  // for (let i = 0; i < css.length; i++) {
+  // }
+  document.documentElement.setAttribute("data-theme", theme);
 }

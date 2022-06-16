@@ -1,8 +1,11 @@
-navigator.geolocation.getCurrentPosition(function (pos) {
-  let lat = pos.coords.latitude;
-  let long = pos.coords.longitude;
-  initWeather(lat, long);
-});
+function initGeoLocation() {
+  navigator.geolocation.getCurrentPosition(function (pos) {
+    let lat = pos.coords.latitude;
+    let long = pos.coords.longitude;
+    initWeather(lat, long);
+  });
+}
+
 
 function initWeather(lat, long) {
   getWeatherForeCast(lat, long);
