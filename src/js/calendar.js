@@ -4,6 +4,7 @@ const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag",
 let dateNow = new Date();
 let selected;
 let selectedDate;
+let allDaysOfYear = [];
 
 let currentCalendarDate = {
   day: dateNow.getDate(),
@@ -22,6 +23,19 @@ function addCalenderHeader() {
 
   header.appendChild(calendarYear);
   header.appendChild(calendarMonth);
+}
+
+async function getYearInfo(date) {
+  allDaysOfYear = await fetchYearInfo(date);
+}
+
+function isRedDays(date) {
+  dateString = formatDateToString(date)
+  let day = allDaysOfYear.find(day => day.datum === dateString);
+  if (day["röd dag"] === "Ja") {
+    return true;
+  }
+  return false;
 }
 
 function renderHeader(year, month) {
@@ -67,6 +81,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     ? calendarDay.classList.add("highlighted")
     : null;
   calendarDay.classList.add(isCurrentMonth ? "current" : "faded");
+  isRedDays(date) ? calendarDay.classList.add("redDay") : '';
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
@@ -110,22 +125,23 @@ function toggleSelected(e, date) {
 }
 
 function next() {
-  currentCalendarDate.year =
-    currentCalendarDate.month === 11
-      ? currentCalendarDate.year + 1
-      : currentCalendarDate.year;
+  if (currentCalendarDate.month === 11) {
+    currentCalendarDate.year = currentCalendarDate.year + 1;
+    console.log(allDaysOfYear);
+    // getYearInfo(currentCalendarDate);
+  }
   currentCalendarDate.month = (currentCalendarDate.month + 1) % 12;
 
   renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
 }
 
 function previous() {
-  currentCalendarDate.year =
-    currentCalendarDate.month === 0
-      ? currentCalendarDate.year - 1
-      : currentCalendarDate.year;
-  currentCalendarDate.month =
-    currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
+  if (currentCalendarDate.month === 0) {
+    currentCalendarDate.year = currentCalendarDate.year - 1;
+    console.log(allDaysOfYear);
+    // getYearInfo(currentCalendarDate);
+  }
+  currentCalendarDate.month = currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
   renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
 }
