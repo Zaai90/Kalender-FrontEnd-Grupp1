@@ -2,7 +2,7 @@ const welcomeContainer = document.getElementsByClassName("welcomeContainer");
 
 function createRenderDivs() {
   let welcomeDiv = document.querySelector(".welcomeContainer");
-const compressedInfo = (document.createElement("div");
+const compressedInfo = document.createElement("div");
 compressedInfo.classList.add("compressedInfo");
 welcomeDiv.appendChild(compressedInfo);
 }
