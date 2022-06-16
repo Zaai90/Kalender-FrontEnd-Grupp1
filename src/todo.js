@@ -5,7 +5,6 @@ let tasks = getFromLocalStorage("taskArray") || [];
 function initTasks() {
     addTaskHtml();
     taskList = document.querySelector(".taskList");
-    testTaskButton();
     renderAllTasks();
 }
 
@@ -115,95 +114,7 @@ function editTask(event) {
     renderAllTasks();
 }
 
-function testTaskButton() {
-    const testButton = document.querySelector(".addTestTasks");
-    testButton.addEventListener("click", addTestTasks);
-}
-
-
-function addTestTasks() {
-    localStorage.setItem("taskArray", `
-[
-    {
-    	"taskDate": "2022-07-12",
-        "taskName": "Mow the lawn",
-        "taskDescription": "Use the riding mower, it's fast and easy",
-        "id": 11
-    },
-    {
-    	"taskDate": "2022-07-12",
-        "taskName": "Do the dishes",
-        "taskDescription": "important",
-        "id": 1
-    },
-    {
-    	"taskDate": "2022-06-17",
-        "taskName": "Add edit button",
-        "taskDescription": "would b cool",
-        "id": 2
-    },
-    {
-		"taskDate": "1337-08-05",
-        "taskName": "Take a walk",
-        "taskDescription": "very nice",
-        "id": 3
-    },
-    {
-		"taskDate": "2022-06-01",
-        "taskName": "learn javascript 101",
-        "taskDescription": "!!!",
-        "id": 4
-    },
-    {
-		"taskDate": "2022-06-30",
-        "taskName": "Eat an apple",
-        "taskDescription": "An apple a day keeps the doctor away",
-        "id": 5
-    },
-    {
-		"taskDate": "2022-06-30",
-        "taskName": "Brush your teeth",
-        "taskDescription": "Teeth are important, but not as important as you think",
-        "id": 6
-    },
-    {
-		"taskDate": "2022-06-14",
-        "taskName": "learn more javascript",
-        "taskDescription": "JavaScript is the best language ever, but very complicated",
-        "id": 7
-    },
-    {
-        "taskDate": "2022-06-12",
-        "taskName": "Walk the dog",
-        "taskDescription": "I love my dog",
-        "id": 8
-    },
-    {
-        "taskDate": "2022-06-12",
-        "taskName": "Date with my dog",
-        "taskDescription": "I love my dog",
-        "id": 9
-    },
-    {
-        "taskDate": "2022-06-24",
-        "taskName": "Midsommer",
-        "taskDescription": "Midsommar is a swedish tradition, rad!",
-        "id": 10
-    }
-]
-    `);
-    renderAllTasks();
-}
-
-
 function addTaskHtml() {
-    // For testing purposes
-    let button = document.createElement("button");
-    button.className = "addTestTasks";
-    button.style = "width: 2rem; height: 2rem;";
-    button.innerHTML = "➕";
-    document.querySelector(".taskMenu").appendChild(button);
-
     addTaskListHtml();
     addTaskFormHtml();
     addAddTaskButtonHtml();   
