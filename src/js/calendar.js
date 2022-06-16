@@ -3,6 +3,7 @@ const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli
 const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
 let dateNow = new Date();
 let selected;
+let selectedDate;
 
 let currentCalendarDate = {
   day: dateNow.getDate(),
@@ -58,7 +59,7 @@ function renderCalendar(year, month) {
   }
 }
 
-function createCalenderDay(date, eventFunction, isCurrentMonth) {
+async function createCalenderDay(date, eventFunction, isCurrentMonth) {
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
 
@@ -69,26 +70,40 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
-  calendarDay.appendChild(document.createElement("p")).classList +=
-    "calendarDayNumber";
-  calendarDay.getElementsByTagName("p")[0].innerHTML = date.getDate();
+  const calendarDayNumber = document.createElement("p");
+  calendarDayNumber.classList.add("calendarDayNumber");
+  calendarDayNumber.innerHTML = date.getDate();
+  calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
+
+  const taskAmount = getAmountOfTasks(formatDateToString(date));
+  if (taskAmount > 0) {
+    const calendarDayTaskAmount = document.createElement("div");
+    calendarDayTaskAmount.classList.add("taskAmount");
+    const taskAmountText = document.createElement("p");
+    taskAmountText.innerHTML = taskAmount;
+    calendarDayTaskAmount.appendChild(taskAmountText);
+    calendarDay.appendChild(calendarDayTaskAmount);
+  }
+
   calendarContainer.appendChild(calendarDay);
 }
 
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
-  
+
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
+    selectedDate = undefined;
     renderAllTasks();
   }
 
   if (!sameDay) {
     target.classList.add("selected");
     selected = target;
+    selectedDate = date;
 
     renderAllTasks(formatDateToString(date));
   }
@@ -121,4 +136,14 @@ function formatDateToString(date) {
     : date.getMonth() + 1}-${date.getDate() < 10
       ? "0" + date.getDate()
       : date.getDate()}`;
+}
+
+function getAmountOfTasks(date) {
+  let amount = 0;
+  tasks.forEach(task => {
+    if (task.taskDate === date) {
+      amount++;
+    }
+  });
+  return amount;
 }

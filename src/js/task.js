@@ -25,7 +25,7 @@ function getTaskId() {
 function addTask(task) {
   tasks.push(task);
   saveToLocalStorage("taskArray", tasks);
-  renderAllTasks();
+  update();
 }
 
 function deleteTask(task) {
@@ -33,7 +33,7 @@ function deleteTask(task) {
   const taskIndex = tasks.indexOf(tasks.find((t) => t.id == task.id));
   tasks.splice(taskIndex, 1);
   saveToLocalStorage("taskArray", tasks);
-  renderAllTasks();
+  update();
 }
 
 function renderAllTasks(dateSearch) {

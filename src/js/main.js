@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {
-  addCalenderHeader();
-  renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
-  renderWelcomeSegment();
   setInterval(() => (dateNow = new Date()), 1000);
+  renderWelcomeSegment();
   initTasks();
   initModeButton();
+  addCalenderHeader();
+  renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
+}
+
+function update() {
+  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
+  selected ? renderAllTasks(formatDateToString(selectedDate)) : renderAllTasks();
 }
