@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    flex-direction: column;
+    grid-area: head;
+    background-color: var(--header-background-color);
+}
+
+.bottom-border-shadow {
+    width: 100%;
+    height: 10px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(130, 129, 129, 0.8911939775910365) 27%, rgba(255, 255, 255, 0) 100%);
+}
+
+#switchbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.calendar-header {
+    display: flex;
+    color: var(--text-color);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendarHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--text-color-secondary);
+}
+
+.calendarHeaderYear {
+    padding: 5px;
+    display: flex;
+    font-size: var(--dateHeader-font-size);
+    font-weight: bold;
+}
+
+.calendarHeaderMonth {
+    padding: 5px;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

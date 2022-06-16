@@ -79,12 +79,13 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
+  
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
     renderAllTasks();
-
   }
+
   if (!sameDay) {
     target.classList.add("selected");
     selected = target;
