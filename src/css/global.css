@@ -9,7 +9,7 @@
     --weekday-font-size: calc(1rem + 1 * ((100vw - 2rem) / 160));
     --taskAmount-background-color: #6ea076;
     --taskAmount-text-color: #fff;
-    
+
     --text-color-secondary: #000000;
 }
 
@@ -17,9 +17,12 @@ html[data-theme="light"] {
     --main-background-color: #fcfcfc;
     --header-background-color: #fcfcfc;
     --aside-background-color: #fcfcfc;
-    
+
+    --faded-text-color: #464444;
+    --faded-background-color: #72727296;
+
     --text-color: rgb(0, 0, 0);
-    
+
     --weekdays-background-color: #c9c5c5ea;
     --calendarDay-background-color: rgb(255, 255, 255);
     --hovered-calendarDay-color: rgba(221, 218, 218, 0.675);
@@ -34,9 +37,12 @@ html[data-theme="dark"] {
     --main-background-color: rgb(71, 71, 68);
     --header-background-color: rgb(71, 71, 68);
     --aside-background-color: rgb(71, 71, 68);
-    
+
     --text-color: #fff;
-    
+
+    --faded-text-color: #706f6f;
+    --faded-background-color: #29292941;
+
     --weekdays-background-color: #ebe7e7ea;
     --calendarDay-background-color: rgb(90, 87, 87);
     --hovered-calendarDay-color: rgba(90, 87, 87, 0.675);
