@@ -36,7 +36,6 @@ function renderWelcomeSegment() {
 
 function renderSpecialDayInfo(res) {
   const daysArray = res;
-  console.log(daysArray);
   let welcomeDiv = document.querySelector(".welcomeContainer");
   welcomeDiv
     .appendChild(document.createElement("div"))
