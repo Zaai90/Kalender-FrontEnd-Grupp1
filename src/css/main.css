@@ -52,9 +52,14 @@ main {
     cursor: pointer;
 }
 
+.redDay {
+    background-color: #ff0000;
+    color: var(--text-color);
+}
+
 .calendarDay:hover {
     background-color: var(--hovered-calendarDay-color);
-    color: rgb(216, 203, 203);
+    color: rgba(216, 203, 203, 0.753);
 }
 
 .calendarDay p {
