@@ -32,10 +32,10 @@ function populateDivs() {
 function renderWelcomeSegment() {
   createRenderDivs();
   setInterval(populateDivs, 1000);
-  fetchMonthInfo(dateNow).then(printMe);
+  fetchMonthInfo(dateNow).then(renderSpecialDayInfo);
 }
 
-function printMe(res) {
+function renderSpecialDayInfo(res) {
   const daysArray = res;
   console.log(daysArray);
   let welcomeDiv = document.querySelector(".welcomeContainer");
