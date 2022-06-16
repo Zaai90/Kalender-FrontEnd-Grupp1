@@ -5,29 +5,20 @@ function initModeButton() {
   css = document.getElementsByClassName("css");
   modeButton = document.getElementById("switchbutton");
   modeButton.addEventListener("click", OnSwitch);
-  modeButton.innerHTML = "Light Mode";
+  modeButton.innerHTML = "Dark Mode";
   setDataTheme("light");
 }
 
 function OnSwitch() {
-  const darkModeButton = document.getElementById("switchbutton");
-
-  if (darkModeButton.innerHTML == "Light Mode") {
-    setDataTheme("dark");
-    darkModeButton.innerHTML = "Dark Mode";
-  } else {
+  if (modeButton.innerHTML == "Light Mode") {
     setDataTheme("light");
-    darkModeButton.innerHTML = "Light Mode";
+    modeButton.innerHTML = "Dark Mode";
+  } else {
+    setDataTheme("dark");
+    modeButton.innerHTML = "Light Mode";
   }
 }
 
-/**
- * 
- * @param {*} theme 
- * @param {HTMLCollection<Element>} css
- */
 function setDataTheme(theme) {
-  // for (let i = 0; i < css.length; i++) {
-  // }
   document.documentElement.setAttribute("data-theme", theme);
 }
