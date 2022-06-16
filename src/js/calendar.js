@@ -3,6 +3,7 @@ const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli
 const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
 let dateNow = new Date();
 let selected;
+let selectedDate;
 
 let currentCalendarDate = {
   day: dateNow.getDate(),
@@ -95,12 +96,14 @@ function toggleSelected(e, date) {
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
+    selectedDate = undefined;
     renderAllTasks();
   }
 
   if (!sameDay) {
     target.classList.add("selected");
     selected = target;
+    selectedDate = date;
 
     renderAllTasks(formatDateToString(date));
   }
