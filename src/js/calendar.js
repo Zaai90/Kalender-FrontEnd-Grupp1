@@ -72,16 +72,18 @@ async function createCalenderDay(date, eventFunction, isCurrentMonth) {
   const calendarDayNumber = document.createElement("p");
   calendarDayNumber.classList.add("calendarDayNumber");
   calendarDayNumber.innerHTML = date.getDate();
-
-  const calendarDayTaskAmount = document.createElement("div");
-  calendarDayTaskAmount.classList.add("calendarDayTaskAmount");
-  calendarDayTaskAmount.innerHTML = getAmountOfTasks(
-    formatDateToString(date)
-  );
-
-  calendarDay.appendChild(calendarDayTaskAmount);
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
+
+  const taskAmount = getAmountOfTasks(formatDateToString(date));
+  if (taskAmount > 0) {
+    const calendarDayTaskAmount = document.createElement("div");
+    calendarDayTaskAmount.classList.add("taskAmount");
+    const taskAmountText = document.createElement("p");
+    taskAmountText.innerHTML = taskAmount;
+    calendarDayTaskAmount.appendChild(taskAmountText);
+    calendarDay.appendChild(calendarDayTaskAmount);
+  }
 
   calendarContainer.appendChild(calendarDay);
 }
