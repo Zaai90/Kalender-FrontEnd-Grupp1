@@ -5,7 +5,6 @@ let tasks = getFromLocalStorage("taskArray") || [];
 function initTasks() {
     addTaskHtml();
     taskList = document.querySelector(".taskList");
-    testTaskButton();
     renderAllTasks();
 }
 
@@ -62,110 +61,73 @@ function renderTask(task) {
                     <p class="taskDate">${task.taskDate}</p>`;
     taskList.appendChild(li);
 
+    let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
+    editTaskForm.id = "taskEditForm" + task.id;
+    editTaskForm.classList.add("taskEditForm");
+    editTaskForm.classList.add("hidden");
+    editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
+    editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
+    editTaskForm.querySelector(`[name="taskDescription"]`).value = task.taskDescription;
+    editTaskForm.addEventListener("submit", (e) => editTask(e));
+
     const deleteButton = document.createElement("button");
     deleteButton.className = "taskDeleteButton";
     deleteButton.innerHTML = "➖";
     deleteButton.addEventListener("click", () => deleteTask(task));
 
+    var editButton = document.createElement("button");
+    editButton.classList.add("editButton");
+    editButton.innerHTML = "➡";
+    editButton.addEventListener("click", () => toggleElemVisibility(editTaskForm));
+
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "buttonContainer";
 
     buttonContainer.appendChild(deleteButton);
+    buttonContainer.appendChild(editButton);
     taskList.appendChild(buttonContainer);
+    taskList.appendChild(editTaskForm);
     taskList.appendChild(document.createElement("hr"))
 }
 
-function testTaskButton() {
-    const testButton = document.querySelector(".addTestTasks");
-    testButton.addEventListener("click", addTestTasks);
-}
+function editTask(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const task = Object.fromEntries(formData.entries());     
+    const taskId = event.target.id.replace("taskEditForm", "");
+    const taskArray = getFromLocalStorage("taskArray");
+    const taskIndex = taskArray.indexOf(taskArray.find(task => task.id == taskId));
 
-
-function addTestTasks() {
-    localStorage.setItem("taskArray", `
-[
-    {
-    	"taskDate": "2022-07-12",
-        "taskName": "Mow the lawn",
-        "taskDescription": "Use the riding mower, it's fast and easy",
-        "id": 11
-    },
-    {
-    	"taskDate": "2022-07-12",
-        "taskName": "Do the dishes",
-        "taskDescription": "important",
-        "id": 1
-    },
-    {
-    	"taskDate": "2022-06-17",
-        "taskName": "Add edit button",
-        "taskDescription": "would b cool",
-        "id": 2
-    },
-    {
-		"taskDate": "1337-08-05",
-        "taskName": "Take a walk",
-        "taskDescription": "very nice",
-        "id": 3
-    },
-    {
-		"taskDate": "2022-06-01",
-        "taskName": "learn javascript 101",
-        "taskDescription": "!!!",
-        "id": 4
-    },
-    {
-		"taskDate": "2022-06-30",
-        "taskName": "Eat an apple",
-        "taskDescription": "An apple a day keeps the doctor away",
-        "id": 5
-    },
-    {
-		"taskDate": "2022-06-30",
-        "taskName": "Brush your teeth",
-        "taskDescription": "Teeth are important, but not as important as you think",
-        "id": 6
-    },
-    {
-		"taskDate": "2022-06-14",
-        "taskName": "learn more javascript",
-        "taskDescription": "JavaScript is the best language ever, but very complicated",
-        "id": 7
-    },
-    {
-        "taskDate": "2022-06-12",
-        "taskName": "Walk the dog",
-        "taskDescription": "I love my dog",
-        "id": 8
-    },
-    {
-        "taskDate": "2022-06-12",
-        "taskName": "Date with my dog",
-        "taskDescription": "I love my dog",
-        "id": 9
-    },
-    {
-        "taskDate": "2022-06-24",
-        "taskName": "Midsommer",
-        "taskDescription": "Midsommar is a swedish tradition, rad!",
-        "id": 10
+    if(task.taskName){
+        taskArray[taskIndex].taskName = task.taskName;
     }
-]
-    `);
+    
+    if(task.taskDescription){
+        taskArray[taskIndex].taskDescription = task.taskDescription;
+    }
+    
+    if(task.taskDate){
+        taskArray[taskIndex].taskDate = task.taskDate;
+    }
+
+    saveToLocalStorage("taskArray", taskArray);
     renderAllTasks();
 }
 
-
 function addTaskHtml() {
+    addTaskListHtml();
+    addTaskFormHtml();
+    addAddTaskButtonHtml();   
+}
+
+function addTaskListHtml(){
     let taskList = document.createElement("ul");
     taskList.className = "taskList";
 
-    let button = document.createElement("button");
-    button.className = "addTestTasks";
-    button.style = "width: 2rem; height: 2rem;";
-    button.innerHTML = "➕";
+    document.querySelector(".taskContainer").appendChild(taskList);
+}
 
-    // TaskForm
+function addTaskFormHtml(){
     const taskForm = document.createElement("form");
     taskForm.id = "taskForm";
     taskForm.classList.add("taskForm");
@@ -203,17 +165,17 @@ function addTaskHtml() {
     taskFormSubmitButton.type = "submit";
     taskFormSubmitButton.innerHTML = "Submit Task";
     taskForm.appendChild(taskFormSubmitButton);
-    // TaskForm end
 
+    document.querySelector(".taskMenu").appendChild(taskForm);
+}
+
+function addAddTaskButtonHtml(){
     let addTaskButton = document.createElement("button");
     addTaskButton.className = "addTask";
     addTaskButton.innerHTML = "➕";
-    addTaskButton.addEventListener("click", () => toggleElemVisibility(taskForm));
+    addTaskButton.addEventListener("click", () => toggleElemVisibility(document.querySelector("#taskForm")));
 
-    document.querySelector(".taskMenu").appendChild(button);
     document.querySelector(".taskMenu").appendChild(addTaskButton);
-    document.querySelector(".taskMenu").appendChild(taskForm);
-    document.querySelector(".taskContainer").appendChild(taskList);
 }
 
 function toggleElemVisibility(elem){
@@ -222,5 +184,5 @@ function toggleElemVisibility(elem){
     }
     else {
         elem.classList.add("hidden");
-        }
+    }
 }
