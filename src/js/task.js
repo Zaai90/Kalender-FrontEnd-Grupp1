@@ -39,7 +39,7 @@ function deleteTask(task) {
 function renderAllTasks(dateSearch) {
   taskList.innerHTML = "";
 
-  let taskArray = getFromLocalStorage("taskArray");
+  let taskArray = getFromLocalStorage("taskArray") ? getFromLocalStorage("taskArray") : [];
   taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
 
   if (datePattern.exec(dateSearch)) {
