@@ -197,15 +197,26 @@ function addTestTasks() {
 
 
 function addTaskHtml() {
-    let taskList = document.createElement("ul");
-    taskList.className = "taskList";
-
+    // For testing purposes
     let button = document.createElement("button");
     button.className = "addTestTasks";
     button.style = "width: 2rem; height: 2rem;";
     button.innerHTML = "➕";
+    document.querySelector(".taskMenu").appendChild(button);
 
-    // TaskForm
+    addTaskListHtml();
+    addTaskFormHtml();
+    addAddTaskButtonHtml();   
+}
+
+function addTaskListHtml(){
+    let taskList = document.createElement("ul");
+    taskList.className = "taskList";
+
+    document.querySelector(".taskContainer").appendChild(taskList);
+}
+
+function addTaskFormHtml(){
     const taskForm = document.createElement("form");
     taskForm.id = "taskForm";
     taskForm.classList.add("taskForm");
@@ -243,17 +254,17 @@ function addTaskHtml() {
     taskFormSubmitButton.type = "submit";
     taskFormSubmitButton.innerHTML = "Submit Task";
     taskForm.appendChild(taskFormSubmitButton);
-    // TaskForm end
 
+    document.querySelector(".taskMenu").appendChild(taskForm);
+}
+
+function addAddTaskButtonHtml(){
     let addTaskButton = document.createElement("button");
     addTaskButton.className = "addTask";
     addTaskButton.innerHTML = "➕";
-    addTaskButton.addEventListener("click", () => toggleElemVisibility(taskForm));
+    addTaskButton.addEventListener("click", () => toggleElemVisibility(document.querySelector("#taskForm")));
 
-    document.querySelector(".taskMenu").appendChild(button);
     document.querySelector(".taskMenu").appendChild(addTaskButton);
-    document.querySelector(".taskMenu").appendChild(taskForm);
-    document.querySelector(".taskContainer").appendChild(taskList);
 }
 
 function toggleElemVisibility(elem){
