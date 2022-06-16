@@ -85,7 +85,8 @@ main {
 }
 
 .faded {
-    color: #464444;
+    color: var(--faded-text-color);
+    background-color: var(--faded-background-color);
 }
 
 .current {}
