@@ -2,17 +2,21 @@ const welcomeContainer = document.getElementsByClassName("welcomeContainer");
 
 function createRenderDivs() {
   let welcomeDiv = document.querySelector(".welcomeContainer");
-  welcomeDiv.appendChild(document.createElement("div")).classList.add("time");
-  welcomeDiv.appendChild(document.createElement("div")).classList.add("day");
-  welcomeDiv.appendChild(document.createElement("div")).classList.add("date");
+  welcomeDiv
+    .appendChild(document.createElement("div"))
+    .classList.add("compressedInfo");
 }
 
-function populateDivs() {
-  const timeDiv = document.querySelector(".time");
-  const dayDiv = document.querySelector(".day");
-  const dateDiv = document.querySelector(".date");
-  timeDiv.innerHTML =
-    "Klockan är nu: " +
+function populateDiv() {
+  const compressedDiv = document.querySelector(".compressedInfo");
+  compressedDiv.innerHTML =
+    weekDays[dateNow.getDay() - 1] +
+    " " +
+    "den " +
+    dateNow.getDate() +
+    " " +
+    monthNames[dateNow.getMonth()] +
+    " " +
     (dateNow.getHours() < 10 ? "0" : "") +
     dateNow.getHours() +
     ":" +
@@ -21,18 +25,12 @@ function populateDivs() {
     ":" +
     (dateNow.getSeconds() < 10 ? "0" : "") +
     dateNow.getSeconds();
-  dayDiv.innerHTML = "Dagens dag i veckan: " + weekDays[dateNow.getDay() - 1];
-  dateDiv.innerHTML =
-    "Dagens datum är den " +
-    dateNow.getDate() +
-    " " +
-    monthNames[dateNow.getMonth()];
 }
 
 function renderWelcomeSegment() {
   createRenderDivs();
-  populateDivs();
-  setInterval(populateDivs, 1000);
+  populateDiv();
+  setInterval(populateDiv, 1000);
   fetchMonthInfo(dateNow).then(renderSpecialDayInfo);
 }
 
