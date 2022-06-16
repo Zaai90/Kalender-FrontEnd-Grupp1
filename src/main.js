@@ -6,6 +6,6 @@ function main() {
   renderWelcomeSegment();
   setInterval(() => (dateNow = new Date()), 1000);
   initModeButton();
-  //initTasks();
+  initTasks();
   initWeather(lat, long, data);
 }
