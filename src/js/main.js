@@ -8,3 +8,8 @@ function main() {
   addCalenderHeader();
   renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
 }
+
+function update() {
+  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
+  selected ? renderAllTasks(formatDateToString(selectedDate)) : renderAllTasks();
+}
