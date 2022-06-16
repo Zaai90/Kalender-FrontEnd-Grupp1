@@ -33,4 +33,16 @@ function renderWelcomeSegment() {
   createRenderDivs();
   populateDivs();
   setInterval(populateDivs, 1000);
+  fetchMonthInfo(dateNow).then(renderSpecialDayInfo);
+}
+
+function renderSpecialDayInfo(res) {
+  const daysArray = res;
+  console.log(daysArray);
+  let welcomeDiv = document.querySelector(".welcomeContainer");
+  welcomeDiv
+    .appendChild(document.createElement("div"))
+    .classList.add("holidayInfo");
+  const testDiv = document.querySelector(".holidayInfo");
+  testDiv.innerHTML = "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
 }
