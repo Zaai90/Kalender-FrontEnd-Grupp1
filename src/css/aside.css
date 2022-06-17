@@ -31,7 +31,6 @@ aside {
   -moz-box-shadow: 0 8px 6px -6px black;
 }
 
-
 .taskContainer {
   padding-top: 1rem;
   flex-direction: column;
@@ -63,7 +62,29 @@ aside {
 }
 
 .addTask {
-  width: 2rem;
+  width: 20rem;
+  height: 2rem;
+  background-color: rgb(144, 216, 238);
+}
+
+.createTask {
+  width: 20rem;
   height: 2rem;
   background-color: lightgreen;
+}
+
+.hideTasks {
+  width: 20rem;
+  height: 2rem;
+  background-color: rgba(255, 111, 0, 0.807);
+}
+
+.taskDeleteButton {
+  width: 6rem;
+  background-color: rgba(252, 38, 31, 0.697);
+}
+
+.taskEditButton {
+  width: 4rem;
+  background-color: rgba(23, 222, 226, 0.791);
 }
