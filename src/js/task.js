@@ -149,7 +149,7 @@ function addTaskFormHtml() {
   const taskFormSubmitButton = document.createElement("button");
   taskFormSubmitButton.classList.add("createTask");
   taskFormSubmitButton.type = "submit";
-  taskFormSubmitButton.innerHTML = "Save Task";
+  taskFormSubmitButton.innerHTML = "Save task";
   taskForm.appendChild(taskFormSubmitButton);
 
   const taskDateInput = document.createElement("input");
