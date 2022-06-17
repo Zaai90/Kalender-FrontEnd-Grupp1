@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 async function main() {
   setInterval(() => (dateNow = new Date()), 1000);
-  await getYearInfo(dateNow);
+  await getMonthInfo(dateNow);
   renderWelcomeSegment();
   initTasks();
   initModeButton();

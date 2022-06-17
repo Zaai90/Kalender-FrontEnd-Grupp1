@@ -12,7 +12,7 @@ async function fetchYearInfo(date) {
   formattedDate = formatDateToString(date).slice(0, 4);
   const url = `https://sholiday.faboul.se/dagar/v2.1/${formattedDate}`;
   const response = await fetchData(url);
-  const days = response.dagar.map((day) => {
+  const days = await response.dagar.map((day) => {
     return day;
   });
   return days;
