@@ -73,7 +73,7 @@ class Lightning {
   }
 }
 
-const interval = 3000;
+
 let lightning = [];
 
 
