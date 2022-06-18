@@ -15,7 +15,8 @@ function createTask(event) {
   const task = Object.fromEntries(formData.entries());
   task.id = getTaskId();
   addTask(task);
-  event.target.reset(); // Will move this to a better home.
+  event.target.reset(); 
+  updateTaskFormDate();
 }
 
 function getTaskId() {
