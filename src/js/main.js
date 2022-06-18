@@ -4,7 +4,7 @@ function main() {
   setInterval(() => (dateNow = new Date()), 1000);
   renderWelcomeSegment();
   initTasks();
-  initModeButton();
+  initializeTheme();
   addCalenderHeader();
   renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
   initGeoLocation();
