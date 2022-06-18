@@ -127,9 +127,9 @@ function editTask(event) {
 
 function addTaskHtml() {
   addTaskListHtml();
-  addAddTaskButtonHtml();
-  addTaskFormHtml();
   addHideTasksButtonHtml();
+  addTaskFormHtml();
+  addAddTaskButtonHtml();
 }
 
 function addTaskListHtml() {
@@ -145,12 +145,6 @@ function addTaskFormHtml() {
   taskForm.classList.add("taskForm");
   taskForm.classList.add("hidden");
   taskForm.addEventListener("submit", (e) => createTask(e));
-
-  const taskFormSubmitButton = document.createElement("button");
-  taskFormSubmitButton.classList.add("createTask");
-  taskFormSubmitButton.type = "submit";
-  taskFormSubmitButton.innerHTML = "Save task";
-  taskForm.appendChild(taskFormSubmitButton);
 
   const taskDateInput = document.createElement("input");
   taskDateInput.type = "date";
@@ -179,6 +173,12 @@ function addTaskFormHtml() {
   taskDescriptionLabel.innerHTML = "Description";
   taskForm.appendChild(taskDescriptionLabel);
   taskForm.appendChild(taskDescriptionInput);
+
+  const taskFormSubmitButton = document.createElement("button");
+  taskFormSubmitButton.classList.add("createTask");
+  taskFormSubmitButton.type = "submit";
+  taskFormSubmitButton.innerHTML = "Save task";
+  taskForm.appendChild(taskFormSubmitButton);
 
   document.querySelector(".taskMenu").appendChild(taskForm);
 }
