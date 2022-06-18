@@ -9,6 +9,7 @@ async function main() {
   addCalenderHeader();
   renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
   initGeoLocation();
+  initMascotEvent();
 }
 
 function update() {

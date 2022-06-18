@@ -1,7 +1,7 @@
 const welcomeContainer = document.getElementsByClassName("welcomeContainer");
 
 function createRenderDivs() {
-  let welcomeDiv = document.querySelector(".welcomeContainer");
+let welcomeDiv = document.querySelector(".welcomeContainer");
 const compressedInfo = document.createElement("div");
 compressedInfo.classList.add("compressedInfo");
 welcomeDiv.appendChild(compressedInfo);
@@ -40,6 +40,7 @@ function renderSpecialDayInfo(res) {
   welcomeDiv
     .appendChild(document.createElement("div"))
     .classList.add("holidayInfo");
-  const testDiv = document.querySelector(".holidayInfo");
-  testDiv.innerHTML = "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
+  
+  const holidayDiv = document.querySelector(".holidayInfo");
+  holidayDiv.innerHTML = "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
 }
