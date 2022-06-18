@@ -6,8 +6,11 @@
 
 :root {
     --dateHeader-font-size: 3rem;
-    --weekday-font-size: calc(0.5rem + 2 * ((100vw) / 160));
-    ;
+    --weekday-font-size: calc(1rem + 1 * ((100vw - 2rem) / 160));
+    --taskAmount-background-color: #6ea076;
+    --taskAmount-text-color: #fff;
+
+    --text-color-secondary: #000000;
 }
 
 html[data-theme="light"] {
@@ -15,14 +18,16 @@ html[data-theme="light"] {
     --header-background-color: #fcfcfc;
     --aside-background-color: #fcfcfc;
 
-    --text-color: rgb(0, 0, 0);
-    --text-color-secondary: #000000;
+    --faded-text-color: #464444;
+    --faded-background-color: #72727296;
 
-    --calendarDay-background-color: rgb(231, 231, 231);
+    --text-color: rgb(0, 0, 0);
+
+    --weekdays-background-color: #c9c5c5ea;
+    --calendarDay-background-color: rgb(255, 255, 255);
     --hovered-calendarDay-color: rgba(221, 218, 218, 0.675);
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
-    --weekdays-background-color: #ebe7e7ea;
 
     --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
     --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
@@ -35,13 +40,15 @@ html[data-theme="dark"] {
     --aside-background-color: rgb(71, 71, 68);
 
     --text-color: #fff;
-    --text-color-secondary: #000000;
 
+    --faded-text-color: #706f6f;
+    --faded-background-color: #29292941;
+
+    --weekdays-background-color: #ebe7e7ea;
     --calendarDay-background-color: rgb(90, 87, 87);
     --hovered-calendarDay-color: rgba(90, 87, 87, 0.675);
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
-    --weekdays-background-color: #ebe7e7ea;
 
     --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
     --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
