@@ -101,7 +101,7 @@ function renderTask(task) {
 }
 
 function updateTaskFormDate(date){
-  document.querySelector(`[name="taskDate"]`).value = formatDateToString(date);
+  document.querySelector(`[name="taskDate"]`).value = date;
 }
 
 function editTask(event) {
