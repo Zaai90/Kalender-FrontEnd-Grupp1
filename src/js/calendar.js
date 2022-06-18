@@ -130,14 +130,6 @@ function previous() {
   renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
 }
 
-function formatDateToString(date) {
-  return `${date.getFullYear()}-${date.getMonth() + 1 < 10
-    ? "0" + (date.getMonth() + 1)
-    : date.getMonth() + 1}-${date.getDate() < 10
-      ? "0" + date.getDate()
-      : date.getDate()}`;
-}
-
 function getAmountOfTasks(date) {
   let amount = 0;
   tasks.forEach(task => {
