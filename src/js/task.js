@@ -99,6 +99,10 @@ function renderTask(task) {
   taskList.appendChild(document.createElement("hr"));
 }
 
+function updateTaskFormDate(){
+  document.querySelector(`[name="taskDate"]`).value = formatDateToString(selectedDate);
+}
+
 function editTask(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
