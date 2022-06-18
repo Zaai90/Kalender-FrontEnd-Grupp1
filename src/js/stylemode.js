@@ -1,33 +1,32 @@
 let modeButton;
-let css;
+const themes = ["light", "dark"];
 
-function initModeButton() {
-  css = document.getElementsByClassName("css");
+function initializeTheme() {
+  let theme = getFromLocalStorage("theme") ? getFromLocalStorage("theme") : "light";
+  initModeButton(theme);
+  setDataTheme(theme);
+}
+
+function initModeButton(theme) {
+  opositeTheme = themes[(themes.indexOf(theme) + 1) % 2];
   modeButton = document.getElementById("switchbutton");
   modeButton.addEventListener("click", OnSwitch);
-  modeButton.innerHTML = "Light Mode";
-  setDataTheme("light");
+  modeButton.innerHTML = `${capitalizeFirstLetter(opositeTheme)} Mode`;
 }
 
 function OnSwitch() {
-  const darkModeButton = document.getElementById("switchbutton");
-
-  if (darkModeButton.innerHTML == "Light Mode") {
-    setDataTheme("dark");
-    darkModeButton.innerHTML = "Dark Mode";
-  } else {
+  if (modeButton.innerHTML == "Light Mode") {
     setDataTheme("light");
-    darkModeButton.innerHTML = "Light Mode";
+    modeButton.innerHTML = "Dark Mode";
+    saveToLocalStorage("theme", "light");
+  } else {
+    setDataTheme("dark");
+    modeButton.innerHTML = "Light Mode";
+    saveToLocalStorage("theme", "dark");
   }
 }
 
-/**
- * 
- * @param {*} theme 
- * @param {HTMLCollection<Element>} css
- */
 function setDataTheme(theme) {
-  // for (let i = 0; i < css.length; i++) {
-  // }
+
   document.documentElement.setAttribute("data-theme", theme);
 }

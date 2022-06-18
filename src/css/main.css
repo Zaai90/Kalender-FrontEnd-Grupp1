@@ -57,6 +57,10 @@ main {
     color: rgb(216, 203, 203);
 }
 
+.redDay:hover {
+    color: #cc3030;
+}
+
 .calendarDay p {
     justify-self: center;
     align-self: center;
