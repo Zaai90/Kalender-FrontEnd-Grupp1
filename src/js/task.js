@@ -39,7 +39,9 @@ function deleteTask(task) {
 function renderAllTasks(dateSearch) {
   taskList.innerHTML = "";
 
-  let taskArray = getFromLocalStorage("taskArray") ? getFromLocalStorage("taskArray") : [];
+  let taskArray = getFromLocalStorage("taskArray")
+    ? getFromLocalStorage("taskArray")
+    : [];
   taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
 
   if (datePattern.exec(dateSearch)) {
@@ -75,12 +77,14 @@ function renderTask(task) {
 
   const deleteButton = document.createElement("button");
   deleteButton.className = "taskDeleteButton";
-  deleteButton.innerHTML = "➖";
+  deleteButton.classList.add = "taskDeleteButton";
+  deleteButton.innerHTML = "Delete task";
   deleteButton.addEventListener("click", () => deleteTask(task));
 
   var editButton = document.createElement("button");
+  editButton.className = "taskEditButton";
   editButton.classList.add("editButton");
-  editButton.innerHTML = "➡";
+  editButton.innerHTML = "Edit task";
   editButton.addEventListener("click", () =>
     toggleElemVisibility(editTaskForm)
   );
@@ -123,6 +127,7 @@ function editTask(event) {
 
 function addTaskHtml() {
   addTaskListHtml();
+  addHideTasksButtonHtml();
   addTaskFormHtml();
   addAddTaskButtonHtml();
 }
@@ -147,8 +152,9 @@ function addTaskFormHtml() {
   taskDateInput.value = formatDateToString(dateNow);
   const taskDateLabel = document.createElement("label");
   taskDateLabel.setAttribute("for", taskDateInput.name);
-  taskForm.appendChild(taskDateInput);
+  taskDateLabel.innerHTML = "Date";
   taskForm.appendChild(taskDateLabel);
+  taskForm.appendChild(taskDateInput);
 
   const taskNameInput = document.createElement("input");
   taskNameInput.type = "text";
@@ -169,8 +175,9 @@ function addTaskFormHtml() {
   taskForm.appendChild(taskDescriptionInput);
 
   const taskFormSubmitButton = document.createElement("button");
+  taskFormSubmitButton.classList.add("createTask");
   taskFormSubmitButton.type = "submit";
-  taskFormSubmitButton.innerHTML = "Submit Task";
+  taskFormSubmitButton.innerHTML = "Save task";
   taskForm.appendChild(taskFormSubmitButton);
 
   document.querySelector(".taskMenu").appendChild(taskForm);
@@ -178,13 +185,38 @@ function addTaskFormHtml() {
 
 function addAddTaskButtonHtml() {
   let addTaskButton = document.createElement("button");
+  addTaskButton.id = "addTaskButton";
   addTaskButton.className = "addTask";
-  addTaskButton.innerHTML = "➕";
+  addTaskButton.innerHTML = "Add new task";
   addTaskButton.addEventListener("click", () =>
     toggleElemVisibility(document.querySelector("#taskForm"))
   );
+  addTaskButton.addEventListener("click", () =>
+    toggleElemVisibility(document.querySelector("#addTaskButton"))
+  );
+  addTaskButton.addEventListener("click", () =>
+    toggleElemVisibility(document.querySelector("#hideTasksButton"))
+  );
 
   document.querySelector(".taskMenu").appendChild(addTaskButton);
+}
+
+function addHideTasksButtonHtml() {
+  let hideTasksButton = document.createElement("button");
+  hideTasksButton.id = "hideTasksButton";
+  hideTasksButton.className = "hideTasks";
+  hideTasksButton.innerHTML = "Hide section";
+  hideTasksButton.addEventListener("click", () =>
+    toggleElemVisibility(document.querySelector("#taskForm"))
+  );
+  hideTasksButton.addEventListener("click", () =>
+    toggleElemVisibility(document.querySelector("#addTaskButton"))
+  );
+  hideTasksButton.addEventListener("click", () =>
+    toggleElemVisibility(document.querySelector("#hideTasksButton"))
+  );
+  document.querySelector(".taskMenu").appendChild(hideTasksButton);
+  hideTasksButton.classList.add("hidden");
 }
 
 function toggleElemVisibility(elem) {
