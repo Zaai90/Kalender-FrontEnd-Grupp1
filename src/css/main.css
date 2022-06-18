@@ -15,29 +15,28 @@ main {
 
 .calendar {
     padding: 10px;
-    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr, repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 10px;
 }
 
 .weekdays {
-    border-radius: 10px;
-    background-color: var(--weekdays-background-color);
+    /* background-color: var(--weekdays-background-color); */
     display: grid;
+    gap: 10px;
     grid-template-columns: repeat(7, 1fr);
-    width: 100%;
+    padding: 10px 10px 0 10px;
 }
 
 .weekday {
     display: inline-grid;
     justify-content: center;
-    color: var(text-color);
+    color: var(--text-color);
     font-size: var(--weekday-font-size);
     font-weight: bold;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .calendarDay {
@@ -50,7 +49,7 @@ main {
 }
 
 .calendarDay:hover {
-    background-color: var(hovered-calendarDay-color);
+    background-color: var(--hovered-calendarDay-color);
     color: rgb(216, 203, 203);
 }
 

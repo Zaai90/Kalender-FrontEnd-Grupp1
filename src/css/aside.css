@@ -21,14 +21,14 @@ aside {
 }
 
 .taskMenu {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
   padding-bottom: 10px;
-  box-shadow: 0 8px 5px -5px black;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: var(--aside-bottom-shadow);
 }
 
 
