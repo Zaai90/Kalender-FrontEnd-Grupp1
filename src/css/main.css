@@ -72,11 +72,16 @@ main {
     right: 5px;
     justify-content: center;
     align-items: center;
+    line-height: 0;
     background-color: var(--weekdays-background-color);
     border-radius: 50%;
     width: 20px;
     height: 20px;
     color: var(--text-color-secondary);
+}
+
+.taskAmount:hover {
+    box-shadow: 0 0 5px rgba(245, 245, 245, 0.7);
 }
 
 .taskAmount p {
@@ -113,10 +118,10 @@ main {
 }
 
 #canvas {
-  background-color: transparent;
-  z-index: 2;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
+    background-color: transparent;
+    z-index: 2;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
 }
