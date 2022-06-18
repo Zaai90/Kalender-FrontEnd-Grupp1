@@ -16,7 +16,7 @@ function createTask(event) {
   task.id = getTaskId();
   addTask(task);
   event.target.reset(); 
-  updateTaskFormDate();
+  updateTaskFormDate(task.taskDate);
 }
 
 function getTaskId() {
@@ -100,8 +100,8 @@ function renderTask(task) {
   taskList.appendChild(document.createElement("hr"));
 }
 
-function updateTaskFormDate(){
-  document.querySelector(`[name="taskDate"]`).value = formatDateToString(selectedDate);
+function updateTaskFormDate(date){
+  document.querySelector(`[name="taskDate"]`).value = formatDateToString(date);
 }
 
 function editTask(event) {

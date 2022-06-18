@@ -75,7 +75,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDayNumber.innerHTML = date.getDate();
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
-  calendarDay.addEventListener("click", () => updateTaskFormDate());
+  calendarDay.addEventListener("click", () => updateTaskFormDate(formatDateToString(date)));
 
   const taskAmount = getAmountOfTasks(formatDateToString(date));
   if (taskAmount > 0) {
