@@ -109,3 +109,12 @@ main {
     margin: -3px;
     border: solid 3px #00A4EF;
 }
+
+#canvas {
+  background-color: transparent;
+  z-index: 2;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}

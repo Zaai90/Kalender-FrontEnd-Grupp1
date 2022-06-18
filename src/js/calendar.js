@@ -59,7 +59,7 @@ function renderCalendar(year, month) {
   }
 }
 
-async function createCalenderDay(date, eventFunction, isCurrentMonth) {
+function createCalenderDay(date, eventFunction, isCurrentMonth) {
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
 

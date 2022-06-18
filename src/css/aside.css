@@ -88,3 +88,22 @@ aside {
   width: 4rem;
   background-color: rgba(23, 222, 226, 0.791);
 }
+
+.weather-temp {
+  margin-top: 2%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.weather-sunset {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.weather-wind {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
