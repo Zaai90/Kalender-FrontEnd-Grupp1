@@ -7,9 +7,3 @@ async function fetchMonthInfo(date) {
   });
   return days;
 }
-
-function fetchData(url, options) {
-  return fetch(url, options).then((response) => {
-    return response.json();
-  });
-}
