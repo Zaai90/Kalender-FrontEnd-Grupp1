@@ -56,26 +56,22 @@ function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   weatherCodeDiv.classList.add("fa-solid", weatherCodeLib[weatherCode]);
   weatherCodeDiv.style.fontSize = "1.8rem";
   weather.append(weatherCodeDiv);
-  console.log(weatherCode);
 
   const tempDiv = document.createElement("p");
   tempDiv.classList.add("fa-solid", "fa-temperature-half");
   tempDiv.innerHTML = ` ${temp}°C`;
   tempDiv.style.fontSize = "1rem";
   weather.append(tempDiv);
-  console.log(temp);
 
   const sunsetDiv = document.createElement("p");
   sunsetDiv.classList.add("fa-solid", "fa-moon");
   sunsetDiv.innerHTML = `${sunset}`;
   sunsetDiv.style.fontSize = "1rem";
   weather.append(sunsetDiv);
-  console.log(sunset);
 
   const windspeedDiv = document.createElement("i");
   windspeedDiv.classList.add("fa-solid", "fa-wind");
   windspeedDiv.innerHTML = ` ${windspeed} m/s`;
   windspeedDiv.style.fontSize = "1rem";
   weather.append(windspeedDiv);
-  console.log(windspeed);
 }
