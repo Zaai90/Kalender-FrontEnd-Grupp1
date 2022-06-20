@@ -53,8 +53,7 @@ main {
 }
 
 .redDay {
-    background-color: #ff0000;
-    color: var(--text-color);
+    color: #ff0000;
 }
 
 .calendarDay:hover {
@@ -116,10 +115,10 @@ main {
 }
 
 #canvas {
-  background-color: transparent;
-  z-index: 2;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
+    background-color: transparent;
+    z-index: 2;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
 }
