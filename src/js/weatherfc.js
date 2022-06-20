@@ -57,13 +57,13 @@ function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   weatherCodeDiv.style.fontSize = "1.8rem";
   weather.append(weatherCodeDiv);
 
-  const tempDiv = document.createElement("p");
+  const tempDiv = document.createElement("i");
   tempDiv.classList.add("fa-solid", "fa-temperature-half");
   tempDiv.innerHTML = ` ${temp}°C`;
   tempDiv.style.fontSize = "1rem";
   weather.append(tempDiv);
 
-  const sunsetDiv = document.createElement("p");
+  const sunsetDiv = document.createElement("i");
   sunsetDiv.classList.add("fa-solid", "fa-moon");
   sunsetDiv.innerHTML = `${sunset}`;
   sunsetDiv.style.fontSize = "1rem";
