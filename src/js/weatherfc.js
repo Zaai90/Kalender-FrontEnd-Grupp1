@@ -2,7 +2,7 @@ function initGeoLocation() {
   navigator.geolocation.getCurrentPosition(function (pos) {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
-  getWeatherForeCast(lat, long);
+    getWeatherForeCast(lat, long);
   });
 }
 
@@ -21,7 +21,7 @@ const weatherCodeLib = {
   0: "Clear sky",
   1: "Mainly clear",
   2: "partly cloudy",
-  3: "overcast",
+  3: "fa-cloud-sun",
   45: "Fog",
   48: "Depositing rime fog",
   51: "Drizzle Light",
@@ -52,23 +52,23 @@ const weatherCodeLib = {
 function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   let weather = document.querySelector(".welcomeContainer");
 
-  const tempDiv = document.createElement("p");
+  const tempDiv = document.createElement("i");
   tempDiv.classList.add("weather-temp");
   tempDiv.innerHTML = `Temp: ${temp}°C`;
   weather.append(tempDiv);
 
-  const sunsetDiv = document.createElement("p");
+  const sunsetDiv = document.createElement("i");
   sunsetDiv.classList.add("weather-sunset");
   sunsetDiv.innerHTML = `Sunset: ${sunset}`;
   weather.append(sunsetDiv);
 
-  const windspeedDiv = document.createElement("p");
+  const windspeedDiv = document.createElement("i");
   windspeedDiv.classList.add("weather-wind");
   windspeedDiv.innerHTML = `Windspeed: ${windspeed} m/s`;
   weather.append(windspeedDiv);
 
-  const weatherCodeDiv = document.createElement("p");
-  weatherCodeDiv.classList.add("weather-temp");
+  const weatherCodeDiv = document.createElement("i");
+  weatherCodeDiv.classList.add(`${weatherCodeLib[weatherCode]}`);
   weatherCodeDiv.innerHTML = `Weather: ${weatherCodeLib[weatherCode]}`;
   weather.append(weatherCodeDiv);
 }
