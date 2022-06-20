@@ -11,7 +11,7 @@ function populateDiv() {
   const compressedDiv = document.querySelector(".compressedInfo");
   compressedDiv.innerHTML =
     weekDays[
-      dateNow.getDay() - 1 < 0 ? dateNow.getDay + 1 : dateNow.getDay() - 1
+      dateNow.getDay() - 1 < 0 ? dateNow.getDay + 7 : dateNow.getDay() - 1
     ] +
     " " +
     "den " +
