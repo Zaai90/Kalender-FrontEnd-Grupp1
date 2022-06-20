@@ -1,16 +1,18 @@
 const welcomeContainer = document.getElementsByClassName("welcomeContainer");
 
 function createRenderDivs() {
-let welcomeDiv = document.querySelector(".welcomeContainer");
-const compressedInfo = document.createElement("div");
-compressedInfo.classList.add("compressedInfo");
-welcomeDiv.appendChild(compressedInfo);
+  let welcomeDiv = document.querySelector(".welcomeContainer");
+  const compressedInfo = document.createElement("div");
+  compressedInfo.classList.add("compressedInfo");
+  welcomeDiv.appendChild(compressedInfo);
 }
 
 function populateDiv() {
   const compressedDiv = document.querySelector(".compressedInfo");
   compressedDiv.innerHTML =
-    weekDays[dateNow.getDay() - 1] +
+    weekDays[
+      dateNow.getDay() - 1 < 0 ? 6 : dateNow.getDay() - 1
+    ] +
     " " +
     "den " +
     dateNow.getDate() +
@@ -40,7 +42,8 @@ function renderSpecialDayInfo(res) {
   welcomeDiv
     .appendChild(document.createElement("div"))
     .classList.add("holidayInfo");
-  
+
   const holidayDiv = document.querySelector(".holidayInfo");
-  holidayDiv.innerHTML = "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
+  holidayDiv.innerHTML =
+    "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
 }

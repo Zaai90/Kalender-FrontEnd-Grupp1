@@ -94,7 +94,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDayNumber.innerHTML = date.getDate();
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
-
+  
   const taskAmount = getAmountOfTasks(formatDateToString(date));
   if (taskAmount > 0) {
     const calendarDayTaskAmount = document.createElement("div");
@@ -104,18 +104,20 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     calendarDayTaskAmount.appendChild(taskAmountText);
     calendarDay.appendChild(calendarDayTaskAmount);
   }
-
+  
   calendarContainer.appendChild(calendarDay);
 }
 
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
-
+  
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
     selectedDate = undefined;
+    
+    updateTaskFormDate(formatDateToString(dateNow));
     renderAllTasks();
   }
 
@@ -123,7 +125,8 @@ function toggleSelected(e, date) {
     target.classList.add("selected");
     selected = target;
     selectedDate = date;
-
+    
+    updateTaskFormDate(formatDateToString(date));
     renderAllTasks(formatDateToString(date));
   }
 }
@@ -150,15 +153,6 @@ function previous() {
     renderCalendar(currentCalendarDate.year, currentCalendarDate.month)
   }
   );
-}
-
-/**
- * 
- * @param {Date} date 
- * @returns 
- */
-function formatDateToString(date) {
-  return date.toISOString().split("T")[0];
 }
 
 function getAmountOfTasks(date) {

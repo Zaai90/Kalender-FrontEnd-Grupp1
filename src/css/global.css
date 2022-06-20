@@ -6,7 +6,7 @@
 
 :root {
     --dateHeader-font-size: 3rem;
-    --weekday-font-size: calc(1rem + 1 * ((100vw - 2rem) / 160));
+    --weekday-font-size: calc(0.5rem + 1 * ((100vw + 2rem) / 160));
     --taskAmount-background-color: #6ea076;
     --taskAmount-text-color: #fff;
 
@@ -29,8 +29,9 @@ html[data-theme="light"] {
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
 
-    --aside-right-shadow: -1px 8px 10px 0px black;
-    --header-bottom-shadow: -1px 1px 10px 0px black;
+    --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
+    --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
+    --header-bottom-shadow: -8px 1px -8px 5px black;
 }
 
 html[data-theme="dark"] {
@@ -49,7 +50,8 @@ html[data-theme="dark"] {
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
 
-    --aside-right-shadow: -1px 8px 10px 0px black;
+    --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
+    --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
     --header-bottom-shadow: -8px 1px -8px 5px black;
 }
 

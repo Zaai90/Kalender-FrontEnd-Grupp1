@@ -2,7 +2,7 @@ function initGeoLocation() {
   navigator.geolocation.getCurrentPosition(function (pos) {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
-  getWeatherForeCast(lat, long);
+    getWeatherForeCast(lat, long);
   });
 }
 
@@ -18,57 +18,60 @@ async function getWeatherForeCast(lat, long) {
   addWeatherToHtml(temp, sunset, windspeed, weatherCode);
 }
 const weatherCodeLib = {
-  0: "Clear sky",
-  1: "Mainly clear",
-  2: "partly cloudy",
-  3: "overcast",
-  45: "Fog",
-  48: "Depositing rime fog",
-  51: "Drizzle Light",
-  53: "moderate",
-  55: "dense intensity",
-  56: "Freezing Drizzle Light",
-  57: "Freezing Drizzle dense intensity",
-  61: "Rain: Slight",
-  63: "Rain: moderate",
-  65: "Rain: heavy intensity",
-  66: "Freezing Rain: Light",
-  67: "Freezing Rain: heavy intensity",
-  71: "Snow fall: Slight",
-  73: "Snow fall: moderate",
-  75: "Snow fall: heavy intensity",
-  77: "Snow grains",
-  80: "Rain showers: Slight",
-  81: "Rain showers: moderate",
-  82: "Rain showers: violent",
-  85: "Snow showers slight",
-  86: "Snow showers heavy",
-  95: "Thunderstorm: Slight",
-  999: "Thunderstorm: moderate",
-  96: "Thunderstorm with slight hail",
-  99: "Thunderstorm with heavy hail",
+  0: "fa-sun",
+  1: "fa-cloud-sun",
+  2: "fa-cloud-sun",
+  3: "fa-cloud-sun",
+  45: "fa-smog",
+  48: "fa-smog",
+  51: "fa-droplet",
+  53: "fa-cloud-rain",
+  55: "fa-cloud-showers-heavy",
+  56: "fa-droplet",
+  57: "fa-cloud-showers-heavy",
+  61: "fa-droplet",
+  63: "fa-cloud-rain",
+  65: "fa-cloud-showers-heavy",
+  66: "fa-droplet",
+  67: "fa-cloud-showers-heavy",
+  71: "fa-snowflake",
+  73: "fa-snowflake",
+  75: "fa-snowplow",
+  77: "fa-snowplow",
+  80: "fa-droplet",
+  81: "fa-cloud-rain",
+  82: "fa-cloud-showers-water",
+  85: "fa-snowflake",
+  86: "fa-snowplow",
+  95: "fa-cloud-bolt",
+  999: "fa-bolt-lightning",
+  96: "fa-cloud-bolt",
+  99: "fa-bolt-lightning",
 };
 
 function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   let weather = document.querySelector(".welcomeContainer");
 
-  const tempDiv = document.createElement("p");
-  tempDiv.classList.add("weather-temp");
-  tempDiv.innerHTML = `Temp: ${temp}°C`;
+  const weatherCodeDiv = document.createElement("i");
+  weatherCodeDiv.classList.add("fa-solid", weatherCodeLib[weatherCode]);
+  weatherCodeDiv.style.fontSize = "1.8rem";
+  weather.append(weatherCodeDiv);
+
+  const tempDiv = document.createElement("i");
+  tempDiv.classList.add("fa-solid", "fa-temperature-half");
+  tempDiv.innerHTML = ` ${temp}°C`;
+  tempDiv.style.fontSize = "1rem";
   weather.append(tempDiv);
 
-  const sunsetDiv = document.createElement("p");
-  sunsetDiv.classList.add("weather-sunset");
-  sunsetDiv.innerHTML = `Sunset: ${sunset}`;
+  const sunsetDiv = document.createElement("i");
+  sunsetDiv.classList.add("fa-solid", "fa-moon");
+  sunsetDiv.innerHTML = `${sunset}`;
+  sunsetDiv.style.fontSize = "1rem";
   weather.append(sunsetDiv);
 
-  const windspeedDiv = document.createElement("p");
-  windspeedDiv.classList.add("weather-wind");
-  windspeedDiv.innerHTML = `Windspeed: ${windspeed} m/s`;
+  const windspeedDiv = document.createElement("i");
+  windspeedDiv.classList.add("fa-solid", "fa-wind");
+  windspeedDiv.innerHTML = ` ${windspeed} m/s`;
+  windspeedDiv.style.fontSize = "1rem";
   weather.append(windspeedDiv);
-
-  const weatherCodeDiv = document.createElement("p");
-  weatherCodeDiv.classList.add("weather-temp");
-  weatherCodeDiv.innerHTML = `Weather: ${weatherCodeLib[weatherCode]}`;
-  weather.append(weatherCodeDiv);
 }
