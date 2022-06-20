@@ -15,39 +15,37 @@ main {
 
 .calendar {
     padding: 10px;
-    width: 100%;
     height: 100%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr, repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 10px;
 }
 
 .weekdays {
-    border-radius: 10px;
-    background-color: var(--weekdays-background-color);
     display: grid;
+    gap: 10px;
     grid-template-columns: repeat(7, 1fr);
-    width: 100%;
+    padding: 10px 10px 0 10px;
 }
 
 .weekday {
     display: inline-grid;
     justify-content: center;
-    color: var(text-color);
+    color: var(--text-color);
     font-size: var(--weekday-font-size);
     font-weight: bold;
-    padding: 10px;
 }
 
 .calendarDay {
+    border: solid 1px rgba(0, 0, 0, 0.70);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.70);
+    background-color: var(--calendarDay-background-color);
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0);
-    background-color: var(--calendarDay-background-color);
-
     color: var(--text-color);
     cursor: pointer;
 }
@@ -74,11 +72,16 @@ main {
     right: 5px;
     justify-content: center;
     align-items: center;
+    line-height: 0;
     background-color: var(--weekdays-background-color);
     border-radius: 50%;
     width: 20px;
     height: 20px;
     color: var(--text-color-secondary);
+}
+
+.taskAmount:hover {
+    box-shadow: 0 0 5px rgba(245, 245, 245, 0.7);
 }
 
 .taskAmount p {
@@ -115,10 +118,10 @@ main {
 }
 
 #canvas {
-  background-color: transparent;
-  z-index: 2;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
+    background-color: transparent;
+    z-index: 2;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
 }
