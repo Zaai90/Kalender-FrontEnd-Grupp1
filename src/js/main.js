@@ -11,7 +11,7 @@ async function main() {
   initGeoLocation();
   initMascotEvent();
 
-  getMonthInfo(dateNow).then(() => {
+  fetchMonthInfo(dateNow).then(() => {
     renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
   });
   addCalenderHeader();
