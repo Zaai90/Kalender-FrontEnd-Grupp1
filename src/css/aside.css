@@ -21,16 +21,15 @@ aside {
 }
 
 .taskMenu {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
   padding-bottom: 10px;
-  box-shadow: 0 8px 5px -5px black;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: var(--aside-bottom-shadow);
 }
-
 
 .taskContainer {
   padding-top: 1rem;
@@ -63,23 +62,73 @@ aside {
 }
 
 .addTask {
-  width: 2rem;
+  width: 20rem;
+  height: 2rem;
+  background-color: rgb(144, 216, 238);
+}
+
+.createTask {
+  width: 20rem;
   height: 2rem;
   background-color: lightgreen;
 }
+
+.hideTasks {
+  width: 20rem;
+  height: 2rem;
+  background-color: rgba(255, 111, 0, 0.807);
+}
+
+.taskDeleteButton {
+  width: 6rem;
+  background-color: rgba(252, 38, 31, 0.697);
+}
+
+.taskEditButton {
+  width: 4rem;
+  background-color: rgba(23, 222, 226, 0.791);
+}
+
 .weather-temp {
   margin-top: 2%;
   font-size: 1rem;
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
+
 .weather-sunset {
   font-size: 1rem;
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
+
 .weather-wind {
   font-size: 1rem;
   font-weight: bold;
   color: rgb(0, 0, 0);
+}
+
+.dateTitle{
+  text-align-last: center;
+  background-color: var(--faded-background-color);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+.taskDiv{
+  background-color: var(--calendarDay-background-color);
+  border: 1px black solid;
+  border-radius: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.taskDateContainer{
+  margin-bottom: 1rem;
+}
+
+#hideEditTaskForm {
+  background-color: lightcoral;
 }

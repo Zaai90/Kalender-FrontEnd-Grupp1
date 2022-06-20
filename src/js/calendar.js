@@ -35,10 +35,10 @@ function renderCalendar(year, month) {
   calendarContainer.innerHTML = "";
   renderHeader(year, month);
 
-  let firstDay = new Date(year, month);
-  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
-  let lastDay = new Date(year, month + 1, 0);
-  let lastDayOfMonth = lastDay.getDate();
+  const firstDay = new Date(year, month);
+  const weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
+  const lastDay = new Date(year, month + 1, 0);
+  const lastDayOfMonth = lastDay.getDate();
 
   //Previous month
   for (let i = 0; i < weekday; i++) {
@@ -75,7 +75,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDayNumber.innerHTML = date.getDate();
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
-
+  
   const taskAmount = getAmountOfTasks(formatDateToString(date));
   if (taskAmount > 0) {
     const calendarDayTaskAmount = document.createElement("div");
@@ -85,18 +85,20 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     calendarDayTaskAmount.appendChild(taskAmountText);
     calendarDay.appendChild(calendarDayTaskAmount);
   }
-
+  
   calendarContainer.appendChild(calendarDay);
 }
 
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
-
+  
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
     selectedDate = undefined;
+    
+    updateTaskFormDate(formatDateToString(dateNow));
     renderAllTasks();
   }
 
@@ -104,7 +106,8 @@ function toggleSelected(e, date) {
     target.classList.add("selected");
     selected = target;
     selectedDate = date;
-
+    
+    updateTaskFormDate(formatDateToString(date));
     renderAllTasks(formatDateToString(date));
   }
 }
@@ -128,14 +131,6 @@ function previous() {
     currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
   renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
-}
-
-function formatDateToString(date) {
-  return `${date.getFullYear()}-${date.getMonth() + 1 < 10
-    ? "0" + (date.getMonth() + 1)
-    : date.getMonth() + 1}-${date.getDate() < 10
-      ? "0" + date.getDate()
-      : date.getDate()}`;
 }
 
 function getAmountOfTasks(date) {

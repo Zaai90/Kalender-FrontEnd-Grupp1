@@ -15,7 +15,8 @@ function createTask(event) {
   const task = Object.fromEntries(formData.entries());
   task.id = getTaskId();
   addTask(task);
-  event.target.reset(); // Will move this to a better home.
+  event.target.reset();
+  updateTaskFormDate(task.taskDate);
 }
 
 function getTaskId() {
@@ -39,7 +40,9 @@ function deleteTask(task) {
 function renderAllTasks(dateSearch) {
   taskList.innerHTML = "";
 
-  let taskArray = getFromLocalStorage("taskArray") ? getFromLocalStorage("taskArray") : [];
+  let taskArray = getFromLocalStorage("taskArray")
+    ? getFromLocalStorage("taskArray")
+    : [];
   taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
 
   if (datePattern.exec(dateSearch)) {
@@ -51,38 +54,46 @@ function renderAllTasks(dateSearch) {
   }
 
   for (const task of taskArray) {
-    renderTask(task);
+    if (!document.querySelector(`#taskDate${task.taskDate}`)) {
+      const groupContainer = document.createElement("div")
+      groupContainer.classList.add("taskDateContainer");
+      groupContainer.id = "taskDate" + task.taskDate;
+
+      const dateTitle = document.createElement("h3");
+      dateTitle.classList.add("dateTitle");
+      dateTitle.innerHTML = task.taskDate;
+
+      taskList.appendChild(dateTitle);
+      taskList.appendChild(groupContainer);
+
+      renderTask(task);
+    } else {
+      renderTask(task);
+    }
   }
 }
 
 function renderTask(task) {
-  let li = document.createElement("li");
-  li.classList.add("task");
-  li.innerHTML = `<p class="taskName">${task.taskName}</p>
-                    <p class="taskDescription">${task.taskDescription}</p>
-                    <p class="taskDate">${task.taskDate}</p>`;
-  taskList.appendChild(li);
+  const dateContainer = document.querySelector(`#taskDate${task.taskDate}`);
+  const taskDiv = document.createElement("div");
+  taskDiv.classList.add("taskDiv");
 
-  let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
-  editTaskForm.id = "taskEditForm" + task.id;
-  editTaskForm.classList.add("taskEditForm");
-  editTaskForm.classList.add("hidden");
-  editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
-  editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
-  editTaskForm.querySelector(`[name="taskDescription"]`).value =
-    task.taskDescription;
-  editTaskForm.addEventListener("submit", (e) => editTask(e));
+  let taskInfo = document.createElement("div");
+  taskInfo.classList.add("task");
+  taskInfo.innerHTML = `<p class="taskName">${task.taskName}</p>
+                    <p class="taskDescription">${task.taskDescription}</p>`;
+  taskDiv.appendChild(taskInfo);
 
   const deleteButton = document.createElement("button");
-  deleteButton.className = "taskDeleteButton";
-  deleteButton.innerHTML = "➖";
+  deleteButton.classList.add("taskDeleteButton");
+  deleteButton.innerHTML = "Radera händelse";
   deleteButton.addEventListener("click", () => deleteTask(task));
 
   var editButton = document.createElement("button");
-  editButton.classList.add("editButton");
-  editButton.innerHTML = "➡";
+  editButton.classList.add("taskEditButton");
+  editButton.innerHTML = "Redigera händelse";
   editButton.addEventListener("click", () =>
-    toggleElemVisibility(editTaskForm)
+    createEditForm(task)
   );
 
   const buttonContainer = document.createElement("div");
@@ -90,9 +101,52 @@ function renderTask(task) {
 
   buttonContainer.appendChild(deleteButton);
   buttonContainer.appendChild(editButton);
-  taskList.appendChild(buttonContainer);
-  taskList.appendChild(editTaskForm);
-  taskList.appendChild(document.createElement("hr"));
+  taskDiv.appendChild(buttonContainer);
+  dateContainer.appendChild(taskDiv);
+}
+
+function updateTaskFormDate(date) {
+  document.querySelector(`[name="taskDate"]`).value = date;
+}
+
+function createEditForm(task) {
+  removeEditForm();
+
+  const hideButton = document.createElement("button");
+  hideButton.id = "hideEditTaskForm";
+  hideButton.classList.add("hideTasks");
+  hideButton.innerHTML = "Avbryt redigering";
+  hideButton.addEventListener("click", removeEditForm);
+  hideButton.addEventListener("click", () => toggleElemVisibility(document.querySelector("#addTaskButton")));
+
+  const editTaskForm = document.querySelector("#taskForm").cloneNode(true);
+  editTaskForm.id = "taskEditForm" + task.id;
+  editTaskForm.classList.add("taskEditForm");
+  editTaskForm.classList.remove("hidden");
+  editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
+  editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
+  editTaskForm.querySelector(`[name="taskDescription"]`).value =
+    task.taskDescription;
+  editTaskForm.childNodes[editTaskForm.childNodes.length - 1].innerHTML = "Bekräfta redigering";
+  editTaskForm.addEventListener("submit", (e) => editTask(e));
+
+  if (!document.querySelector("#taskForm").classList.contains("hidden")) {
+    toggleButtonVisibility();
+    toggleElemVisibility(document.querySelector("#addTaskButton"));
+  } else {
+    document.querySelector("#addTaskButton").classList.add("hidden");
+  }
+
+  const taskMenu = document.querySelector(".taskMenu");
+  taskMenu.appendChild(hideButton);
+  taskMenu.appendChild(editTaskForm);
+}
+
+function removeEditForm() {
+  if (document.querySelector("[id^='taskEditForm']")) {
+    document.querySelector("[id^='taskEditForm']").remove();
+    document.querySelector("#hideEditTaskForm").remove();
+  }
 }
 
 function editTask(event) {
@@ -100,29 +154,29 @@ function editTask(event) {
   const formData = new FormData(event.target);
   const task = Object.fromEntries(formData.entries());
   const taskId = event.target.id.replace("taskEditForm", "");
-  const taskArray = getFromLocalStorage("taskArray");
-  const taskIndex = taskArray.indexOf(
-    taskArray.find((task) => task.id == taskId)
-  );
+  const taskIndex = tasks.indexOf(tasks.find((task) => task.id == taskId));
 
   if (task.taskName) {
-    taskArray[taskIndex].taskName = task.taskName;
+    tasks[taskIndex].taskName = task.taskName;
   }
 
   if (task.taskDescription) {
-    taskArray[taskIndex].taskDescription = task.taskDescription;
+    tasks[taskIndex].taskDescription = task.taskDescription;
   }
 
   if (task.taskDate) {
-    taskArray[taskIndex].taskDate = task.taskDate;
+    tasks[taskIndex].taskDate = task.taskDate;
   }
 
-  saveToLocalStorage("taskArray", taskArray);
-  renderAllTasks();
+  saveToLocalStorage("taskArray", tasks);
+  removeEditForm();
+  toggleElemVisibility(document.querySelector("#addTaskButton"))
+  update();
 }
 
 function addTaskHtml() {
   addTaskListHtml();
+  addHideTasksButtonHtml();
   addTaskFormHtml();
   addAddTaskButtonHtml();
 }
@@ -147,15 +201,16 @@ function addTaskFormHtml() {
   taskDateInput.value = formatDateToString(dateNow);
   const taskDateLabel = document.createElement("label");
   taskDateLabel.setAttribute("for", taskDateInput.name);
-  taskForm.appendChild(taskDateInput);
+  taskDateLabel.innerHTML = "Datum";
   taskForm.appendChild(taskDateLabel);
+  taskForm.appendChild(taskDateInput);
 
   const taskNameInput = document.createElement("input");
   taskNameInput.type = "text";
   taskNameInput.name = "taskName";
   const taskNameLabel = document.createElement("label");
   taskNameLabel.setAttribute("for", taskNameInput.name);
-  taskNameLabel.innerHTML = "Name";
+  taskNameLabel.innerHTML = "Titel";
   taskForm.appendChild(taskNameLabel);
   taskForm.appendChild(taskNameInput);
 
@@ -164,13 +219,14 @@ function addTaskFormHtml() {
   taskDescriptionInput.name = "taskDescription";
   const taskDescriptionLabel = document.createElement("label");
   taskDescriptionLabel.setAttribute("for", taskDescriptionInput.name);
-  taskDescriptionLabel.innerHTML = "Description";
+  taskDescriptionLabel.innerHTML = "Beskrivning";
   taskForm.appendChild(taskDescriptionLabel);
   taskForm.appendChild(taskDescriptionInput);
 
   const taskFormSubmitButton = document.createElement("button");
+  taskFormSubmitButton.classList.add("createTask");
   taskFormSubmitButton.type = "submit";
-  taskFormSubmitButton.innerHTML = "Submit Task";
+  taskFormSubmitButton.innerHTML = "Spara händelse";
   taskForm.appendChild(taskFormSubmitButton);
 
   document.querySelector(".taskMenu").appendChild(taskForm);
@@ -178,13 +234,30 @@ function addTaskFormHtml() {
 
 function addAddTaskButtonHtml() {
   let addTaskButton = document.createElement("button");
+  addTaskButton.id = "addTaskButton";
   addTaskButton.className = "addTask";
-  addTaskButton.innerHTML = "➕";
-  addTaskButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#taskForm"))
-  );
+  addTaskButton.innerHTML = "Lägg till ny händelse";
+  addTaskButton.addEventListener("click", toggleButtonVisibility);
+  addTaskButton.addEventListener("click", removeEditForm);
 
   document.querySelector(".taskMenu").appendChild(addTaskButton);
+}
+
+function addHideTasksButtonHtml() {
+  let hideTasksButton = document.createElement("button");
+  hideTasksButton.id = "hideTasksButton";
+  hideTasksButton.className = "hideTasks";
+  hideTasksButton.innerHTML = "Göm sektion";
+  hideTasksButton.addEventListener("click", toggleButtonVisibility);
+
+  document.querySelector(".taskMenu").appendChild(hideTasksButton);
+  hideTasksButton.classList.add("hidden");
+}
+
+function toggleButtonVisibility() {
+  toggleElemVisibility(document.querySelector("#taskForm"))
+  toggleElemVisibility(document.querySelector("#addTaskButton"))
+  toggleElemVisibility(document.querySelector("#hideTasksButton"))
 }
 
 function toggleElemVisibility(elem) {
