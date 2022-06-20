@@ -7,9 +7,9 @@ let selectedDate;
 let monthInfo = [];
 
 let currentCalendarDate = {
-  day: dateNow.getDate(),
-  month: dateNow.getMonth(),
   year: dateNow.getFullYear(),
+  month: dateNow.getMonth(),
+  day: dateNow.getDate()
 };
 
 function addCalenderHeader() {
@@ -25,15 +25,11 @@ function addCalenderHeader() {
   header.appendChild(calendarMonth);
 }
 
-async function getMonthInfo(date) {
-  monthInfo = await fetchMonthInfo(date);
-}
-
 function isRedDay(date) {
   const dateString = formatDateToString(date)
   const day = monthInfo.find(day => day.datum === dateString);
+  // console.log(monthInfo);
   if (day) {
-    console.log(day);
     return day["röd dag"] === "Ja";
   }
 }
@@ -50,25 +46,25 @@ function renderCalendar(year, month) {
   renderHeader(year, month);
 
   let firstDay = new Date(year, month);
-  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 0 ? 6 : firstDay.getDay() -1 : 7;
+  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 0 ? 5 : firstDay.getDay() - 1 : 6;
   let lastDay = new Date(year, month + 1, 0);
   let lastDayOfMonth = lastDay.getDate();
 
   //Previous month
   for (let i = 0; i < weekday; i++) {
-    let date = new Date(year, month, i - weekday + 1);
+    const date = new Date(year, month, i - weekday + 1);
     createCalenderDay(date, previous, false);
   }
 
   //Current Month
   for (let i = 0; i < lastDayOfMonth; i++) {
-    let date = new Date(year, month, firstDay.getDate() + i);
+    const date = new Date(year, month, firstDay.getDate() + i);
     createCalenderDay(date, toggleSelected, true);
   }
 
   //Next month
   for (let i = lastDayOfMonth + weekday; i < 42; i++) {
-    let date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
+    const date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
     createCalenderDay(date, next, false);
   }
 }
@@ -94,7 +90,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDayNumber.innerHTML = date.getDate();
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
-  
+
   const taskAmount = getAmountOfTasks(formatDateToString(date));
   if (taskAmount > 0) {
     const calendarDayTaskAmount = document.createElement("div");
@@ -104,19 +100,19 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     calendarDayTaskAmount.appendChild(taskAmountText);
     calendarDay.appendChild(calendarDayTaskAmount);
   }
-  
+
   calendarContainer.appendChild(calendarDay);
 }
 
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
-  
+
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
     selectedDate = undefined;
-    
+
     updateTaskFormDate(formatDateToString(dateNow));
     renderAllTasks();
   }
@@ -125,7 +121,7 @@ function toggleSelected(e, date) {
     target.classList.add("selected");
     selected = target;
     selectedDate = date;
-    
+
     updateTaskFormDate(formatDateToString(date));
     renderAllTasks(formatDateToString(date));
   }
@@ -136,8 +132,9 @@ function next() {
     currentCalendarDate.year = currentCalendarDate.year + 1;
   }
   currentCalendarDate.month = (currentCalendarDate.month + 1) % 12;
+  const dateObj = convertObjectToDate(currentCalendarDate);
 
-  getMonthInfo(currentCalendarDate).then(() => {
+  fetchMonthInfo(dateObj).then(() => {
     renderCalendar(currentCalendarDate.year, currentCalendarDate.month)
   }
   );
@@ -149,7 +146,8 @@ function previous() {
   }
   currentCalendarDate.month = currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
-  getMonthInfo(currentCalendarDate).then(() => {
+  const dateObj = convertObjectToDate(currentCalendarDate);
+  fetchMonthInfo(dateObj).then(() => {
     renderCalendar(currentCalendarDate.year, currentCalendarDate.month)
   }
   );
