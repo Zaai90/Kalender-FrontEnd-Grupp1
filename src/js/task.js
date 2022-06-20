@@ -84,16 +84,6 @@ function renderTask(task) {
                     <p class="taskDescription">${task.taskDescription}</p>`;
   taskDiv.appendChild(taskInfo);
 
-  let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
-  editTaskForm.id = "taskEditForm" + task.id;
-  editTaskForm.classList.add("taskEditForm");
-  editTaskForm.classList.add("hidden");
-  editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
-  editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
-  editTaskForm.querySelector(`[name="taskDescription"]`).value =
-    task.taskDescription;
-  editTaskForm.addEventListener("submit", (e) => editTask(e));
-
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("taskDeleteButton");
   deleteButton.innerHTML = "Delete task";
@@ -103,7 +93,7 @@ function renderTask(task) {
   editButton.classList.add("taskEditButton");
   editButton.innerHTML = "Edit task";
   editButton.addEventListener("click", () =>
-    toggleElemVisibility(editTaskForm)
+    createEditForm(task)
   );
 
   const buttonContainer = document.createElement("div");
@@ -112,12 +102,51 @@ function renderTask(task) {
   buttonContainer.appendChild(deleteButton);
   buttonContainer.appendChild(editButton);
   taskDiv.appendChild(buttonContainer);
-  taskDiv.appendChild(editTaskForm);
   dateContainer.appendChild(taskDiv);
 }
 
 function updateTaskFormDate(date){
   document.querySelector(`[name="taskDate"]`).value = date;
+}
+
+function createEditForm(task){
+  removeEditForm();
+
+  const hideButton = document.createElement("button");
+  hideButton.id = "hideEditTaskForm";
+  hideButton.classList.add("hideTasks");
+  hideButton.innerHTML = "Cancel edit";
+  hideButton.addEventListener("click", removeEditForm);
+  hideButton.addEventListener("click", () => toggleElemVisibility(document.querySelector("#addTaskButton")));
+
+  const editTaskForm = document.querySelector("#taskForm").cloneNode(true);
+  editTaskForm.id = "taskEditForm" + task.id;
+  editTaskForm.classList.add("taskEditForm");
+  editTaskForm.classList.remove("hidden");
+  editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
+  editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
+  editTaskForm.querySelector(`[name="taskDescription"]`).value =
+    task.taskDescription;
+  editTaskForm.childNodes[editTaskForm.childNodes.length -1].innerHTML = "Confirm edit";
+  editTaskForm.addEventListener("submit", (e) => editTask(e));
+
+  if(!document.querySelector("#taskForm").classList.contains("hidden")) {
+    toggleButtonVisibility();
+    toggleElemVisibility(document.querySelector("#addTaskButton"));
+  }else{
+    document.querySelector("#addTaskButton").classList.add("hidden");
+  }
+
+  const taskMenu = document.querySelector(".taskMenu");
+  taskMenu.appendChild(hideButton);
+  taskMenu.appendChild(editTaskForm);
+}
+
+function removeEditForm(){
+    if(document.querySelector("[id^='taskEditForm']")){
+    document.querySelector("[id^='taskEditForm']").remove();
+    document.querySelector("#hideEditTaskForm").remove();
+  }
 }
 
 function editTask(event) {
@@ -143,6 +172,8 @@ function editTask(event) {
   }
 
   saveToLocalStorage("taskArray", taskArray);
+  toggleElemVisibility(document.querySelector("#addTaskButton"))
+  removeEditForm();
   renderAllTasks();
 }
 
@@ -209,15 +240,8 @@ function addAddTaskButtonHtml() {
   addTaskButton.id = "addTaskButton";
   addTaskButton.className = "addTask";
   addTaskButton.innerHTML = "Add new task";
-  addTaskButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#taskForm"))
-  );
-  addTaskButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#addTaskButton"))
-  );
-  addTaskButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#hideTasksButton"))
-  );
+  addTaskButton.addEventListener("click", toggleButtonVisibility);
+  addTaskButton.addEventListener("click", removeEditForm);
 
   document.querySelector(".taskMenu").appendChild(addTaskButton);
 }
@@ -227,17 +251,16 @@ function addHideTasksButtonHtml() {
   hideTasksButton.id = "hideTasksButton";
   hideTasksButton.className = "hideTasks";
   hideTasksButton.innerHTML = "Hide section";
-  hideTasksButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#taskForm"))
-  );
-  hideTasksButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#addTaskButton"))
-  );
-  hideTasksButton.addEventListener("click", () =>
-    toggleElemVisibility(document.querySelector("#hideTasksButton"))
-  );
+  hideTasksButton.addEventListener("click", toggleButtonVisibility);
+
   document.querySelector(".taskMenu").appendChild(hideTasksButton);
   hideTasksButton.classList.add("hidden");
+}
+
+function toggleButtonVisibility(){
+  toggleElemVisibility(document.querySelector("#taskForm"))
+  toggleElemVisibility(document.querySelector("#addTaskButton"))
+  toggleElemVisibility(document.querySelector("#hideTasksButton"))
 }
 
 function toggleElemVisibility(elem) {
