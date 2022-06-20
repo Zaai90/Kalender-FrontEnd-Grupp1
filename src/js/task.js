@@ -15,7 +15,7 @@ function createTask(event) {
   const task = Object.fromEntries(formData.entries());
   task.id = getTaskId();
   addTask(task);
-  event.target.reset(); 
+  event.target.reset();
   updateTaskFormDate(task.taskDate);
 }
 
@@ -100,7 +100,7 @@ function renderTask(task) {
   taskList.appendChild(document.createElement("hr"));
 }
 
-function updateTaskFormDate(date){
+function updateTaskFormDate(date) {
   document.querySelector(`[name="taskDate"]`).value = date;
 }
 
@@ -109,25 +109,22 @@ function editTask(event) {
   const formData = new FormData(event.target);
   const task = Object.fromEntries(formData.entries());
   const taskId = event.target.id.replace("taskEditForm", "");
-  const taskArray = getFromLocalStorage("taskArray");
-  const taskIndex = taskArray.indexOf(
-    taskArray.find((task) => task.id == taskId)
-  );
+  const taskIndex = tasks.indexOf(tasks.find((task) => task.id == taskId));
 
   if (task.taskName) {
-    taskArray[taskIndex].taskName = task.taskName;
+    tasks[taskIndex].taskName = task.taskName;
   }
 
   if (task.taskDescription) {
-    taskArray[taskIndex].taskDescription = task.taskDescription;
+    tasks[taskIndex].taskDescription = task.taskDescription;
   }
 
   if (task.taskDate) {
-    taskArray[taskIndex].taskDate = task.taskDate;
+    tasks[taskIndex].taskDate = task.taskDate;
   }
 
-  saveToLocalStorage("taskArray", taskArray);
-  renderAllTasks();
+  saveToLocalStorage("taskArray", tasks);
+  update();
 }
 
 function addTaskHtml() {
