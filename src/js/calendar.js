@@ -25,20 +25,17 @@ function addCalenderHeader() {
   header.appendChild(calendarMonth);
 }
 
-function getMonthInfo(date) {
-  fetchMonthInfo(date).then(data => {
-    monthInfo = data;
-  });
+async function getMonthInfo(date) {
+  monthInfo = await fetchMonthInfo(date);
 }
 
 function isRedDay(date) {
-  dateString = formatDateToString(date)
-  let day = monthInfo.find(day => day.datum === dateString);
-  console.log(day);
-  // if (day["röd dag"] === "Ja") {
-  //   return true;
-  // }
-  return false;
+  const dateString = formatDateToString(date)
+  const day = monthInfo.find(day => day.datum === dateString);
+  if (day) {
+    console.log(day);
+    return day["röd dag"] === "Ja";
+  }
 }
 
 function renderHeader(year, month) {
@@ -53,7 +50,7 @@ function renderCalendar(year, month) {
   renderHeader(year, month);
 
   let firstDay = new Date(year, month);
-  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
+  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 0 ? 6 : firstDay.getDay() -1 : 7;
   let lastDay = new Date(year, month + 1, 0);
   let lastDayOfMonth = lastDay.getDate();
 
@@ -88,6 +85,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   if (isCurrentMonth) {
     isRedDay(date) ? calendarDay.classList.add("redDay") : '';
   }
+
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
@@ -154,12 +152,13 @@ function previous() {
   );
 }
 
+/**
+ * 
+ * @param {Date} date 
+ * @returns 
+ */
 function formatDateToString(date) {
-  return `${date.getFullYear()}-${date.getMonth() + 1 < 10
-    ? "0" + (date.getMonth() + 1)
-    : date.getMonth() + 1}-${date.getDate() < 10
-      ? "0" + date.getDate()
-      : date.getDate()}`;
+  return date.toISOString().split("T")[0];
 }
 
 function getAmountOfTasks(date) {
