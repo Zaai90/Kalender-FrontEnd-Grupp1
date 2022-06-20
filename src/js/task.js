@@ -80,8 +80,9 @@ function renderTask(task) {
 
   let taskInfo = document.createElement("div");
   taskInfo.classList.add("task");
-  taskInfo.innerHTML = `<p class="taskName">${task.taskName}</p>
-                    <p class="taskDescription">${task.taskDescription}</p>`;
+  taskInfo.innerHTML = `<p class="taskTime">${task.taskTime}</p>
+                        <p class="taskName">${task.taskName}</p>
+                        <p class="taskDescription">${task.taskDescription}</p>`;
   taskDiv.appendChild(taskInfo);
 
   const deleteButton = document.createElement("button");
@@ -123,6 +124,7 @@ function createEditForm(task) {
   editTaskForm.id = "taskEditForm" + task.id;
   editTaskForm.classList.add("taskEditForm");
   editTaskForm.classList.remove("hidden");
+  editTaskForm.querySelector(`[name="taskTime"]`).value = task.taskTime;
   editTaskForm.querySelector(`[name="taskDate"]`).value = task.taskDate;
   editTaskForm.querySelector(`[name="taskName"]`).value = task.taskName;
   editTaskForm.querySelector(`[name="taskDescription"]`).value =
@@ -168,6 +170,10 @@ function editTask(event) {
     tasks[taskIndex].taskDate = task.taskDate;
   }
 
+  if (task.taskTime) {
+    tasks[taskIndex].taskTime = task.taskTime;
+  }
+
   saveToLocalStorage("taskArray", tasks);
   removeEditForm();
   toggleElemVisibility(document.querySelector("#addTaskButton"))
@@ -204,6 +210,15 @@ function addTaskFormHtml() {
   taskDateLabel.innerHTML = "Datum";
   taskForm.appendChild(taskDateLabel);
   taskForm.appendChild(taskDateInput);
+
+  const taskTimeInput = document.createElement("input");
+  taskTimeInput.type = "time";
+  taskTimeInput.name = "taskTime";
+  const taskTimeLabel = document.createElement("label");
+  taskTimeLabel.setAttribute("for", taskTimeInput.name);
+  taskTimeLabel.innerHTML = "Tid";
+  taskForm.appendChild(taskTimeLabel);
+  taskForm.appendChild(taskTimeInput);
 
   const taskNameInput = document.createElement("input");
   taskNameInput.type = "text";
