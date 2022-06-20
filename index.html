@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" class="css" href="src/css/style.css" />
+    <link rel="stylesheet" class="css" href="src/css/main.css" />
+    <link rel="stylesheet" class="css" href="src/css/aside.css" />
+    <link rel="stylesheet" class="css" href="src/css/header.css" />
+    <link rel="stylesheet" class="css" href="src/css/global.css" />
+    <link rel="icon" type="image/x-icon" href="/src/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script defer src="src/js/main.js"></script>
+    <script defer src="src/js/stylemode.js"></script>
+    <script defer src="src/js/welcome.js"></script>
+    <script defer src="src/js/localStorage.js"></script>
+    <script defer src="src/js/task.js"></script>
+    <script defer src="src/js/externalAPI.js"></script>
+    <script defer src="src/js/calendar.js"></script>
+    <script defer src="src/js/weatherfc.js"></script>
+    <title>Kalender</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" class="css" href="src/css/style.css" />
-  <link rel="stylesheet" class="css" href="src/css/main.css" />
-  <link rel="stylesheet" class="css" href="src/css/aside.css" />
-  <link rel="stylesheet" class="css" href="src/css/header.css" />
-  <link rel="stylesheet" class="css" href="src/css/global.css" />
-  <link rel="icon" type="image/x-icon" href="/src/images/favicon.ico" />
-  <link rel="stylesheet" class="css" href="src/css/all.css">
-  <script defer src="src/js/main.js"></script>
-  <script defer src="src/js/stylemode.js"></script>
-  <script defer src="src/js/welcome.js"></script>
-  <script defer src="src/js/localStorage.js"></script>
-  <script defer src="src/js/task.js"></script>
-  <script defer src="src/js/externalAPI.js"></script>
-  <script defer src="src/js/calendar.js"></script>
-  <script defer src="src/js/weatherfc.js"></script>
-  <title>Kalender</title>
-</head>
+  <body>
+    <section class="layout">
+      <header>
+        <button id="switchbutton"></button>
+        <div class="calendarHeader"></div>
+        <div class="bottom-border-shadow"></div>
+      </header>
 
-<body>
-  <section class="layout">
-    <header>
-      <button id="switchbutton"></button>
-      <div class="calendarHeader"></div>
-      <div class="bottom-border-shadow"></div>
-    </header>
-
-    <main class="mainContainer">
-      <div class="calendarContainer">
-        <div class="weekdays">
-          <div class="weekday">Måndag</div>
-          <div class="weekday">Tisdag</div>
-          <div class="weekday">Onsdag</div>
-          <div class="weekday">Torsdag</div>
-          <div class="weekday">Fredag</div>
-          <div class="weekday">Lördag</div>
-          <div class="weekday">Söndag</div>
+      <main class="mainContainer">
+        <div class="calendarContainer">
+          <div class="weekdays">
+            <div class="weekday">Måndag</div>
+            <div class="weekday">Tisdag</div>
+            <div class="weekday">Onsdag</div>
+            <div class="weekday">Torsdag</div>
+            <div class="weekday">Fredag</div>
+            <div class="weekday">Lördag</div>
+            <div class="weekday">Söndag</div>
+          </div>
+          <div class="calendar"></div>
         </div>
-        <div class="calendar"></div>
-      </div>
-    </main>
+      </main>
 
-    <aside>
-      <div class="welcomeContainer">
-        <img
-          src="./src/images/vecteezy_cute-panda-magician-mascot-logo-concept-isolated-on-white_5911605-removebg-preview.png"
-          class="mascot" />
-      </div>
-      <div class="taskMenu"></div>
-      <div class="taskContainer"></div>
-    </aside>
-  </section>
-</body>
-
+      <aside>
+        <div class="welcomeContainer">
+          <img
+            src="./src/images/vecteezy_cute-panda-magician-mascot-logo-concept-isolated-on-white_5911605-removebg-preview.png"
+            class="mascot"
+          />
+        </div>
+        <div class="taskMenu"></div>
+        <div class="taskContainer"></div>
+      </aside>
+    </section>
+  </body>
 </html>

@@ -19,7 +19,7 @@ async function getWeatherForeCast(lat, long) {
 }
 const weatherCodeLib = {
   0: "Clear sky",
-  1: "Mainly clear",
+  1: "fa-cloud-sun",
   2: "partly cloudy",
   3: "fa-cloud-sun",
   45: "Fog",
@@ -52,23 +52,30 @@ const weatherCodeLib = {
 function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   let weather = document.querySelector(".welcomeContainer");
 
-  const tempDiv = document.createElement("i");
-  tempDiv.classList.add("weather-temp");
-  tempDiv.innerHTML = `Temp: ${temp}°C`;
-  weather.append(tempDiv);
+  const weatherCodeDiv = document.createElement("i");
+  weatherCodeDiv.classList.add("fa-solid", weatherCodeLib[weatherCode]);
+  weatherCodeDiv.style.fontSize = "1.8rem";
+  weather.append(weatherCodeDiv);
+  console.log(weatherCode);
 
-  const sunsetDiv = document.createElement("i");
-  sunsetDiv.classList.add("weather-sunset");
-  sunsetDiv.innerHTML = `Sunset: ${sunset}`;
+  const tempDiv = document.createElement("p");
+  tempDiv.classList.add("fa-solid", "fa-temperature-half");
+  tempDiv.innerHTML = ` ${temp}°C`;
+  tempDiv.style.fontSize = "1rem";
+  weather.append(tempDiv);
+  console.log(temp);
+
+  const sunsetDiv = document.createElement("p");
+  sunsetDiv.classList.add("fa-solid", "fa-moon");
+  sunsetDiv.innerHTML = `${sunset}`;
+  sunsetDiv.style.fontSize = "1rem";
   weather.append(sunsetDiv);
+  console.log(sunset);
 
   const windspeedDiv = document.createElement("i");
-  windspeedDiv.classList.add("weather-wind");
-  windspeedDiv.innerHTML = `Windspeed: ${windspeed} m/s`;
+  windspeedDiv.classList.add("fa-solid", "fa-wind");
+  windspeedDiv.innerHTML = ` ${windspeed} m/s`;
+  windspeedDiv.style.fontSize = "1rem";
   weather.append(windspeedDiv);
-
-  const weatherCodeDiv = document.createElement("i");
-  weatherCodeDiv.classList.add(`${weatherCodeLib[weatherCode]}`);
-  weatherCodeDiv.innerHTML = `Weather: ${weatherCodeLib[weatherCode]}`;
-  weather.append(weatherCodeDiv);
+  console.log(windspeed);
 }
