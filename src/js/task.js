@@ -15,7 +15,8 @@ function createTask(event) {
   const task = Object.fromEntries(formData.entries());
   task.id = getTaskId();
   addTask(task);
-  event.target.reset(); // Will move this to a better home.
+  event.target.reset(); 
+  updateTaskFormDate(task.taskDate);
 }
 
 function getTaskId() {
@@ -97,6 +98,10 @@ function renderTask(task) {
   taskList.appendChild(buttonContainer);
   taskList.appendChild(editTaskForm);
   taskList.appendChild(document.createElement("hr"));
+}
+
+function updateTaskFormDate(date){
+  document.querySelector(`[name="taskDate"]`).value = date;
 }
 
 function editTask(event) {
