@@ -43,27 +43,46 @@ function renderAllTasks(dateSearch) {
     ? getFromLocalStorage("taskArray")
     : [];
   taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
-
+  
   if (datePattern.exec(dateSearch)) {
     taskArray = taskArray.filter((t) => t.taskDate == dateSearch);
   } else {
     taskArray = taskArray.filter(
       (t) => t.taskDate >= formatDateToString(dateNow)
-    );
-  }
+      );
+    }
 
-  for (const task of taskArray) {
-    renderTask(task);
+  for (const task of taskArray){
+    if(!document.querySelector(`#taskDate${task.taskDate}`)){
+      const groupContainer = document.createElement("div")
+      groupContainer.classList.add("taskDateContainer");
+      groupContainer.id = "taskDate" + task.taskDate;
+
+      const dateTitle = document.createElement("h3");
+      dateTitle.classList.add("dateTitle");
+      dateTitle.innerHTML = task.taskDate;
+
+      taskList.appendChild(dateTitle);
+      taskList.appendChild(groupContainer);
+
+      renderTask(task);
+    } else{
+      renderTask(task);
+    } 
   }
 }
 
 function renderTask(task) {
-  let li = document.createElement("li");
-  li.classList.add("task");
-  li.innerHTML = `<p class="taskName">${task.taskName}</p>
+  const dateContainer = document.querySelector(`#taskDate${task.taskDate}`);
+  const taskDiv = document.createElement("div");
+  taskDiv.classList.add("taskDiv");
+
+  let taskInfo = document.createElement("div");
+  taskInfo.classList.add("task");
+  taskInfo.innerHTML = `<p class="taskName">${task.taskName}</p>
                     <p class="taskDescription">${task.taskDescription}</p>
                     <p class="taskDate">${task.taskDate}</p>`;
-  taskList.appendChild(li);
+  taskDiv.appendChild(taskInfo);
 
   let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
   editTaskForm.id = "taskEditForm" + task.id;
@@ -76,14 +95,12 @@ function renderTask(task) {
   editTaskForm.addEventListener("submit", (e) => editTask(e));
 
   const deleteButton = document.createElement("button");
-  deleteButton.className = "taskDeleteButton";
-  deleteButton.classList.add = "taskDeleteButton";
+  deleteButton.classList.add("taskDeleteButton");
   deleteButton.innerHTML = "Delete task";
   deleteButton.addEventListener("click", () => deleteTask(task));
 
   var editButton = document.createElement("button");
-  editButton.className = "taskEditButton";
-  editButton.classList.add("editButton");
+  editButton.classList.add("taskEditButton");
   editButton.innerHTML = "Edit task";
   editButton.addEventListener("click", () =>
     toggleElemVisibility(editTaskForm)
@@ -94,9 +111,9 @@ function renderTask(task) {
 
   buttonContainer.appendChild(deleteButton);
   buttonContainer.appendChild(editButton);
-  taskList.appendChild(buttonContainer);
-  taskList.appendChild(editTaskForm);
-  taskList.appendChild(document.createElement("hr"));
+  taskDiv.appendChild(buttonContainer);
+  taskDiv.appendChild(editTaskForm);
+  dateContainer.appendChild(taskDiv);
 }
 
 function editTask(event) {

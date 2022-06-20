@@ -107,3 +107,24 @@ aside {
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
+
+.dateTitle{
+  text-align-last: center;
+  background-color: var(--faded-background-color);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+.taskDiv{
+  background-color: var(--calendarDay-background-color);
+  border: 1px black solid;
+  border-radius: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.taskDateContainer{
+  margin-bottom: 1rem;
+}
