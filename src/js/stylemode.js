@@ -11,7 +11,7 @@ function initModeButton(theme) {
   opositeTheme = themes[(themes.indexOf(theme) + 1) % 2];
   modeButton = document.getElementById("switchbutton");
   modeButton.addEventListener("click", OnSwitch);
-  modeButton.innerHTML = `${capitalizeFirstLetter(opositeTheme)} Mode`;
+  modeButton.innerHTML = `${opositeTheme.capitalize()} Mode`;
 }
 
 function OnSwitch() {
@@ -27,6 +27,5 @@ function OnSwitch() {
 }
 
 function setDataTheme(theme) {
-
   document.documentElement.setAttribute("data-theme", theme);
 }

@@ -35,10 +35,10 @@ function renderCalendar(year, month) {
   calendarContainer.innerHTML = "";
   renderHeader(year, month);
 
-  let firstDay = new Date(year, month);
-  let weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
-  let lastDay = new Date(year, month + 1, 0);
-  let lastDayOfMonth = lastDay.getDate();
+  const firstDay = new Date(year, month);
+  const weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
+  const lastDay = new Date(year, month + 1, 0);
+  const lastDayOfMonth = lastDay.getDate();
 
   //Previous month
   for (let i = 0; i < weekday; i++) {
