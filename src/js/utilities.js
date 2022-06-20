@@ -12,7 +12,8 @@ String.prototype.capitalize = function () {
 * @returns string in format YYYY-MM-DD
 */
 function formatDateToString(date) {
-  return date.toISOString().split("T")[0];
+  const correctDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+  return correctDate.toISOString().split("T")[0];
 }
 
 /**
@@ -36,7 +37,7 @@ async function fetchData(url, options) {
  * @param {*} value 
  * Adds value to localStorage as json string
  */
-function saveToLocalStorage(key, value){
+function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
@@ -45,11 +46,11 @@ function saveToLocalStorage(key, value){
  * @param {string} key 
  * @returns {object} data as object
  */
-function getFromLocalStorage(key){
-  try{
-  return JSON.parse(localStorage.getItem(key));
+function getFromLocalStorage(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key));
   }
-  catch(error){
+  catch (error) {
     return null;
   }
 }
