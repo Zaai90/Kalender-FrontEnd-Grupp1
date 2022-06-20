@@ -80,8 +80,7 @@ function renderTask(task) {
   let taskInfo = document.createElement("div");
   taskInfo.classList.add("task");
   taskInfo.innerHTML = `<p class="taskName">${task.taskName}</p>
-                    <p class="taskDescription">${task.taskDescription}</p>
-                    <p class="taskDate">${task.taskDate}</p>`;
+                    <p class="taskDescription">${task.taskDescription}</p>`;
   taskDiv.appendChild(taskInfo);
 
   let editTaskForm = document.querySelector("#taskForm").cloneNode(true);
