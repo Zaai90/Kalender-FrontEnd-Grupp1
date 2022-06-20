@@ -54,3 +54,9 @@ function getFromLocalStorage(key) {
     return null;
   }
 }
+
+function convertObjectToDate({ year, month, day }) {
+  result = new Date(year, month);
+  console.log(result);
+  return result;
+}
