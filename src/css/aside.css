@@ -128,3 +128,7 @@ aside {
 .taskDateContainer{
   margin-bottom: 1rem;
 }
+
+#hideEditTaskForm {
+  background-color: lightcoral;
+}
