@@ -5,5 +5,6 @@ async function fetchMonthInfo(date) {
   const days = response.dagar.map((day) => {
     return day;
   });
+  monthInfo = days;
   return days;
 }

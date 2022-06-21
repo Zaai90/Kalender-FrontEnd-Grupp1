@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 
-function main() {
+async function main() {
+  dateNow = new Date();
   setInterval(() => (dateNow = new Date()), 1000);
   renderWelcomeSegment();
   initTasks();
@@ -9,6 +10,11 @@ function main() {
   renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
   initGeoLocation();
   initMascotEvent();
+
+  fetchMonthInfo(dateNow).then(() => {
+    renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
+  });
+  addCalenderHeader();
 }
 
 function update() {
