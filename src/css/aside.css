@@ -86,16 +86,6 @@ aside {
   background-color: rgba(255, 111, 0, 0.807);
 }
 
-.taskDeleteButton {
-  width: 6rem;
-  margin-bottom: 5px;
-}
-
-.taskEditButton {
-  width: 6rem;
-  margin-bottom: 5px;
-}
-
 .weather-temp {
   margin-top: 2%;
   font-size: 1rem;
@@ -142,7 +132,9 @@ aside {
 .buttonContainer {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 0.2rem;
 }
+
 .holidayInfo {
   margin-bottom: 0.5rem;
 }

@@ -141,13 +141,12 @@ function renderTask(task) {
   taskDiv.appendChild(taskInfo);
 
   const deleteButton = document.createElement("button");
-  deleteButton.classList.add("taskDeleteButton", "fa-solid", "fa-trash-can");
+  deleteButton.classList.add("fa-solid", "fa-trash-can");
   deleteButton.addEventListener("click", () => deleteTask(task));
 
   var editButton = document.createElement("button");
-  editButton.classList.add("taskEditButton", "fa-solid", "fa-pen-to-square");
+  editButton.classList.add("fa-solid", "fa-pen-to-square");
   editButton.addEventListener("click", () => createEditForm(task));
-  editButton.classList.add("taskEditButton");
   editButton.addEventListener("click", removeFormValidationMessageAndStyling);
   editButton.addEventListener("click", () => createEditForm(task));
 
