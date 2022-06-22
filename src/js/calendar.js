@@ -26,12 +26,20 @@ function addCalenderHeader() {
 }
 
 function isRedDay(date) {
+  const faultyDays = [
+    "06-06",
+  ];
+
   const dateString = formatDateToString(date)
   const day = monthInfo.find(day => day.datum === dateString);
-  // console.log(monthInfo);
+
+  if (faultyDays.find(day => day === dateString.slice(5, 10))) {
+    return true;
+  }
   if (day) {
     return day["röd dag"] === "Ja";
   }
+
 }
 
 function renderHeader(year, month) {
