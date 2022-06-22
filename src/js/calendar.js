@@ -107,7 +107,6 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     calendarDay.appendChild(calendarDayTaskAmount);
   }
 
-
   calendarContainer.appendChild(calendarDay);
 }
 
