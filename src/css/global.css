@@ -9,8 +9,8 @@
     --weekday-font-size: calc(0.5rem + 1 * ((100vw + 2rem) / 160));
     --taskAmount-background-color: #6ea076;
     --taskAmount-text-color: #fff;
+    --header-text-color: #fff;
 
-    --text-color-secondary: #000000;
 }
 
 html[data-theme="light"] {
@@ -22,6 +22,7 @@ html[data-theme="light"] {
     --faded-background-color: #72727296;
 
     --text-color: rgb(0, 0, 0);
+    --text-color-secondary: #ffffff;
 
     --weekdays-background-color: #c9c5c5ea;
     --calendarDay-background-color: rgb(255, 255, 255);
@@ -43,6 +44,7 @@ html[data-theme="dark"] {
     --aside-background-color: rgb(71, 71, 68);
 
     --text-color: #fff;
+    --text-color-secondary: #000000;
 
     --faded-text-color: #706f6f;
     --faded-background-color: #29292941;
@@ -70,7 +72,7 @@ body {
 
 .layout {
     height: 100%;
-    width: 80%;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -85,19 +87,55 @@ body {
 @media screen and (max-width: 768px) {
     .layout {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr repeat(3, 2fr);
+        grid-template-rows: (3, 1fr);
+        grid-template-areas:
+            "aside"
+            "head"
+            "main"
+    }
+
+    .taskList {
+        display: flex;
+        flex-direction: row;
+        max-width: 325px;
+        /* margin: 0 auto; */
+        overflow-y: scroll;
+        /* overflow-x: hidden; */
+        scroll-snap-type: y proximity;
+        justify-content: space-between;
+    }
+
+    .taskContainer {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x proximity;
+    }
+
+    .taskDateContainer {
+        margin: 0 auto;
+        max-height: 275px;
+        margin-right: 10px;
+        scroll-snap-align: center;
+    }
+
+    .dateTitle {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
         grid-template-areas:
             "head"
-            "aside"
-            "aside"
             "aside";
+
     }
+
+
 
     main {
-        display: none;
-    }
-
-    #switchbutton {
         display: none;
     }
 
@@ -115,16 +153,6 @@ body {
     display: none;
 }
 
-
-
 ::-webkit-scrollbar {
     display: none;
 }
-
-/* ::scrollbar {
-    overflow: auto;
-    -ms-overflow-style: none;
-    /* IE 11 */
-/* scrollbar-width: none; */
-/* Firefox 64 
-}*/
