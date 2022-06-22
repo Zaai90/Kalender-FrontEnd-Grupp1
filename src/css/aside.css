@@ -17,6 +17,7 @@ aside {
 .mascot {
   display: block;
   width: 200px;
+  z-index: 2;
 }
 
 .welcomeContainer {

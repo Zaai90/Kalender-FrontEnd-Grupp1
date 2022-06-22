@@ -14,7 +14,6 @@ async function main() {
   fetchMonthInfo(dateNow).then(() => {
     renderCalendar(dateNow.getFullYear(), dateNow.getMonth());
   });
-  addCalenderHeader();
 }
 
 function update() {
