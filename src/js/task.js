@@ -234,11 +234,6 @@ function editTask(event) {
       tasks[taskIndex].taskTime = task.taskTime;
     }
 
-  saveToLocalStorage("taskArray", tasks);
-  removeEditForm();
-  toggleElemVisibility(document.querySelector("#addTaskButton"));
-  update();
-  if (validateForm(event)) {
     saveToLocalStorage("taskArray", tasks);
     removeEditForm();
     toggleElemVisibility(document.querySelector("#addTaskButton"))
