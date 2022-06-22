@@ -123,7 +123,7 @@ main {
 
 #canvas {
     background-color: transparent;
-    z-index: 2;
+    z-index: 1337;
     position: fixed;
     height: 100%;
     width: 100%;

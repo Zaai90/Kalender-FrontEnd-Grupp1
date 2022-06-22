@@ -64,9 +64,13 @@ antal todos på en viss dag. - (G)
 
 - [x] Spara todos i local storage och visa dessa vid omladdning av sidan - (VG)
 - [x] Användaren skall kunna ändra en todo - (VG)
-- [x] Användaren skall kunna växa till andra månader i kalendervyn - (VG)
-- [x] Svenska helgdagar visas i kalendern - (VG)
+- [x] Användaren skall kunna växa till andra månader i kalendervyn - (VG) - ### Teamkommentar: detta görs genom att klicka på föregående eller framtida månads datum
+- [x] Svenska helgdagar visas i kalendern - (VG) - ### Teamkommentar: Vi visar dessa genom rödmarkerade datumsiffror i kalendern
 - [x] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
+
+### Extra:
+- Kalendern visar framtida tasks i asiden by default+++
+- Vi använder 2 apier, ett för väderinformation och ett för helgdagar
 
 #### Krav för godkänt
 - [ ] Uppgiften lämnas in i tid!
