@@ -44,6 +44,9 @@ function renderSpecialDayInfo(res) {
     .classList.add("holidayInfo");
 
   const holidayDiv = document.querySelector(".holidayInfo");
-  holidayDiv.innerHTML =
-    "Dagens namn: " + daysArray[dateNow.getDate() - 1].namnsdag;
+  const names = daysArray[dateNow.getDate() - 1].namnsdag;
+  if (names.length > 0) {
+    holidayDiv.innerHTML =
+      "Dagens namn: " + names;
+  }
 }
