@@ -10,11 +10,13 @@ aside {
   grid-area: aside;
   background-color: var(--aside-background-color);
   box-shadow: var(--aside-right-shadow);
+  font-family: RobotoMono;
+  color: var(--text-color);
 }
 
 .mascot {
   display: block;
-  height: 200px;
+  width: 200px;
 }
 
 .welcomeContainer {
@@ -24,6 +26,7 @@ aside {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  align-items: center;
 }
 
 .taskMenu {
@@ -45,8 +48,6 @@ aside {
   margin: 0 auto;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-family: RobotoMono;
-  color: var(--text-color);
 }
 
 .task {
