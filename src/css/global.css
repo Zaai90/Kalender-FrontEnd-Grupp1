@@ -69,19 +69,27 @@ body {
     scrollbar-width: none;
 }
 
+#canvas {
+    background-color: transparent;
+    z-index: 1337;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
 
 .layout {
-    height: 100%;
     max-width: 1280px;
+    height: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr repeat(3, 2fr);
     grid-template-areas:
-        "head head head head"
-        "aside main main main"
-        "aside main main main"
-        "aside main main main";
+        "head head head"
+        "aside main main"
+        "aside main main"
+        "aside main main";
 }
 
 @media screen and (max-width: 768px) {
@@ -89,9 +97,9 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: (3, 1fr);
         grid-template-areas:
-            "aside"
             "head"
-            "main"
+            "aside"
+            "main";
     }
 
     .taskList {

@@ -121,11 +121,33 @@ main {
     border: solid 3px #00A4EF;
 }
 
-#canvas {
-    background-color: transparent;
-    z-index: 1337;
-    position: fixed;
-    height: 100%;
+.calendar-header {
+    display: flex;
+    color: var(--text-color);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendarHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--header-text-color);
     width: 100%;
-    pointer-events: none;
+}
+
+.calendarHeaderYear {
+    padding: 5px;
+    display: flex;
+    font-size: var(--dateHeader-font-size);
+    font-weight: bold;
+}
+
+.calendarHeaderMonth {
+    padding: 5px;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
