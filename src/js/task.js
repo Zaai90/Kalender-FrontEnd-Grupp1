@@ -50,13 +50,12 @@ function validateForm(event) {
   }
 
   return isValid;
-
 }
 
 function addFormValidationMessage(errorMessage) {
   const errorMessageElem = document.createElement("p");
   errorMessageElem.innerHTML = errorMessage;
-  errorMessageElem.classList.add("formErrorMessage")
+  errorMessageElem.classList.add("formErrorMessage");
   document.querySelector(".taskMenu").appendChild(errorMessageElem);
 }
 
@@ -67,8 +66,7 @@ function removeFormValidationMessageAndStyling() {
 
   for (const elem of document.querySelectorAll(".invalidInput")) {
     elem.classList.remove("invalidInput");
-  };
-
+  }
 }
 
 function getTaskId() {
@@ -95,7 +93,12 @@ function renderAllTasks(dateSearch) {
   let taskArray = getFromLocalStorage("taskArray")
     ? getFromLocalStorage("taskArray")
     : [];
-  taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate) || new Date(`1337-01-01T${a.taskTime}`) - new Date(`1337-01-01T${b.taskTime}`));
+  taskArray.sort(
+    (a, b) =>
+      new Date(a.taskDate) - new Date(b.taskDate) ||
+      new Date(`1337-01-01T${a.taskTime}`) -
+        new Date(`1337-01-01T${b.taskTime}`)
+  );
 
   if (datePattern.exec(dateSearch)) {
     taskArray = taskArray.filter((t) => t.taskDate == dateSearch);
@@ -145,11 +148,8 @@ function renderTask(task) {
   editButton.classList.add("taskEditButton", "fa-solid", "fa-pen-to-square");
   editButton.addEventListener("click", () => createEditForm(task));
   editButton.classList.add("taskEditButton");
-  editButton.innerHTML = "Redigera händelse";
   editButton.addEventListener("click", removeFormValidationMessageAndStyling);
-  editButton.addEventListener("click", () =>
-    createEditForm(task)
-  );
+  editButton.addEventListener("click", () => createEditForm(task));
 
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "buttonContainer";
@@ -215,9 +215,8 @@ function editTask(event) {
   const task = Object.fromEntries(formData.entries());
   const taskId = event.target.id.replace("taskEditForm", "");
   const taskIndex = tasks.indexOf(tasks.find((task) => task.id == taskId));
-  
-  if(validateForm(event)){
 
+  if (validateForm(event)) {
     if (task.taskName) {
       tasks[taskIndex].taskName = task.taskName;
     }
@@ -236,7 +235,7 @@ function editTask(event) {
 
     saveToLocalStorage("taskArray", tasks);
     removeEditForm();
-    toggleElemVisibility(document.querySelector("#addTaskButton"))
+    toggleElemVisibility(document.querySelector("#addTaskButton"));
     update();
   }
 }
@@ -325,7 +324,10 @@ function addHideTasksButtonHtml() {
   hideTasksButton.className = "hideTasks";
   hideTasksButton.innerHTML = "Göm sektion";
   hideTasksButton.addEventListener("click", toggleButtonVisibility);
-  hideTasksButton.addEventListener("click", removeFormValidationMessageAndStyling);
+  hideTasksButton.addEventListener(
+    "click",
+    removeFormValidationMessageAndStyling
+  );
 
   document.querySelector(".taskMenu").appendChild(hideTasksButton);
   hideTasksButton.classList.add("hidden");
