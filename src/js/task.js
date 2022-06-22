@@ -87,12 +87,10 @@ function renderTask(task) {
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("taskDeleteButton", "fa-solid", "fa-trash-can");
-  // deleteButton.innerHTML = "Radera händelse"; remove
   deleteButton.addEventListener("click", () => deleteTask(task));
 
   var editButton = document.createElement("button");
   editButton.classList.add("taskEditButton", "fa-solid", "fa-pen-to-square");
-  // editButton.innerHTML = "Redigera händelse"; remove
   editButton.addEventListener("click", () => createEditForm(task));
 
   const buttonContainer = document.createElement("div");
