@@ -1,3 +1,9 @@
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-VariableFont_wght.ttf);
+}
+
+
 aside {
   display: flex;
   flex-direction: column;
@@ -39,6 +45,8 @@ aside {
   margin: 0 auto;
   overflow-x: hidden;
   overflow-y: scroll;
+  font-family: RobotoMono;
+  color: var(--text-color);
 }
 
 .task {
@@ -113,7 +121,7 @@ aside {
   background-color: var(--faded-background-color);
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -123,6 +131,7 @@ aside {
   border: 1px black solid;
   border-radius: 0.8rem;
   margin-bottom: 0.3rem;
+
 }
 
 .taskDateContainer{
@@ -131,4 +140,24 @@ aside {
 
 #hideEditTaskForm {
   background-color: lightcoral;
+}
+
+.holidayInfo{
+  margin-bottom: 0.5rem;
+}
+
+.taskName{
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.taskDescription{
+  font-weight: 200;
+  font-size: 0.8rem;
+  color: var(--aside-faded-text-color);
+}
+
+
+.dateTitle, .taskDiv{
+  box-shadow: var(--aside-inset-box-shadow) 0px 30px 60px -12px inset;
 }
