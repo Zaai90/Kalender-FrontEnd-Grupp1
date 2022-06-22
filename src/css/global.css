@@ -62,13 +62,16 @@ html[data-theme="dark"] {
 }
 
 body {
+    background-color: var(--main-background-color);
     height: 100vh;
+    scrollbar-width: none;
 }
 
 
 .layout {
     height: 100%;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr repeat(3, 2fr);
@@ -112,6 +115,16 @@ body {
     display: none;
 }
 
+
+
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* ::scrollbar {
+    overflow: auto;
+    -ms-overflow-style: none;
+    /* IE 11 */
+/* scrollbar-width: none; */
+/* Firefox 64 
+}*/
