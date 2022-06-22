@@ -88,14 +88,11 @@ aside {
 }
 
 .taskDeleteButton {
-  display: inline-flexbox;
   width: 6rem;
   background-color: rgba(252, 38, 31, 0.697);
 }
 
 .taskEditButton {
-  display: flex;
-  align-items: center;
   width: 6rem;
   background-color: rgba(23, 222, 226, 0.791);
 }
