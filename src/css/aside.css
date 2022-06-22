@@ -162,3 +162,11 @@ aside {
 .dateTitle, .taskDiv{
   box-shadow: var(--aside-inset-box-shadow) 0px 30px 60px -12px inset;
 }
+
+.invalidInput{
+  border: 2px rgb(255, 2, 2) solid;
+}
+
+.formErrorMessage{
+  color: red;
+}
