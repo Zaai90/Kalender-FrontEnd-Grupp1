@@ -21,7 +21,6 @@ function createTask(event) {
     removeFormValidationMessageAndStyling();
     updateTaskFormDate(task.taskDate);
   }
-
 }
 
 function validateForm(event){
