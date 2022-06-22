@@ -10,7 +10,7 @@ function initTasks() {
 
 function createTask(event) {
   event.preventDefault();
-  removeFormValidationMessageAndStyling(event);
+  removeFormValidationMessageAndStyling();
 
   if(validateForm(event)){
     const formData = new FormData(event.target);
@@ -18,7 +18,7 @@ function createTask(event) {
     task.id = getTaskId();
     addTask(task);
     event.target.reset();
-    removeFormValidationMessageAndStyling(event);
+    removeFormValidationMessageAndStyling();
     updateTaskFormDate(task.taskDate);
   }
 
@@ -61,16 +61,15 @@ function addFormValidationMessage(errorMessage){
   document.querySelector(".taskMenu").appendChild(errorMessageElem);
 }
 
-function removeFormValidationMessageAndStyling(event){
+function removeFormValidationMessageAndStyling(){
   for(const elem of document.querySelectorAll(".formErrorMessage")){
     elem.remove();
   }
 
-  for(const elem of event.target.childNodes){
-    if(elem.classList.contains("invalidInput")){
+  for(const elem of document.querySelectorAll(".invalidInput")){
       elem.classList.remove("invalidInput");
     };
-  }
+  
 }
 
 function getTaskId() {
@@ -171,6 +170,7 @@ function createEditForm(task) {
   hideButton.id = "hideEditTaskForm";
   hideButton.classList.add("hideTasks");
   hideButton.innerHTML = "Avbryt redigering";
+  hideButton.addEventListener("click", removeFormValidationMessageAndStyling);
   hideButton.addEventListener("click", removeEditForm);
   hideButton.addEventListener("click", () => toggleElemVisibility(document.querySelector("#addTaskButton")));
 
@@ -207,7 +207,7 @@ function removeEditForm() {
 
 function editTask(event) {
   event.preventDefault();
-  removeFormValidationMessageAndStyling(event);
+  removeFormValidationMessageAndStyling();
   const formData = new FormData(event.target);
   const task = Object.fromEntries(formData.entries());
   const taskId = event.target.id.replace("taskEditForm", "");
@@ -321,6 +321,7 @@ function addHideTasksButtonHtml() {
   hideTasksButton.className = "hideTasks";
   hideTasksButton.innerHTML = "Göm sektion";
   hideTasksButton.addEventListener("click", toggleButtonVisibility);
+  hideTasksButton.addEventListener("click", removeFormValidationMessageAndStyling);
 
   document.querySelector(".taskMenu").appendChild(hideTasksButton);
   hideTasksButton.classList.add("hidden");
