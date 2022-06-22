@@ -70,8 +70,14 @@ function renderCalendar(year, month) {
 }
 
 function createCalenderDay(date, eventFunction, isCurrentMonth) {
+
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
+
+  if ((date ? formatDateToString(date) : "undefined") === (selectedDate ? formatDateToString(selectedDate) : "")) {
+    calendarDay.classList.add("selected");
+    selected = calendarDay;
+  }
 
   date.toDateString() === dateNow.toDateString() && isCurrentMonth
     ? calendarDay.classList.add("highlighted")
