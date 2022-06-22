@@ -145,6 +145,7 @@ function renderTask(task) {
   var editButton = document.createElement("button");
   editButton.classList.add("taskEditButton");
   editButton.innerHTML = "Redigera händelse";
+  editButton.addEventListener("click", removeFormValidationMessageAndStyling);
   editButton.addEventListener("click", () =>
     createEditForm(task)
   );
