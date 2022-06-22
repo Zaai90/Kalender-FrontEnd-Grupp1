@@ -43,7 +43,7 @@ function renderAllTasks(dateSearch) {
   let taskArray = getFromLocalStorage("taskArray")
     ? getFromLocalStorage("taskArray")
     : [];
-  taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
+  taskArray.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate) || new Date(`1337-01-01T${a.taskTime}`) - new Date(`1337-01-01T${b.taskTime}`));
 
   if (datePattern.exec(dateSearch)) {
     taskArray = taskArray.filter((t) => t.taskDate == dateSearch);

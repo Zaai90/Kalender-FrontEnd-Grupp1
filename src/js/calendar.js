@@ -4,11 +4,12 @@ const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag",
 let dateNow = new Date();
 let selected;
 let selectedDate;
+let monthInfo = [];
 
 let currentCalendarDate = {
-  day: dateNow.getDate(),
-  month: dateNow.getMonth(),
   year: dateNow.getFullYear(),
+  month: dateNow.getMonth(),
+  day: dateNow.getDate()
 };
 
 function addCalenderHeader() {
@@ -24,6 +25,15 @@ function addCalenderHeader() {
   header.appendChild(calendarMonth);
 }
 
+function isRedDay(date) {
+  const dateString = formatDateToString(date)
+  const day = monthInfo.find(day => day.datum === dateString);
+  // console.log(monthInfo);
+  if (day) {
+    return day["röd dag"] === "Ja";
+  }
+}
+
 function renderHeader(year, month) {
   const yearDiv = document.querySelector(".calendarHeaderYear");
   const monthDiv = document.querySelector(".calendarHeaderMonth");
@@ -35,38 +45,49 @@ function renderCalendar(year, month) {
   calendarContainer.innerHTML = "";
   renderHeader(year, month);
 
-  const firstDay = new Date(year, month);
-  const weekday = firstDay.getDay() > 0 ? firstDay.getDay() === 1 ? 7 : firstDay.getDay() - 1 : 6;
-  const lastDay = new Date(year, month + 1, 0);
-  const lastDayOfMonth = lastDay.getDate();
+  let firstDay = new Date(year, month);
+  let weekday = firstDay.getDay() === 1 ? 7 : firstDay.getDay() > 1 ? firstDay.getDay() - 1 : 6;
+  let lastDay = new Date(year, month + 1, 0);
+  let lastDayOfMonth = lastDay.getDate();
 
   //Previous month
   for (let i = 0; i < weekday; i++) {
-    let date = new Date(year, month, i - weekday + 1);
+    const date = new Date(year, month, i - weekday + 1);
     createCalenderDay(date, previous, false);
   }
 
   //Current Month
   for (let i = 0; i < lastDayOfMonth; i++) {
-    let date = new Date(year, month, firstDay.getDate() + i);
+    const date = new Date(year, month, firstDay.getDate() + i);
     createCalenderDay(date, toggleSelected, true);
   }
 
   //Next month
   for (let i = lastDayOfMonth + weekday; i < 42; i++) {
-    let date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
+    const date = new Date(year, month + 1, i - lastDayOfMonth + 1 - weekday);
     createCalenderDay(date, next, false);
   }
 }
 
 function createCalenderDay(date, eventFunction, isCurrentMonth) {
+
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
+
+  if ((date ? formatDateToString(date) : "undefined") === (selectedDate ? formatDateToString(selectedDate) : "")) {
+    calendarDay.classList.add("selected");
+    selected = calendarDay;
+  }
 
   date.toDateString() === dateNow.toDateString() && isCurrentMonth
     ? calendarDay.classList.add("highlighted")
     : null;
   calendarDay.classList.add(isCurrentMonth ? "current" : "faded");
+
+  if (isCurrentMonth) {
+    isRedDay(date) ? calendarDay.classList.add("redDay") : '';
+  }
+
   calendarDay.id = `${date.getDate()}-${date.getMonth() + 1
     }-${date.getFullYear()}${isCurrentMonth ? "" : ""}`;
 
@@ -75,7 +96,7 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
   calendarDayNumber.innerHTML = date.getDate();
   calendarDay.appendChild(calendarDayNumber);
   calendarDay.addEventListener("click", (e) => eventFunction(e, date));
-  
+
   const taskAmount = getAmountOfTasks(formatDateToString(date));
   if (taskAmount > 0) {
     const calendarDayTaskAmount = document.createElement("div");
@@ -85,19 +106,19 @@ function createCalenderDay(date, eventFunction, isCurrentMonth) {
     calendarDayTaskAmount.appendChild(taskAmountText);
     calendarDay.appendChild(calendarDayTaskAmount);
   }
-  
+
   calendarContainer.appendChild(calendarDay);
 }
 
 function toggleSelected(e, date) {
   const target = e.currentTarget;
   const sameDay = target === selected;
-  
+
   if (selected) {
     selected.classList.remove("selected");
     selected = undefined;
     selectedDate = undefined;
-    
+
     updateTaskFormDate(formatDateToString(dateNow));
     renderAllTasks();
   }
@@ -106,31 +127,36 @@ function toggleSelected(e, date) {
     target.classList.add("selected");
     selected = target;
     selectedDate = date;
-    
+
     updateTaskFormDate(formatDateToString(date));
     renderAllTasks(formatDateToString(date));
   }
 }
 
 function next() {
-  currentCalendarDate.year =
-    currentCalendarDate.month === 11
-      ? currentCalendarDate.year + 1
-      : currentCalendarDate.year;
+  if (currentCalendarDate.month === 11) {
+    currentCalendarDate.year = currentCalendarDate.year + 1;
+  }
   currentCalendarDate.month = (currentCalendarDate.month + 1) % 12;
+  const dateObj = convertObjectToDate(currentCalendarDate);
 
-  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
+  fetchMonthInfo(dateObj).then(() => {
+    renderCalendar(currentCalendarDate.year, currentCalendarDate.month)
+  }
+  );
 }
 
 function previous() {
-  currentCalendarDate.year =
-    currentCalendarDate.month === 0
-      ? currentCalendarDate.year - 1
-      : currentCalendarDate.year;
-  currentCalendarDate.month =
-    currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
+  if (currentCalendarDate.month === 0) {
+    currentCalendarDate.year = currentCalendarDate.year - 1;
+  }
+  currentCalendarDate.month = currentCalendarDate.month === 0 ? 11 : currentCalendarDate.month - 1;
 
-  renderCalendar(currentCalendarDate.year, currentCalendarDate.month);
+  const dateObj = convertObjectToDate(currentCalendarDate);
+  fetchMonthInfo(dateObj).then(() => {
+    renderCalendar(currentCalendarDate.year, currentCalendarDate.month)
+  }
+  );
 }
 
 function getAmountOfTasks(date) {
