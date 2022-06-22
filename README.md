@@ -53,7 +53,7 @@ Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder beh
 
 #### Ärendelista
 - [x] Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
-- [ ] Skapa och designa titeln för verktyget - (G)
+- [x] Skapa och designa titeln för verktyget - (G)
 - [x] Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
 minst innehålla tid, veckodag och datum. - (G)
 - [x] Användaren skall kunna lägga till en todo - (G)

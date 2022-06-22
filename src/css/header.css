@@ -2,7 +2,6 @@ header {
     display: flex;
     flex-direction: column;
     grid-area: head;
-    background-color: var(--header-background-color);
     background: url('./../images/2203_w022_n001_567b_p15_567.jpg');
     background-size: cover;
     align-items: center;
