@@ -145,6 +145,7 @@ function renderTask(task) {
   var editButton = document.createElement("button");
   editButton.classList.add("taskEditButton");
   editButton.innerHTML = "Redigera händelse";
+  editButton.addEventListener("click", removeFormValidationMessageAndStyling);
   editButton.addEventListener("click", () =>
     createEditForm(task)
   );
@@ -211,24 +212,25 @@ function editTask(event) {
   const task = Object.fromEntries(formData.entries());
   const taskId = event.target.id.replace("taskEditForm", "");
   const taskIndex = tasks.indexOf(tasks.find((task) => task.id == taskId));
-
-  if (task.taskName) {
-    tasks[taskIndex].taskName = task.taskName;
-  }
-
-  if (task.taskDescription) {
-    tasks[taskIndex].taskDescription = task.taskDescription;
-  }
-
-  if (task.taskDate) {
-    tasks[taskIndex].taskDate = task.taskDate;
-  }
-
-  if (task.taskTime) {
-    tasks[taskIndex].taskTime = task.taskTime;
-  }
-
+  
   if(validateForm(event)){
+
+    if (task.taskName) {
+      tasks[taskIndex].taskName = task.taskName;
+    }
+
+    if (task.taskDescription) {
+      tasks[taskIndex].taskDescription = task.taskDescription;
+    }
+
+    if (task.taskDate) {
+      tasks[taskIndex].taskDate = task.taskDate;
+    }
+
+    if (task.taskTime) {
+      tasks[taskIndex].taskTime = task.taskTime;
+    }
+
     saveToLocalStorage("taskArray", tasks);
     removeEditForm();
     toggleElemVisibility(document.querySelector("#addTaskButton"))
