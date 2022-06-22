@@ -26,12 +26,20 @@ function addCalenderHeader() {
 }
 
 function isRedDay(date) {
+  const faultyDays = [
+    "06-06",
+  ];
+
   const dateString = formatDateToString(date)
   const day = monthInfo.find(day => day.datum === dateString);
-  // console.log(monthInfo);
+
+  if (faultyDays.find(day => day === dateString.slice(5, 10))) {
+    return true;
+  }
   if (day) {
     return day["röd dag"] === "Ja";
   }
+
 }
 
 function renderHeader(year, month) {
@@ -70,8 +78,14 @@ function renderCalendar(year, month) {
 }
 
 function createCalenderDay(date, eventFunction, isCurrentMonth) {
+
   const calendarDay = document.createElement("div");
   calendarDay.classList.add("calendarDay");
+
+  if ((date ? formatDateToString(date) : "undefined") === (selectedDate ? formatDateToString(selectedDate) : "")) {
+    calendarDay.classList.add("selected");
+    selected = calendarDay;
+  }
 
   date.toDateString() === dateNow.toDateString() && isCurrentMonth
     ? calendarDay.classList.add("highlighted")

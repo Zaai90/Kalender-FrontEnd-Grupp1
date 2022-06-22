@@ -3,6 +3,11 @@ header {
     flex-direction: column;
     grid-area: head;
     background-color: var(--header-background-color);
+    background: url('./../images/2203_w022_n001_567b_p15_567.jpg');
+    background-size: cover;
+    align-items: center;
+    position:relative;
+    color: #fff;
 }
 
 .bottom-border-shadow {
@@ -35,7 +40,8 @@ header {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    color: var(--text-color-secondary);
+    color: var(--header-text-color);
+    width: 100%;
 }
 
 .calendarHeaderYear {
@@ -49,5 +55,12 @@ header {
     padding: 5px;
     display: flex;
     font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.calenderHeaderTitle {
+    padding: 5px;
+    display: flex;
+    font-size: var(--dateHeader-font-size);
     font-weight: bold;
 }
