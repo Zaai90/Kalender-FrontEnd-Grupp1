@@ -69,8 +69,9 @@ antal todos på en viss dag. - (G)
 - [x] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
 
 ### Extra:
-- Kalendern visar framtida tasks i asiden by default+++
+- Kalendern visar endast framtida tasks i asiden by default+++
 - Vi använder 2 apier, ett för väderinformation och ett för helgdagar
+- Byte av månad sker när man klickar på ett datum utanför nuvarande månad
 
 #### Krav för godkänt
 - [ ] Uppgiften lämnas in i tid!
