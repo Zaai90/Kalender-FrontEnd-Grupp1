@@ -21,7 +21,6 @@ aside {
 }
 
 .taskMenu {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,12 +79,15 @@ aside {
 }
 
 .taskDeleteButton {
+  display: inline-flexbox;
   width: 6rem;
   background-color: rgba(252, 38, 31, 0.697);
 }
 
 .taskEditButton {
-  width: 4rem;
+  display: flex;
+  align-items: center;
+  width: 6rem;
   background-color: rgba(23, 222, 226, 0.791);
 }
 
@@ -108,7 +110,7 @@ aside {
   color: rgb(0, 0, 0);
 }
 
-.dateTitle{
+.dateTitle {
   text-align-last: center;
   background-color: var(--faded-background-color);
   border-radius: 0.5rem;
@@ -117,18 +119,23 @@ aside {
   font-weight: bold;
 }
 
-
-.taskDiv{
+.taskDiv {
   background-color: var(--calendarDay-background-color);
   border: 1px black solid;
   border-radius: 0.8rem;
   margin-bottom: 0.3rem;
 }
 
-.taskDateContainer{
+.taskDateContainer {
   margin-bottom: 1rem;
 }
 
 #hideEditTaskForm {
   background-color: lightcoral;
+}
+
+.buttonContainer
+{
+  display: flex;
+  justify-content: space-evenly;
 }
