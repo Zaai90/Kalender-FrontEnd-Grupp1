@@ -12,7 +12,7 @@ function createTask(event) {
   event.preventDefault();
   removeFormValidationMessageAndStyling();
 
-  if(validateForm(event)){
+  if (validateForm(event)) {
     const formData = new FormData(event.target);
     const task = Object.fromEntries(formData.entries());
     task.id = getTaskId();
@@ -23,27 +23,27 @@ function createTask(event) {
   }
 }
 
-function validateForm(event){
+function validateForm(event) {
   const form = event.target;
   let isValid = true;
 
-  if(!form["taskName"].value) {
+  if (!form["taskName"].value) {
     form["taskName"].classList.add("invalidInput");
     addFormValidationMessage("Titel kan inte vara tomt");
     isValid = false;
-  } else if(form["taskName"].value.length > 50){
+  } else if (form["taskName"].value.length > 50) {
     form["taskName"].classList.add("invalidInput");
     addFormValidationMessage("Titel kan inte vara längre än 50 karaktärer");
     isValid = false;
   }
 
-  if(!form["taskDate"].value){
+  if (!form["taskDate"].value) {
     form["taskDate"].classList.add("invalidInput");
     addFormValidationMessage("Datum kan inte vara tomt");
     isValid = false;
   }
 
-  if(form["taskDescription"].value.length > 200){
+  if (form["taskDescription"].value.length > 200) {
     form["taskDescription"].classList.add("invalidInput");
     addFormValidationMessage("Beskrivning kan inte vara mer än 200 karaktärer");
     isValid = false;
@@ -53,22 +53,22 @@ function validateForm(event){
 
 }
 
-function addFormValidationMessage(errorMessage){
+function addFormValidationMessage(errorMessage) {
   const errorMessageElem = document.createElement("p");
   errorMessageElem.innerHTML = errorMessage;
   errorMessageElem.classList.add("formErrorMessage")
   document.querySelector(".taskMenu").appendChild(errorMessageElem);
 }
 
-function removeFormValidationMessageAndStyling(){
-  for(const elem of document.querySelectorAll(".formErrorMessage")){
+function removeFormValidationMessageAndStyling() {
+  for (const elem of document.querySelectorAll(".formErrorMessage")) {
     elem.remove();
   }
 
-  for(const elem of document.querySelectorAll(".invalidInput")){
-      elem.classList.remove("invalidInput");
-    };
-  
+  for (const elem of document.querySelectorAll(".invalidInput")) {
+    elem.classList.remove("invalidInput");
+  };
+
 }
 
 function getTaskId() {
@@ -115,7 +115,7 @@ function renderAllTasks(dateSearch) {
       dateTitle.classList.add("dateTitle");
       dateTitle.innerHTML = task.taskDate;
 
-      taskList.appendChild(dateTitle);
+      groupContainer.appendChild(dateTitle);
       taskList.appendChild(groupContainer);
 
       renderTask(task);
@@ -231,6 +231,7 @@ function editTask(event) {
       tasks[taskIndex].taskTime = task.taskTime;
     }
 
+  if (validateForm(event)) {
     saveToLocalStorage("taskArray", tasks);
     removeEditForm();
     toggleElemVisibility(document.querySelector("#addTaskButton"))
