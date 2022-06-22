@@ -11,7 +11,7 @@ function populateDiv() {
   const compressedDiv = document.querySelector(".compressedInfo");
   compressedDiv.innerHTML =
     weekDays[
-      dateNow.getDay() - 1 < 0 ? 6 : dateNow.getDay() - 1
+    dateNow.getDay() - 1 < 0 ? 6 : dateNow.getDay() - 1
     ] +
     " " +
     "den " +
@@ -45,5 +45,5 @@ function renderSpecialDayInfo(res) {
 
   const holidayDiv = document.querySelector(".holidayInfo");
   holidayDiv.innerHTML =
-    "Dagens namn: " + daysArray[dateNow.getDate()].namnsdag;
+    "Dagens namn: " + daysArray[dateNow.getDate() - 1].namnsdag;
 }
