@@ -94,34 +94,44 @@ body {
 
 @media screen and (max-width: 820px) {
     .layout {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
         grid-template-areas:
             "aside"
-            "main";
+            "main"; */
+        display: flex;
+        flex-direction: column;
     }
 
+    .taskContainer {
+        max-height: 275px;
+    }
+
+
     .taskList {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
         display: flex;
         flex-direction: row;
-        max-width: 325px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-snap-type: x proximity;
+        max-width: 335px;
+
         justify-content: space-between;
     }
 
-    /* .taskContainer {} */
 
     .taskDateContainer {
-        /* overflow-x: hidden; */
-        /* overflow-x: scroll; */
+        max-height: 275px;
+        min-width: 325px;
+        overflow-y: scroll;
         scroll-snap-type: y proximity;
         scroll-snap-align: center;
-        margin: 0 auto;
-        max-height: 275px;
-        margin-right: 10px;
     }
+
+
+    .taskDiv {
+        scroll-snap-align: center;
+    }
+
 
     .dateTitle {
         position: relative;
@@ -140,8 +150,12 @@ body {
         display: none;
     }
 
-    .bottom-border-shadow {
-        height: 3px;
+    aside {
+        box-shadow: none;
+    }
+
+    .taskMenu {
+        box-shadow: none;
     }
 }
 
@@ -153,6 +167,7 @@ body {
 .hidden {
     display: none;
 }
+
 
 ::-webkit-scrollbar {
     display: none;
