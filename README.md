@@ -3,7 +3,7 @@
 Grupparbete i Webbutveckling
 Av: Daniel T, Erik G, Robin K, Frans B
 
-[https://zaai90.github.io/Kalender-FrontEnd-Grupp1/(Github Page)]
+[Github Page](https://zaai90.github.io/Kalender-FrontEnd-Grupp1/)
 
 ### Verktyget
 Det ni skall skapa är ett verktyg för att lägga till och ta bort todos. Dessa todos skall visas i
