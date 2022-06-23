@@ -25,15 +25,17 @@ function createTask(event) {
 
 function validateForm(event) {
   const form = event.target;
+  const taskNameMaxLength = 50;
+  const taskDescriptionMaxLength = 200;
   let isValid = true;
 
   if (!form["taskName"].value) {
     form["taskName"].classList.add("invalidInput");
     addFormValidationMessage("Titel kan inte vara tomt");
     isValid = false;
-  } else if (form["taskName"].value.length > 50) {
+  } else if (form["taskName"].value.length > taskNameMaxLength) {
     form["taskName"].classList.add("invalidInput");
-    addFormValidationMessage("Titel kan inte vara längre än 50 karaktärer");
+    addFormValidationMessage(`Titel kan inte vara längre än ${taskNameMaxLength} karaktärer`);
     isValid = false;
   }
 
@@ -43,9 +45,9 @@ function validateForm(event) {
     isValid = false;
   }
 
-  if (form["taskDescription"].value.length > 200) {
+  if (form["taskDescription"].value.length > taskDescriptionMaxLength) {
     form["taskDescription"].classList.add("invalidInput");
-    addFormValidationMessage("Beskrivning kan inte vara mer än 200 karaktärer");
+    addFormValidationMessage(`Beskrivning kan inte vara mer än ${taskDescriptionMaxLength} karaktärer`);
     isValid = false;
   }
 
