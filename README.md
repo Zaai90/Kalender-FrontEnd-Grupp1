@@ -2,6 +2,7 @@
 
 # Kalender-FrontEnd-Grupp1
 Grupparbete i Webbutveckling
+Av: Daniel T, Erik G, Robin K, Frans B
 
 ## Miniprojekt
 Schemalagda todos
