@@ -100,8 +100,6 @@ main {
     background-color: var(--faded-background-color);
 }
 
-/* .current {} */
-
 .highlighted {
     background-color: var(--highlighted-calendarDay-color);
 }
@@ -134,7 +132,7 @@ main {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    color: var(--header-text-color);
+    color: var(--calendarHeader-text-color);
     width: 100%;
 }
 

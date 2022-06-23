@@ -8,7 +8,7 @@ aside {
   flex-direction: column;
   grid-area: aside;
   background-color: var(--aside-background-color);
-  box-shadow: var(--aside-right-shadow);
+
   font-family: RobotoMono;
   color: var(--text-color);
 }
@@ -45,8 +45,8 @@ aside {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  /* overflow-x: hidden;
-  overflow-y: scroll; */
+  overflow: scroll;
+  max-height: 300px;
 }
 
 .task {
@@ -186,11 +186,10 @@ aside {
 }
 
 .dayInfo {
+  margin-top: 75px;
   display: flex;
-  flex-direction: column;
-  justify-content: end;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 0.5rem;
 }
 
 .dateInfo {
@@ -204,6 +203,7 @@ aside {
 }
 
 .weatherContainer {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -212,7 +212,6 @@ aside {
 }
 
 .fa-solid {
-
   padding: 5px;
 }
 

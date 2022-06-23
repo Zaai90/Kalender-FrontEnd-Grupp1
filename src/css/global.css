@@ -12,6 +12,9 @@
     --taskAmount-text-color: #fff;
     --header-text-color: #fff;
 
+    --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
+    --aside-bottom-shadow: 2.5px 3px 2px rgba(0, 0, 0, 0.500);
+    --header-bottom-shadow: -8px 1px -8px 5px black;
 }
 
 html[data-theme="light"] {
@@ -24,6 +27,7 @@ html[data-theme="light"] {
 
     --text-color: rgb(0, 0, 0);
     --text-color-secondary: #ffffff;
+    --calendarHeader-text-color: rgb(0, 0, 0);
 
     --weekdays-background-color: #c9c5c5ea;
     --calendarDay-background-color: rgb(255, 255, 255);
@@ -31,9 +35,6 @@ html[data-theme="light"] {
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
 
-    --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
-    --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
-    --header-bottom-shadow: -8px 1px -8px 5px black;
 
     --aside-faded-text-color: rgb(30, 30, 30);
     --aside-inset-box-shadow: rgba(50, 50, 93, 0.25);
@@ -46,6 +47,7 @@ html[data-theme="dark"] {
 
     --text-color: #fff;
     --text-color-secondary: #000000;
+    --calendarHeader-text-color: #fff;
 
     --faded-text-color: #706f6f;
     --faded-background-color: #29292941;
@@ -55,10 +57,6 @@ html[data-theme="dark"] {
     --hovered-calendarDay-color: rgba(90, 87, 87, 0.675);
     --highlighted-calendarDay-color: #00A4EF;
     --highlighted-hovered-calendarDay-color: rgba(47, 179, 240, 0.800);
-
-    --aside-right-shadow: 3px 0 2px rgba(0, 0, 0, 0.500);
-    --aside-bottom-shadow: 0.5px 3px 2px rgba(0, 0, 0, 0.500);
-    --header-bottom-shadow: -8px 1px -8px 5px black;
 
     --aside-faded-text-color: rgb(212, 211, 211);
     --aside-inset-box-shadow: rgba(255, 255, 255, 0.25);
@@ -92,15 +90,14 @@ body {
         "aside main main";
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 768px) {
     .layout {
-        /* grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-areas:
-            "aside"
-            "main"; */
         display: flex;
         flex-direction: column;
+    }
+
+    .taskMenu {
+        box-shadow: none;
     }
 
     .taskContainer {
@@ -114,7 +111,6 @@ body {
         display: flex;
         flex-direction: row;
         max-width: 335px;
-
         justify-content: space-between;
     }
 
@@ -127,18 +123,42 @@ body {
         scroll-snap-align: center;
     }
 
-
     .taskDiv {
         scroll-snap-align: center;
     }
 
+    .welcomeContainer {
+        min-height: 200px;
+        margin-left: -25px;
 
-    .dateTitle {
-        position: relative;
     }
+
+    .weatherContainer {
+        order: 3;
+        margin-top: 50px;
+    }
+
+    .dayInfo {
+        order: 1;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: -10px;
+        margin-top: 50px;
+    }
+
+    .dailyNames {
+        order: 2;
+        max-width: 150px;
+    }
+
+    .dateInfo {
+        order: 1;
+        max-width: 150px;
+    }
+
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 480px) {
     .layout {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(1, 1fr);
@@ -154,8 +174,17 @@ body {
         box-shadow: none;
     }
 
-    .taskMenu {
-        box-shadow: none;
+    .taskContainer {
+        max-height: 350px;
+    }
+
+    .taskDateContainer {
+        max-height: 350px;
+    }
+
+    .dayInfo {
+        margin-top: 75px;
+        margin-left: -25px;
     }
 }
 
