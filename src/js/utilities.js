@@ -1,5 +1,4 @@
 /**
- * 
  * @param {string} string 
  * returns string with first letter capitalized
  */
@@ -32,7 +31,6 @@ async function fetchData(url, options) {
 }
 
 /**
- * 
  * @param {string} key 
  * @param {*} value 
  * Adds value to localStorage as json string
@@ -42,7 +40,6 @@ function saveToLocalStorage(key, value) {
 }
 
 /**
- * 
  * @param {string} key 
  * @returns {object} data as object
  */

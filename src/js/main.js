@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 
 async function main() {
-  dateNow = new Date();
+  initiateGlobals();
   setInterval(() => (dateNow = new Date()), 1000);
   renderWelcomeSegment();
   initTasks();

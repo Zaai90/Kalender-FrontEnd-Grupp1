@@ -14,7 +14,6 @@ function populateDiv() {
     dateNow.getDay() - 1 < 0 ? 6 : dateNow.getDay() - 1
     ] +
     " " +
-    "den " +
     dateNow.getDate() +
     " " +
     monthNames[dateNow.getMonth()] +

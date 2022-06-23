@@ -69,16 +69,18 @@ main {
     font-size: 2rem;
 }
 
+
+
 .taskAmount {
     display: flex;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
     justify-content: center;
     align-items: center;
     line-height: 0;
     background-color: var(--weekdays-background-color);
-    border-radius: 50%;
+    border-radius: 50% 0 50% 50%;
     width: 20px;
     height: 20px;
     color: var(--text-color-secondary);
