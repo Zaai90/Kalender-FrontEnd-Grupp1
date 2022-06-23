@@ -86,5 +86,7 @@ antal todos på en viss dag. - (G)
 - [ ]  Ärenden för väl godkänt är gjorda
 
 **LYCKA TILL!**
+
+
 Vår planerings Miro:
 ![Grupp_Harald_Miro](https://user-images.githubusercontent.com/79047651/175263435-c04076fe-e14e-4852-9c4b-dfb00d04dddd.jpg)
