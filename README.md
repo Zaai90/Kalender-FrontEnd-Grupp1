@@ -73,6 +73,7 @@ antal todos på en viss dag. - (G)
 - Kalendern visar endast framtida tasks i asiden by default+++
 - Vi använder 2 apier, ett för väderinformation och ett för helgdagar
 - Byte av månad sker när man klickar på ett datum utanför nuvarande månad
+- I mobil och tablet vyn sveper man åt sidan för se tasks från andra dagar
 
 #### Krav för godkänt
 - [ ] Uppgiften lämnas in i tid!
