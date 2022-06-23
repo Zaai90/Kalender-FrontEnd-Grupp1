@@ -146,7 +146,6 @@ function renderTask(task) {
 
   var editButton = document.createElement("button");
   editButton.classList.add("fa-solid", "fa-pen-to-square");
-  editButton.addEventListener("click", () => createEditForm(task));
   editButton.addEventListener("click", removeFormValidationMessageAndStyling);
   editButton.addEventListener("click", () => createEditForm(task));
 
@@ -247,7 +246,7 @@ function addTaskHtml() {
 }
 
 function addTaskListHtml() {
-  let taskList = document.createElement("ul");
+  let taskList = document.createElement("div");
   taskList.className = "taskList";
 
   document.querySelector(".taskContainer").appendChild(taskList);
