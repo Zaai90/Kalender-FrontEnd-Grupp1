@@ -103,25 +103,35 @@ body {
         flex-direction: column;
     }
 
+    .taskContainer {
+        max-height: 275px;
+    }
+
+
     .taskList {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
         display: flex;
         flex-direction: row;
-        max-width: 325px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-snap-type: x proximity;
+        max-width: 335px;
+
         justify-content: space-between;
     }
 
-    /* .taskContainer {} */
 
     .taskDateContainer {
+        max-height: 275px;
+        min-width: 325px;
+        overflow-y: scroll;
         scroll-snap-type: y proximity;
         scroll-snap-align: center;
-        margin: 0 auto;
-        max-height: 275px;
-        margin-right: 10px;
     }
+
+
+    .taskDiv {
+        scroll-snap-align: center;
+    }
+
 
     .dateTitle {
         position: relative;
@@ -139,6 +149,14 @@ body {
     main {
         display: none;
     }
+
+    aside {
+        box-shadow: none;
+    }
+
+    .taskMenu {
+        box-shadow: none;
+    }
 }
 
 .centered {
@@ -149,6 +167,7 @@ body {
 .hidden {
     display: none;
 }
+
 
 ::-webkit-scrollbar {
     display: none;
