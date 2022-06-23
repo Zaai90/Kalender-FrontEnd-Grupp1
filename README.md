@@ -53,7 +53,7 @@ Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder beh
 
 #### Ärendelista
 - [x] Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G)
-- [ ] Skapa och designa titeln för verktyget - (G)
+- [x] Skapa och designa titeln för verktyget - (G)
 - [x] Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall
 minst innehålla tid, veckodag och datum. - (G)
 - [x] Användaren skall kunna lägga till en todo - (G)
@@ -69,8 +69,9 @@ antal todos på en viss dag. - (G)
 - [x] Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG)
 
 ### Extra:
-- Kalendern visar framtida tasks i asiden by default+++
+- Kalendern visar endast framtida tasks i asiden by default+++
 - Vi använder 2 apier, ett för väderinformation och ett för helgdagar
+- Byte av månad sker när man klickar på ett datum utanför nuvarande månad
 
 #### Krav för godkänt
 - [ ] Uppgiften lämnas in i tid!
