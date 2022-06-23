@@ -36,17 +36,15 @@ aside {
   align-items: center;
   margin-top: 10px;
   padding-bottom: 10px;
-  box-shadow: var(--aside-bottom-shadow);
 }
 
 .taskContainer {
-  padding-top: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   overflow: scroll;
-  max-height: 300px;
+  max-height: 350px;
 }
 
 .task {

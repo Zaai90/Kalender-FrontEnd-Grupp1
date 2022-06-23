@@ -1,17 +1,3 @@
-const calendarContainer = document.getElementsByClassName("calendar")[0];
-const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
-const weekDays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
-let dateNow = new Date();
-let selected;
-let selectedDate;
-let monthInfo = [];
-
-let currentCalendarDate = {
-  year: dateNow.getFullYear(),
-  month: dateNow.getMonth(),
-  day: dateNow.getDate()
-};
-
 function addCalenderHeader() {
   let header = document.querySelector(".calendarHeader");
 
@@ -39,7 +25,6 @@ function isRedDay(date) {
   if (day) {
     return day["röd dag"] === "Ja";
   }
-
 }
 
 function renderHeader(year, month) {

@@ -1,6 +1,4 @@
 let taskList;
-const datePattern = /\d{4}-\d\d-\d\d/;
-let tasks = getFromLocalStorage("taskArray") || [];
 
 function initTasks() {
   addTaskHtml();
@@ -91,6 +89,7 @@ function deleteTask(task) {
 
 function renderAllTasks(dateSearch) {
   taskList.innerHTML = "";
+  const datePattern = /\d{4}-\d\d-\d\d/;
 
   let taskArray = getFromLocalStorage("taskArray")
     ? getFromLocalStorage("taskArray")
@@ -99,7 +98,7 @@ function renderAllTasks(dateSearch) {
     (a, b) =>
       new Date(a.taskDate) - new Date(b.taskDate) ||
       new Date(`1337-01-01T${a.taskTime}`) -
-        new Date(`1337-01-01T${b.taskTime}`)
+      new Date(`1337-01-01T${b.taskTime}`)
   );
 
   if (datePattern.exec(dateSearch)) {

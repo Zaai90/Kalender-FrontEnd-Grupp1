@@ -1,4 +1,38 @@
+let weatherCodeLib;
+
 function initGeoLocation() {
+  weatherCodeLib = {
+    0: "fa-sun",
+    1: "fa-cloud-sun",
+    2: "fa-cloud-sun",
+    3: "fa-cloud-sun",
+    45: "fa-smog",
+    48: "fa-smog",
+    51: "fa-droplet",
+    53: "fa-cloud-rain",
+    55: "fa-cloud-showers-heavy",
+    56: "fa-droplet",
+    57: "fa-cloud-showers-heavy",
+    61: "fa-droplet",
+    63: "fa-cloud-rain",
+    65: "fa-cloud-showers-heavy",
+    66: "fa-droplet",
+    67: "fa-cloud-showers-heavy",
+    71: "fa-snowflake",
+    73: "fa-snowflake",
+    75: "fa-snowplow",
+    77: "fa-snowplow",
+    80: "fa-droplet",
+    81: "fa-cloud-rain",
+    82: "fa-cloud-showers-water",
+    85: "fa-snowflake",
+    86: "fa-snowplow",
+    95: "fa-cloud-bolt",
+    999: "fa-bolt-lightning",
+    96: "fa-cloud-bolt",
+    99: "fa-bolt-lightning",
+  };
+
   navigator.geolocation.getCurrentPosition(function (pos) {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
@@ -17,37 +51,6 @@ async function getWeatherForeCast(lat, long) {
   let weatherCode = data.current_weather.weathercode;
   addWeatherToHtml(temp, sunset, windspeed, weatherCode);
 }
-const weatherCodeLib = {
-  0: "fa-sun",
-  1: "fa-cloud-sun",
-  2: "fa-cloud-sun",
-  3: "fa-cloud-sun",
-  45: "fa-smog",
-  48: "fa-smog",
-  51: "fa-droplet",
-  53: "fa-cloud-rain",
-  55: "fa-cloud-showers-heavy",
-  56: "fa-droplet",
-  57: "fa-cloud-showers-heavy",
-  61: "fa-droplet",
-  63: "fa-cloud-rain",
-  65: "fa-cloud-showers-heavy",
-  66: "fa-droplet",
-  67: "fa-cloud-showers-heavy",
-  71: "fa-snowflake",
-  73: "fa-snowflake",
-  75: "fa-snowplow",
-  77: "fa-snowplow",
-  80: "fa-droplet",
-  81: "fa-cloud-rain",
-  82: "fa-cloud-showers-water",
-  85: "fa-snowflake",
-  86: "fa-snowplow",
-  95: "fa-cloud-bolt",
-  999: "fa-bolt-lightning",
-  96: "fa-cloud-bolt",
-  99: "fa-bolt-lightning",
-};
 
 function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
   let weather = document.querySelector(".weatherContainer");
