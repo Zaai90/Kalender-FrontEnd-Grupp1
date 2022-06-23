@@ -9,8 +9,6 @@ let currentCalendarDate;
 
 let tasks;
 
-
-
 function initiateGlobals() {
     calendarContainer = document.getElementsByClassName("calendar")[0];
     monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
@@ -24,6 +22,4 @@ function initiateGlobals() {
     };
 
     tasks = getFromLocalStorage("taskArray") || [];
-
-
 }
