@@ -8,8 +8,8 @@ function createRenderDivs() {
 }
 
 function populateDiv() {
-  const compressedDiv = document.querySelector(".compressedInfo");
-  compressedDiv.innerHTML =
+  const dateInfo = document.querySelector(".dateInfo");
+  dateInfo.innerHTML =
     weekDays[
     dateNow.getDay() - 1 < 0 ? 6 : dateNow.getDay() - 1
     ] +
@@ -38,7 +38,7 @@ function renderWelcomeSegment() {
 
 function renderSpecialDayInfo(res) {
   const daysArray = res;
-  let welcomeDiv = document.querySelector(".welcomeContainer");
+  let welcomeDiv = document.querySelector(".dailyNames");
   welcomeDiv
     .appendChild(document.createElement("div"))
     .classList.add("holidayInfo");

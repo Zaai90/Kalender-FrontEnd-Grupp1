@@ -2,7 +2,6 @@ main {
     display: flex;
     grid-area: main;
     background-color: var(--main-background-color);
-
 }
 
 .calendarContainer {
@@ -15,7 +14,8 @@ main {
 
 .calendar {
     padding: 10px;
-    height: 100%;
+    min-height: 50vh;
+    max-height: 600px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -100,7 +100,7 @@ main {
     background-color: var(--faded-background-color);
 }
 
-.current {}
+/* .current {} */
 
 .highlighted {
     background-color: var(--highlighted-calendarDay-color);
@@ -121,11 +121,33 @@ main {
     border: solid 3px #00A4EF;
 }
 
-#canvas {
-    background-color: transparent;
-    z-index: 1337;
-    position: fixed;
-    height: 100%;
+.calendar-header {
+    display: flex;
+    color: var(--text-color);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendarHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--header-text-color);
     width: 100%;
-    pointer-events: none;
+}
+
+.calendarHeaderYear {
+    padding: 5px;
+    display: flex;
+    font-size: var(--dateHeaderYear-font-size);
+    font-weight: bold;
+}
+
+.calendarHeaderMonth {
+    padding: 5px;
+    display: flex;
+    font-size: var(--dateHeaderMonth-font-size);
+    font-weight: bold;
 }

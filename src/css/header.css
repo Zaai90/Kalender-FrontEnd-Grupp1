@@ -5,7 +5,7 @@ header {
     background: url('./../images/2203_w022_n001_567b_p15_567.jpg');
     background-size: cover;
     align-items: center;
-    position:relative;
+    position: relative;
     color: #fff;
 }
 
@@ -33,33 +33,9 @@ header {
     justify-content: space-between;
 }
 
-.calendarHeader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    color: var(--header-text-color);
-    width: 100%;
-}
-
-.calendarHeaderYear {
-    padding: 5px;
-    display: flex;
-    font-size: var(--dateHeader-font-size);
-    font-weight: bold;
-}
-
-.calendarHeaderMonth {
-    padding: 5px;
-    display: flex;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
 .calenderHeaderTitle {
     padding: 5px;
     display: flex;
-    font-size: var(--dateHeader-font-size);
+    font-size: var(--dateHeaderMonth-font-size);
     font-weight: bold;
 }

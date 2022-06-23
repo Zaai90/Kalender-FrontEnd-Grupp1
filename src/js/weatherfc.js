@@ -50,7 +50,7 @@ const weatherCodeLib = {
 };
 
 function addWeatherToHtml(temp, sunset, windspeed, weatherCode) {
-  let weather = document.querySelector(".welcomeContainer");
+  let weather = document.querySelector(".weatherContainer");
 
   const weatherCodeDiv = document.createElement("i");
   weatherCodeDiv.classList.add("fa-solid", weatherCodeLib[weatherCode]);
