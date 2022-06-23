@@ -9,6 +9,7 @@
   <link rel="stylesheet" class="css" href="src/css/main.css" />
   <link rel="stylesheet" class="css" href="src/css/aside.css" />
   <link rel="stylesheet" class="css" href="src/css/header.css" />
+  <link rel="stylesheet" class="css" href="src/css/footer.css" />
   <link rel="stylesheet" class="css" href="src/css/global.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -29,14 +30,12 @@
 
 <body>
   <canvas id="canvas"></canvas>
+  <header>
+    <div class="calenderHeaderTitle">Månadskalendern</div>
+    <button id="switchbutton"></button>
+  </header>
   <section class="layout">
-    <header>
-      <div class="calenderHeaderTitle">Månadskalendern</div>
-      <button id="switchbutton"></button>
-      
-      <div class="bottom-border-shadow"></div>
-    </header>
-    
+
     <main class="mainContainer">
       <div class="calendarContainer">
         <div class="calendarHeader"></div>
@@ -55,9 +54,18 @@
 
     <aside>
       <div class="welcomeContainer">
-        <img
-          src="./src/images/vecteezy_cute-panda-magician-mascot-logo-concept-isolated-on-white_5911605-removebg-preview.png"
-          class="mascot" />
+        <div class="compressedInfo">
+          <div class="harald"><img
+              src="./src/images/vecteezy_cute-panda-magician-mascot-logo-concept-isolated-on-white_5911605-removebg-preview.png"
+              class="mascot" /></div>
+          <div class="dayInfo">
+            <div class="weatherContainer"></div>
+            <div class="dateInfo"> </div>
+            <div class="dailyNames"> </div>
+
+          </div>
+
+        </div>
       </div>
       <div class="taskMenu"></div>
       <div class="taskContainer"></div>
@@ -66,5 +74,3 @@
 </body>
 
 </html>
-<a href='https://www.freepik.com/vectors/color-smoke'>Color smoke vector created by upklyak - www.freepik.com</a>
-<a href="https://www.vecteezy.com/free-vector/nature">Nature Vectors by Vecteezy</a>

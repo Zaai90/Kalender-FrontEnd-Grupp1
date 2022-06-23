@@ -5,7 +5,8 @@
 }
 
 :root {
-    --dateHeader-font-size: 3rem;
+    --dateHeaderYear-font-size: 2rem;
+    --dateHeaderMonth-font-size: 1.5rem;
     --weekday-font-size: calc(0.5rem + 1 * ((100vw + 2rem) / 160));
     --taskAmount-background-color: #6ea076;
     --taskAmount-text-color: #fff;
@@ -80,24 +81,22 @@ body {
 
 .layout {
     max-width: 1280px;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr repeat(3, 2fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
-        "head head head"
         "aside main main"
         "aside main main"
         "aside main main";
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
     .layout {
         grid-template-columns: 1fr;
-        grid-template-rows: (3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         grid-template-areas:
-            "head"
             "aside"
             "main";
     }
@@ -106,24 +105,22 @@ body {
         display: flex;
         flex-direction: row;
         max-width: 325px;
-        /* margin: 0 auto; */
-        overflow-y: scroll;
-        /* overflow-x: hidden; */
-        scroll-snap-type: y proximity;
-        justify-content: space-between;
-    }
-
-    .taskContainer {
         overflow-x: scroll;
         overflow-y: hidden;
         scroll-snap-type: x proximity;
+        justify-content: space-between;
     }
 
+    /* .taskContainer {} */
+
     .taskDateContainer {
+        /* overflow-x: hidden; */
+        /* overflow-x: scroll; */
+        scroll-snap-type: y proximity;
+        scroll-snap-align: center;
         margin: 0 auto;
         max-height: 275px;
         margin-right: 10px;
-        scroll-snap-align: center;
     }
 
     .dateTitle {
@@ -134,14 +131,10 @@ body {
 @media screen and (max-width: 540px) {
     .layout {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         grid-template-areas:
-            "head"
             "aside";
-
     }
-
-
 
     main {
         display: none;

@@ -2,7 +2,6 @@ main {
     display: flex;
     grid-area: main;
     background-color: var(--main-background-color);
-
 }
 
 .calendarContainer {
@@ -15,7 +14,8 @@ main {
 
 .calendar {
     padding: 10px;
-    height: 100%;
+    min-height: 50vh;
+    max-height: 600px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -100,7 +100,7 @@ main {
     background-color: var(--faded-background-color);
 }
 
-.current {}
+/* .current {} */
 
 .highlighted {
     background-color: var(--highlighted-calendarDay-color);
@@ -141,13 +141,13 @@ main {
 .calendarHeaderYear {
     padding: 5px;
     display: flex;
-    font-size: var(--dateHeader-font-size);
+    font-size: var(--dateHeaderYear-font-size);
     font-weight: bold;
 }
 
 .calendarHeaderMonth {
     padding: 5px;
     display: flex;
-    font-size: 1.5rem;
+    font-size: var(--dateHeaderMonth-font-size);
     font-weight: bold;
 }

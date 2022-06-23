@@ -27,9 +27,16 @@ header {
     cursor: pointer;
 }
 
+.calendar-header {
+    display: flex;
+    color: var(--text-color);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .calenderHeaderTitle {
     padding: 5px;
     display: flex;
-    font-size: var(--dateHeader-font-size);
+    font-size: var(--dateHeaderMonth-font-size);
     font-weight: bold;
 }
